@@ -1,3 +1,5 @@
-### `npm start`
+To run the application in a test enviroment:
+`npm start`
 
-### `npm run build`
+To build the application:
+`npm run build`
