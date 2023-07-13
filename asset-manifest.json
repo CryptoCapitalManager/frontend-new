@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2edd05b3.css",
+    "main.js": "/static/js/main.06949b11.js",
+    "static/media/our-experience.svg": "/static/media/our-experience.fff57980a4b30c86ff571f6c9a852d0c.svg",
+    "static/media/hidden-logo.png": "/static/media/hidden-logo.5f4908ad198ef500b259.png",
+    "static/media/third-step.svg": "/static/media/third-step.bf360eac1e092037ae3aeaf0a450a2b0.svg",
+    "static/media/second-step.svg": "/static/media/second-step.99dd7c093414a8eac9920df5fccc8b58.svg",
+    "static/media/first-step.svg": "/static/media/first-step.0a43c48d03089061bd079d8de675873b.svg",
+    "static/media/our-protocol.svg": "/static/media/our-protocol.dc08f4b062d9499f9e760940b4c614b5.svg",
+    "static/media/tag.svg": "/static/media/tag.7959f121150464e88c176bc177452a07.svg",
+    "static/media/investiva-logo.svg": "/static/media/investiva-logo.18fd5d07cb0b8d7384b163b84b8e5b3a.svg",
+    "static/media/attic42-logo.svg": "/static/media/attic42-logo.8143819b716cbc32a3558a0cebef13d4.svg",
+    "static/media/instagram.svg": "/static/media/instagram.cb4f914eaf99bc335a8fd94cc54d5603.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.3f895e244ab2365425df87f91e7b1e30.svg",
+    "static/media/twitter.svg": "/static/media/twitter.8b19028e5d387b67aaf766c13d793f20.svg",
+    "index.html": "/index.html",
+    "static/media/facebook.svg": "/static/media/facebook.71f1bbaf74ec792f2977bf3e3b554b0b.svg",
+    "static/media/email.svg": "/static/media/email.30c916c44988970128c787003a97d468.svg",
+    "static/media/checked.svg": "/static/media/checked.31533a3d62953bbc2b3758dd33300b0c.svg",
+    "main.2edd05b3.css.map": "/static/css/main.2edd05b3.css.map",
+    "main.06949b11.js.map": "/static/js/main.06949b11.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2edd05b3.css",
+    "static/js/main.06949b11.js"
+  ]
+}
