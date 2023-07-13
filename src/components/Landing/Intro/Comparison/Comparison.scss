@@ -1,0 +1,248 @@
+.Comparison {
+    display: flex;
+    justify-content: center;
+
+    width: calc(100% - 295px);
+
+    margin-left: 135px;
+    margin-right: 160px;
+    margin-bottom: 155px;
+
+    .text-container {
+        display: flex;
+        flex-direction: column;
+
+        margin-right: 170px;
+
+        #title {
+            color: #EEE;
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-style: unset;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        #header {
+            margin-top: 25px;
+            margin-bottom: 40px;
+
+            color: #FFF;
+            font-family: 'Roboto';
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        #subtext {
+            color: #FFF;
+            font-family: 'Roboto';
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    .comparison-container {
+        display: flex;
+        justify-content: center;
+
+        padding: 15px;
+
+        border-radius: 40px;
+        background: linear-gradient(180deg, rgba(238, 238, 238, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%);
+
+        .traditional {
+            height: 100%;
+
+            margin-right: 15px;
+
+            border-radius: 32px;
+            background: rgba(238, 238, 238, 0.80);
+        
+            .header-container {
+                margin-top: 52px;
+                margin-left: 35px;
+                margin-right: 35px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                margin-bottom: 36px;
+
+                #header {
+                    color: #111827;
+                    text-align: center;
+                    font-family: 'Roboto';
+                    font-size: 32px;
+                    font-style: normal;
+                    font-weight: 700;
+                }
+
+                #subheader {
+                    color: #4B5563;
+                    text-align: center;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                }
+            }
+
+            .options {
+                margin-left: 26px;
+                margin-right: 26px;
+
+                #option-text {
+                    padding: 23px 20px;
+                    margin-bottom: 13px;
+
+                    border-radius: 5px;
+                    border: 1px solid #4B5563;
+
+                    color: #4B5563;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+
+                #option-text:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .wrong-container {
+                margin-top: 21px;
+                margin-left: 28px;
+                margin-right: 40px;
+                margin-bottom: 33px;
+
+                #question {
+                    margin-bottom: 17px;
+
+                    color: #000;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                }
+
+                #wrongs {
+                    margin: 0;
+                    li {
+                        margin-bottom: 5px;
+
+                        color: #4B5563;
+                        font-family: 'Roboto';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 20px; /* 125% */
+                    }
+                }
+            }
+        }
+
+        .investiva {
+            height: 100%;
+
+            border-radius: 32px;
+            background: linear-gradient(231deg, rgba(195, 245, 60, 0.30) 0%, #000 42%);
+        
+            .header-container {
+                margin-top: 52px;
+                margin-left: 35px;
+                margin-right: 35px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                margin-bottom: 36px;
+
+                #header {
+                    color: #FFF;
+                    text-align: center;
+                    font-family: 'Roboto';
+                    font-size: 32px;
+                    font-style: normal;
+                    font-weight: 700;
+                }
+
+                #subheader {
+                    color: #EEE;;
+                    text-align: center;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                }
+            }
+
+            .options {
+                margin-left: 26px;
+                margin-right: 26px;
+
+                .option-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    margin-bottom: 13px;
+
+                    padding: 23px 20px;
+    
+                    border-radius: 5px;
+                    border: 1px solid #4B5563;
+                    
+                    img {
+                        margin-right: 14px;
+                    }
+
+                    #option-text {    
+                        color: #4B5563;
+                        font-family: 'Roboto';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                    }
+                }
+
+                .option-container:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .wrong-container {
+                margin-top: 21px;
+                margin-left: 28px;
+                margin-right: 40px;
+                margin-bottom: 33px;
+
+                #question {
+                    margin-bottom: 17px;
+
+                    color: #FFF;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                }
+
+                #wrongs {
+                    margin: 0;
+                    li {
+                        color: rgba(238, 238, 238, 0.93);
+                        font-family: 'Roboto';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

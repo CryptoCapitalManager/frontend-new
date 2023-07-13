@@ -1,0 +1,141 @@
+@import "../../../../index.scss";
+
+.Us {
+    width: calc(100% - 295px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 135px;
+    margin-right: 160px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin-right: 145px;
+
+        .tabs {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            .tab {
+                #tab-text {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+            }
+            
+            #selected {
+                #tab-text {
+                    color: #C3F53C;
+                    text-align: center;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+
+                .underline {
+                    margin-top: 8px;
+
+                    height: 3px;
+                    background: #C3F53C;
+                }
+            }
+
+            #unselected {
+                #tab-text {
+                    color: #EEE;
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                }
+
+                .underline {
+                    margin-top: 8px;
+
+                    height: 3px;
+                    background: #C3F53C;
+                    opacity: 0;
+                }
+            }
+
+            .tab:first-child {
+                margin-right: 40px;
+            }
+
+            .tab:hover {
+                cursor: pointer;
+                opacity: 0.6;
+            }
+        }
+
+        .text-container {
+            margin-top: 100px;
+
+            #heading {
+                width: 400px;
+
+                margin-left: 25px;
+
+                color: #FFF;
+                font-family: 'Roboto';
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 108.687%;
+            }
+    
+            #subtext {
+                margin-top: 43px;
+                margin-left: 25px;
+
+                color: #FFF;
+                font-family: 'Roboto';
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+
+        .btn-container {
+            width: 100%;
+
+            display: flex;
+
+            .btn {
+                margin-top: 52px;
+                margin-left: 25px;
+    
+                padding: 12px 27px;
+    
+                border-radius: 100px;
+                border: 1px solid #FFF;
+    
+                color: #C3F53C;
+                text-align: center;
+                font-family: 'Roboto';
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 20px;
+                letter-spacing: 0.1px;
+            }
+        }
+    }
+
+    #illustration {
+        width: 643px;
+    }
+}
