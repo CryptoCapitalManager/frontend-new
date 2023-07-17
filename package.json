@@ -1,5 +1,6 @@
 {
-  "name": "investiva-frontend",
+  "homepage" : "https://cryptocapitalmanager.github.io/frontend-new",
+  "name": "frontend-new",
   "version": "0.2",
   "private": true,
   "dependencies": {
