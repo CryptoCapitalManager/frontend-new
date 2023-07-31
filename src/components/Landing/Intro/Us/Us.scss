@@ -31,12 +31,12 @@
                     margin-left: 10px;
                 }
             }
-            
+
             #selected {
                 #tab-text {
-                    color: #C3F53C;
+                    color: #c3f53c;
                     text-align: center;
-                    font-family: 'Roboto';
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
@@ -47,14 +47,14 @@
                     margin-top: 8px;
 
                     height: 3px;
-                    background: #C3F53C;
+                    background: #c3f53c;
                 }
             }
 
             #unselected {
                 #tab-text {
-                    color: #EEE;
-                    font-family: 'Roboto';
+                    color: #eee;
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
@@ -65,7 +65,7 @@
                     margin-top: 8px;
 
                     height: 3px;
-                    background: #C3F53C;
+                    background: #c3f53c;
                     opacity: 0;
                 }
             }
@@ -88,20 +88,20 @@
 
                 margin-left: 25px;
 
-                color: #FFF;
-                font-family: 'Roboto';
+                color: #fff;
+                font-family: "Roboto";
                 font-size: 48px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: 108.687%;
             }
-    
+
             #subtext {
                 margin-top: 43px;
                 margin-left: 25px;
 
-                color: #FFF;
-                font-family: 'Roboto';
+                color: #fff;
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;
@@ -117,20 +117,25 @@
             .btn {
                 margin-top: 52px;
                 margin-left: 25px;
-    
+
                 padding: 12px 27px;
-    
+
                 border-radius: 100px;
-                border: 1px solid #FFF;
-    
-                color: #C3F53C;
+                border: 1px solid #fff;
+
+                color: #c3f53c;
                 text-align: center;
-                font-family: 'Roboto';
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 20px;
                 letter-spacing: 0.1px;
+            }
+
+            .btn:hover {
+                cursor: pointer;
+                opacity: 0.6;
             }
         }
     }

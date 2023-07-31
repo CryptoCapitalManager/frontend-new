@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .Navbar {
     width: 100%;
@@ -23,15 +23,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        
+
         .btns {
             display: flex;
             align-items: center;
             justify-content: center;
 
             .btn {
-                color: #FFF;
-                font-family: 'Roboto';
+                color: #fff;
+                font-family: "Roboto";
                 font-size: 19px;
                 font-style: normal;
                 font-weight: 400;
@@ -39,31 +39,28 @@
                 margin-right: 40px;
             }
 
+            .btn:hover {
+                cursor: pointer;
+                opacity: 0.5;
+            }
+
             .btn-get-started {
                 padding: 12px 27px;
 
                 border-radius: 30px;
-                border: 1px solid #FFF;
+                border: 1px solid #fff;
 
-                color: #C3F53C;
-                font-family: 'Roboto';
+                color: #c3f53c;
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
             }
-        }
-    }
 
-    .top-shadow {
-        z-index: 10;
-        position: fixed;
-        top: -200%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 611px;
-        width: 611px;
-        border-radius: 611px;
-        background: #c4f53c;
-        filter: blur(200px);
+            .btn-get-started:hover {
+                cursor: pointer;
+                opacity: 0.5;
+            }
+        }
     }
 }

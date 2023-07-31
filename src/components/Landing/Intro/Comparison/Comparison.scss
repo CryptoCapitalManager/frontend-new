@@ -4,9 +4,7 @@
 
     width: calc(100% - 295px);
 
-    margin-left: 135px;
-    margin-right: 160px;
-    margin-bottom: 155px;
+    margin: 100px 160px 155px 135px;
 
     .text-container {
         display: flex;
@@ -15,8 +13,8 @@
         margin-right: 170px;
 
         #title {
-            color: #EEE;
-            font-family: 'Roboto';
+            color: #eee;
+            font-family: "Roboto";
             font-size: 16px;
             font-style: unset;
             font-weight: 400;
@@ -27,16 +25,16 @@
             margin-top: 25px;
             margin-bottom: 40px;
 
-            color: #FFF;
-            font-family: 'Roboto';
+            color: #fff;
+            font-family: "Roboto";
             font-size: 48px;
             font-style: normal;
             font-weight: 400;
         }
 
         #subtext {
-            color: #FFF;
-            font-family: 'Roboto';
+            color: #fff;
+            font-family: "Roboto";
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
@@ -51,7 +49,11 @@
         padding: 15px;
 
         border-radius: 40px;
-        background: linear-gradient(180deg, rgba(238, 238, 238, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%);
+        background: linear-gradient(
+            180deg,
+            rgba(238, 238, 238, 0.1) 0%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
 
         .traditional {
             height: 100%;
@@ -59,8 +61,8 @@
             margin-right: 15px;
 
             border-radius: 32px;
-            background: rgba(238, 238, 238, 0.80);
-        
+            background: rgba(238, 238, 238, 0.8);
+
             .header-container {
                 margin-top: 52px;
                 margin-left: 35px;
@@ -75,16 +77,16 @@
                 #header {
                     color: #111827;
                     text-align: center;
-                    font-family: 'Roboto';
+                    font-family: "Roboto";
                     font-size: 32px;
                     font-style: normal;
                     font-weight: 700;
                 }
 
                 #subheader {
-                    color: #4B5563;
+                    color: #4b5563;
                     text-align: center;
-                    font-family: 'Roboto';
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
@@ -100,10 +102,10 @@
                     margin-bottom: 13px;
 
                     border-radius: 5px;
-                    border: 1px solid #4B5563;
+                    border: 1px solid #4b5563;
 
-                    color: #4B5563;
-                    font-family: 'Roboto';
+                    color: #4b5563;
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
@@ -124,7 +126,7 @@
                     margin-bottom: 17px;
 
                     color: #000;
-                    font-family: 'Roboto';
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 600;
@@ -135,8 +137,8 @@
                     li {
                         margin-bottom: 5px;
 
-                        color: #4B5563;
-                        font-family: 'Roboto';
+                        color: #4b5563;
+                        font-family: "Roboto";
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 400;
@@ -150,8 +152,12 @@
             height: 100%;
 
             border-radius: 32px;
-            background: linear-gradient(231deg, rgba(195, 245, 60, 0.30) 0%, #000 42%);
-        
+            background: linear-gradient(
+                231deg,
+                rgba(195, 245, 60, 0.3) 0%,
+                #000 42%
+            );
+
             .header-container {
                 margin-top: 52px;
                 margin-left: 35px;
@@ -164,18 +170,18 @@
                 margin-bottom: 36px;
 
                 #header {
-                    color: #FFF;
+                    color: #fff;
                     text-align: center;
-                    font-family: 'Roboto';
+                    font-family: "Roboto";
                     font-size: 32px;
                     font-style: normal;
                     font-weight: 700;
                 }
 
                 #subheader {
-                    color: #EEE;;
+                    color: #eee;
                     text-align: center;
-                    font-family: 'Roboto';
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
@@ -194,17 +200,17 @@
                     margin-bottom: 13px;
 
                     padding: 23px 20px;
-    
+
                     border-radius: 5px;
-                    border: 1px solid #4B5563;
-                    
+                    border: 1px solid #4b5563;
+
                     img {
                         margin-right: 14px;
                     }
 
-                    #option-text {    
-                        color: #4B5563;
-                        font-family: 'Roboto';
+                    #option-text {
+                        color: #4b5563;
+                        font-family: "Roboto";
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 400;
@@ -225,8 +231,8 @@
                 #question {
                     margin-bottom: 17px;
 
-                    color: #FFF;
-                    font-family: 'Roboto';
+                    color: #fff;
+                    font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 600;
@@ -236,7 +242,7 @@
                     margin: 0;
                     li {
                         color: rgba(238, 238, 238, 0.93);
-                        font-family: 'Roboto';
+                        font-family: "Roboto";
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 400;

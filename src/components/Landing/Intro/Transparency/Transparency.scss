@@ -1,0 +1,39 @@
+.Transparency {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        width: calc(100% - 320px);
+
+        margin: 145px 0px 0px 0px;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+
+            margin-bottom: 60px;
+
+            #title {
+                margin-bottom: 20px;
+
+                color: #eee;
+                font-family: Roboto;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+                text-align: left;
+            }
+
+            #header {
+                color: #fff;
+                font-family: Roboto;
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+    }
+}

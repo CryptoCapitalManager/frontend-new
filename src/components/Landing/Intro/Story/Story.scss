@@ -1,0 +1,111 @@
+.Story {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 140px 0px 180px 0px;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 160px;
+        margin-right: 280px;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+
+            margin-right: 215px;
+
+            #title {
+                color: #eee;
+                font-family: "Roboto";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #header {
+                margin-top: 25px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+            #description {
+                margin-top: 65px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+
+        .creator {
+            position: relative;
+
+            .links {
+                position: absolute;
+                bottom: 30px;
+
+                z-index: 20;
+                width: calc(100% - 278px);
+
+                margin-left: 156px;
+                margin-right: 122px;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img:hover {
+                    cursor: pointer;
+                    filter: brightness(60%);
+                }
+            }
+
+            .description {
+                width: 134px;
+
+                position: absolute;
+                top: 80px;
+                left: 350px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+
+                padding: 13px 16px;
+                margin: auto;
+
+                border-radius: 5px 5px 5px 0px;
+                background: #c3f53c;
+
+                #name {
+                    color: #000;
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                }
+
+                #title {
+                    color: #000;
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

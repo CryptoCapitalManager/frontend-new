@@ -1,20 +1,31 @@
-import Header from './Header/Header';
-import Us from './Us/Us';
-import How from './How/How';
-import Comparison from './Comparison/Comparison';
+import { FC } from "react";
 
-import './Intro.scss';
+import Header from "./Header/Header";
+import Us from "./Us/Us";
+import How from "./How/How";
+import Comparison from "./Comparison/Comparison";
+import Stats from "./Stats/Stats";
+import Transparency from "./Transparency/Transparency";
+import Story from "./Story/Story";
+import Calculator from "./Calculator/Calculator";
 
-const Intro = () => {
-  return(
-    <div className="Intro">
-      <Header />
-      <Us />
-      <How />
-      <Comparison />
-      <div className="bottom-shadow"></div>
-    </div>
-  )
-}
+import "./Intro.scss";
+
+import { introProps } from "../../../utils/props";
+
+const Intro: FC<introProps> = ({ how, about }) => {
+    return (
+        <div className="Intro">
+            <Header />
+            <Us />
+            <How how={how} />
+            <Comparison />
+            <Stats />
+            <Transparency />
+            <Story about={about} />
+            <Calculator />
+        </div>
+    );
+};
 
 export default Intro;

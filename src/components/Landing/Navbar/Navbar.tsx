@@ -1,30 +1,38 @@
-import './Navbar.scss';
+import { FC } from "react";
 
-import logo from '../../../res/svg/investiva-logo.svg';
+import "./Navbar.scss";
 
-const Navbar = () => {
-  return(
-    <div className="Navbar">
-      <div className="container">
-        <img id="logo" src={logo} alt="Investiva logo"/>
-        <div className="btns">
-          <div className="btn">
-            How it works
-          </div>
-          <div className="btn">
-            Traders
-          </div>
-          <div className="btn">
-            About Us
-          </div>
-          <div className="btn-get-started">
-            Get Started
-          </div>
+import logo from "../../../res/svg/investiva-logo.svg";
+
+import { navbarProps } from "../../../utils/props";
+
+const Navbar: FC<navbarProps> = ({ scrollToSection, how, about }) => {
+    return (
+        <div className="Navbar">
+            <div className="container">
+                <img id="logo" src={logo} alt="Investiva logo" />
+                <div className="btns">
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            scrollToSection(how);
+                        }}
+                    >
+                        How it works
+                    </div>
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            scrollToSection(about);
+                        }}
+                    >
+                        About Us
+                    </div>
+                    <div className="btn-get-started">Get Started</div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div className="top-shadow"></div>
-    </div>
-  )
-}
+    );
+};
 
 export default Navbar;

@@ -1,0 +1,39 @@
+.Stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 56px 260.75px;
+
+    background: #0052bd;
+
+    .container {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .stat {
+            #numbers {
+                color: #fff;
+                text-align: center;
+                font-family: "Roboto";
+                font-size: 47.25px;
+                font-style: normal;
+                font-weight: 500;
+            }
+
+            #description {
+                margin-top: 14px;
+
+                color: #fff;
+                text-align: center;
+                font-family: "Roboto";
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+    }
+}

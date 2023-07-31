@@ -1,20 +1,14 @@
 @import "../../../../index.scss";
 
 .How {
-    width: calc(100% - 295px);
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-top: 232px;
-    margin-bottom: 268px;
-    margin-left: 135px;
-    margin-right: 160px;
+    padding-top: 100px;
+    padding-bottom: 240px;
 
     .container {
-        height: 100%;
-
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -24,9 +18,9 @@
         #header {
             width: 100%;
 
-            color: #EEE;
+            color: #eee;
             text-align: left;
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
@@ -37,7 +31,7 @@
             margin-top: 50px;
 
             width: 588px;
-        }   
+        }
     }
 
     .options {
@@ -71,8 +65,8 @@
 
         #selected {
             #number {
-                color: #C3F53C;
-                font-family: 'Roboto';
+                color: #c3f53c;
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
@@ -81,12 +75,12 @@
 
             .line {
                 height: 1px;
-                background: #C3F53C;
+                background: #c3f53c;
             }
 
             #description {
-                color: #C3F53C;
-                font-family: 'Roboto';
+                color: #c3f53c;
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
@@ -96,8 +90,8 @@
 
         #unselected {
             #number {
-                color: #989CA5;
-                font-family: 'Roboto';
+                color: #989ca5;
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;
@@ -107,12 +101,12 @@
             .line {
                 height: 1px;
                 width: 25px;
-                background: #989CA5;
+                background: #989ca5;
             }
 
             #description {
-                color: #989CA5;
-                font-family: 'Roboto';
+                color: #989ca5;
+                font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;

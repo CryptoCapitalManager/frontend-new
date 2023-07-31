@@ -9,23 +9,22 @@
     justify-content: center;
 
     margin-top: 135px;
-    margin-bottom: 334px;
 
     .txt-container {
         z-index: 10;
         #regular {
-            color: #FFFFFF;
+            color: #ffffff;
             text-align: center;
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-size: 64px;
             font-style: normal;
             font-weight: 300;
         }
 
         #highlighted {
-            color: #C3F53C;
+            color: #c3f53c;
             text-align: center;
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-size: 64px;
             font-style: normal;
             font-weight: 700;
@@ -34,9 +33,9 @@
         #subtext {
             margin-top: 34px;
 
-            color: #FFFFFF;
+            color: #ffffff;
             text-align: center;
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
@@ -50,13 +49,18 @@
         margin-top: 87px;
 
         border-radius: 30px;
-        background: #C3F53C;
+        background: #c3f53c;
 
         color: #000;
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-size: 20px;
         font-style: normal;
         font-weight: 600;
+    }
+
+    .btn:hover {
+        cursor: pointer;
+        filter: brightness(0.8);
     }
 
     #hidden-logo {
