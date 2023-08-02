@@ -3,7 +3,7 @@ import "./Stats.scss";
 const Stats = () => {
     return (
         <div className="Stats">
-            <div className="container">
+            <div className="stats">
                 <div className="stat">
                     <p id="numbers">80%</p>
                     <p id="description">average yearly ROI</p>

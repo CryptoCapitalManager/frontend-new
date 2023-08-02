@@ -65,9 +65,9 @@
 
     #hidden-logo {
         z-index: 0;
-        width: 100%;
+        width: 100vw;
         position: relative;
-        left: 41px;
-        top: -200px;
+        top: calc(-100vw * 0.105);
+        left: calc(100vw * 0.026);
     }
 }

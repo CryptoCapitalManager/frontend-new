@@ -1,7 +1,10 @@
 import "./Transparency.scss";
-import mock from "../../../../res/svg/mock-table.svg";
 
-const Transparency = () => {
+import Table from "./Table/Table";
+import { transparencyProps } from "../../../../utils/props";
+import { FC } from "react";
+
+const Transparency: FC<transparencyProps> = ({ data }) => {
     return (
         <div className="Transparency">
             <div className="container">
@@ -12,9 +15,7 @@ const Transparency = () => {
                         trustless track record
                     </p>
                 </div>
-                <div className="table">
-                    <img src={mock} alt="Mock table data" />
-                </div>
+                <Table data={data} />
             </div>
         </div>
     );

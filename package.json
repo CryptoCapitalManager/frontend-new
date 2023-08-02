@@ -1,5 +1,5 @@
 {
-  "homepage" : "https://cryptocapitalmanager.github.io/frontend-new",
+  "homepage": "https://cryptocapitalmanager.github.io/frontend-new",
   "name": "frontend-new",
   "version": "0.2",
   "private": true,
@@ -24,8 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev-predeploy" : "npm run build",
-    "dev-deploy" : "npm run dev-predeploy && gh-pages -d build"
+    "dev-predeploy": "npm run build",
+    "dev-deploy": "npm run dev-predeploy && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

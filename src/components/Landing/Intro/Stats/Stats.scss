@@ -1,13 +1,19 @@
 .Stats {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 56px 260.75px;
+    .stats {
+        position: relative;
 
-    background: #0052bd;
+        padding: 56px 260.75px;
 
-    .container {
+        background: #0052bd;
+
+        position: relative;
+
         width: 100%;
 
         display: flex;

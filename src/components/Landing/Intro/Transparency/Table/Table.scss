@@ -1,0 +1,195 @@
+.Table {
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: none;
+
+        thead {
+            tr {
+                th {
+                    background: #191b1f;
+                    border-bottom: 1px solid #1f2126;
+                    height: 44px;
+
+                    text-align: left;
+
+                    color: #c3c5cb;
+                    font-family: "Roboto";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+
+                th:first-child {
+                    border-radius: 10px 0px 0px 0px;
+                    padding: 0px 14px 0px 14px;
+                    text-align: center;
+                }
+
+                th:nth-child(2) {
+                    text-align: left;
+                    padding-left: 10px;
+                }
+
+                th:nth-child(3) {
+                    padding-right: 10px;
+                }
+
+                th:nth-child(4) {
+                    padding-right: 10px;
+                }
+
+                th:nth-child(5) {
+                    padding-right: 10px;
+                }
+
+                th:nth-child(6) {
+                    border-radius: 0px 10px 0px 0px;
+                    padding-right: 20px;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    height: 46px;
+                    border-bottom: 1px solid #1f2126;
+                    background: #191b1f;
+                    text-align: left;
+
+                    color: #fff;
+                    font-family: "Roboto";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+
+                    .pair {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        img {
+                            margin-right: 20px;
+                        }
+                    }
+
+                    .link-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        img {
+                            margin-right: 10px;
+                        }
+
+                        #link {
+                            color: #328bff;
+                            font-family: "Roboto";
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-decoration-line: underline;
+                        }
+
+                        #link:hover {
+                            cursor: pointer;
+                            opacity: 0.6;
+                        }
+                    }
+                }
+
+                td:first-child {
+                    padding: 0px 14px 0px 14px;
+                    text-align: center;
+                }
+
+                td:nth-child(2) {
+                    padding-left: 10px;
+                }
+
+                td:nth-child(3) {
+                    padding-right: 10px;
+                }
+
+                td:nth-child(4) {
+                    padding-right: 10px;
+                }
+
+                td:nth-child(5) {
+                    padding-right: 10px;
+                }
+
+                td:nth-child(6) {
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+
+    .pagination {
+        padding: 24px 0px 24px 0px;
+
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 0px 0px 10px 10px;
+        border: 1px solid #1f2126;
+        background: #191b1f;
+
+        .pages {
+            margin: 0px 14px 0px 14px;
+
+            display: flex;
+
+            .page {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 26px;
+                height: 26px;
+            }
+
+            .page:hover {
+                cursor: pointer;
+                opacity: 0.6;
+            }
+
+            #current {
+                background-color: #323339;
+                border-radius: 50%;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+            }
+
+            #unselected {
+                color: #c3c5cb;
+                font-family: "Roboto";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+
+        .arrow:hover {
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        #left {
+            rotate: 180deg;
+        }
+
+        .unselectable {
+            pointer-events: none;
+            filter: brightness(0.2);
+        }
+    }
+}

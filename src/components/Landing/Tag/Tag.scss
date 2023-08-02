@@ -3,4 +3,11 @@
     top: 230px;
     left: 0px;
     z-index: 100;
+
+    #tag {
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+        }
+    }
 }

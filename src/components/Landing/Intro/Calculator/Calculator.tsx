@@ -1,8 +1,10 @@
-import { useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 
 import "./Calculator.scss";
+import { calculatorProps } from "../../../../utils/props";
+import { tradingPairDTO } from "../../../../utils/dto";
 
-const Calculator = () => {
+const Calculator: FC<calculatorProps> = ({ data }) => {
     const time = useRef("1 year");
 
     const [period, setPeriod] = useState(12);
@@ -34,6 +36,36 @@ const Calculator = () => {
         }
 
         time.current = result;
+
+        const maxDate = new Date();
+        let minDate = new Date();
+
+        minDate.setFullYear(minDate.getFullYear() - years);
+        minDate.setMonth(minDate.getMonth() - months);
+
+        console.log(filterDates(minDate, maxDate));
+    };
+
+    const filterDates = (minDate: Date, maxDate: Date): tradingPairDTO[] => {
+        console.log(
+            `${minDate.getDate()}.${
+                minDate.getMonth() + 1
+            }.${minDate.getFullYear()} AND ${maxDate.getDate()}.${
+                maxDate.getMonth() + 1
+            }.${maxDate.getFullYear()}`
+        );
+
+        const result: tradingPairDTO[] = [];
+
+        data.forEach((tradingPair) => {
+            const date = new Date(tradingPair.date);
+
+            if (minDate <= date && date <= maxDate) {
+                result.push(tradingPair);
+            }
+        });
+
+        return result;
     };
 
     return (

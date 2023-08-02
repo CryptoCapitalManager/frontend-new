@@ -73,7 +73,7 @@ const How: FC<howProps> = ({ how }) => {
                     <p id="description">
                         Asset manager interacts with smart
                         <br />
-                        contract and tells it what to swap
+                        contract and tells it what position to open
                     </p>
                 </div>
                 <div
@@ -86,7 +86,7 @@ const How: FC<howProps> = ({ how }) => {
                     <p id="number">03</p>
                     <div className="line"></div>
                     <p id="description">
-                        Swap is made on a DEX and funds are
+                        Position is open on a DEX and funds are
                         <br />
                         available to the client at any time{" "}
                     </p>

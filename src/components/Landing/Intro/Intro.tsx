@@ -13,7 +13,7 @@ import "./Intro.scss";
 
 import { introProps } from "../../../utils/props";
 
-const Intro: FC<introProps> = ({ how, about }) => {
+const Intro: FC<introProps> = ({ how, about, data }) => {
     return (
         <div className="Intro">
             <Header />
@@ -21,9 +21,9 @@ const Intro: FC<introProps> = ({ how, about }) => {
             <How how={how} />
             <Comparison />
             <Stats />
-            <Transparency />
+            <Transparency data={data} />
             <Story about={about} />
-            <Calculator />
+            <Calculator data={data} />
         </div>
     );
 };

@@ -10,25 +10,28 @@ const Navbar: FC<navbarProps> = ({ scrollToSection, how, about }) => {
     return (
         <div className="Navbar">
             <div className="container">
-                <img id="logo" src={logo} alt="Investiva logo" />
-                <div className="btns">
-                    <div
-                        className="btn"
-                        onClick={() => {
-                            scrollToSection(how);
-                        }}
-                    >
-                        How it works
+                <div className="top-shadow"></div>
+                <div className="header">
+                    <img id="logo" src={logo} alt="Investiva logo" />
+                    <div className="btns">
+                        <div
+                            className="btn"
+                            onClick={() => {
+                                scrollToSection(how);
+                            }}
+                        >
+                            How it works
+                        </div>
+                        <div
+                            className="btn"
+                            onClick={() => {
+                                scrollToSection(about);
+                            }}
+                        >
+                            About Us
+                        </div>
+                        <div className="btn-get-started">Get Started</div>
                     </div>
-                    <div
-                        className="btn"
-                        onClick={() => {
-                            scrollToSection(about);
-                        }}
-                    >
-                        About Us
-                    </div>
-                    <div className="btn-get-started">Get Started</div>
                 </div>
             </div>
         </div>
