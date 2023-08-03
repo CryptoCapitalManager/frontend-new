@@ -8,7 +8,7 @@ import "./Table.scss";
 import arrow from "../../../../../res/svg/arrow.svg";
 import arbitrum from "../../../../../res/svg/arbitrum.svg";
 import eth from "../../../../../res/svg/eth-usdc.svg";
-import link from "../../../../../res/svg/link-usdc.svg";
+
 import { tradingPairDTO } from "../../../../../utils/dto";
 
 const Table: FC<tableProps> = ({ data }) => {
@@ -37,19 +37,7 @@ const Table: FC<tableProps> = ({ data }) => {
         for (let index = (page - 1) * 4; index < page * 4; index++) {
             try {
                 visible.push(data[index]);
-            } catch {
-                visible.push({
-                    date: "",
-                    entryPrice: 0,
-                    entryTX: "",
-                    exitPrice: 0,
-                    exitTX: "",
-                    positionType: "",
-                    realROI: 0,
-                    ROI: 0,
-                    tradingPair: "",
-                });
-            }
+            } catch {}
         }
 
         setVisibleData(visible);
@@ -149,7 +137,7 @@ const Table: FC<tableProps> = ({ data }) => {
                     {pages.map((page) => {
                         return page === current ? (
                             <div
-                                className="page"
+                                className="page "
                                 id="current"
                                 style={{ pointerEvents: "none" }}
                             >
@@ -157,7 +145,11 @@ const Table: FC<tableProps> = ({ data }) => {
                             </div>
                         ) : (
                             <div
-                                className="page"
+                                className={
+                                    page * 4 - data.length >= 4
+                                        ? "page unselectable"
+                                        : "page"
+                                }
                                 id="unselected"
                                 onClick={(e: any) => {
                                     handlePagination(e.target.innerText);
@@ -172,7 +164,11 @@ const Table: FC<tableProps> = ({ data }) => {
                 <img
                     src={arrow}
                     alt=""
-                    className="arrow"
+                    className={
+                        (current + 1) * 4 - data.length >= 4
+                            ? "arrow unselectable"
+                            : "arrow"
+                    }
                     id="right"
                     onClick={() => {
                         handlePagination(current + 1);
