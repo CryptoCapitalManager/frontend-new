@@ -56,71 +56,109 @@ const Table: FC<tableProps> = ({ data }) => {
                         <th style={{ width: "5%" }}>ROI</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {visibleData.map((tradingPair, index) => {
-                        try {
-                            return (
-                                <tr>
-                                    <td>{(current - 1) * 4 + index + 1}</td>
-                                    <td>
-                                        <div className="pair">
-                                            <img src={eth} alt="" />
-                                            <p>{tradingPair.tradingPair}</p>
-                                        </div>
-                                    </td>
-                                    <td>{tradingPair.positionType}</td>
-                                    <td>
-                                        <div className="link-container">
-                                            <img
-                                                src={arbitrum}
-                                                alt="Arbitrum network icon"
-                                            />
-                                            <Link
-                                                to={tradingPair.entryTX}
-                                                id="link"
-                                                target="_blank"
-                                            >
-                                                {tradingPair.entryPrice} USDC
-                                            </Link>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="link-container">
-                                            <img src={arbitrum} alt="" />
-                                            <Link
-                                                to={tradingPair.exitTX}
-                                                id="link"
-                                                target="_blank"
-                                            >
-                                                {tradingPair.exitPrice} USDC
-                                            </Link>
-                                        </div>
-                                    </td>
-                                    {tradingPair.ROI > 0 ? (
-                                        <td style={{ color: "#A5DF08" }}>
-                                            {tradingPair.ROI}%
+                {data.length === 0 ? (
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                ) : (
+                    <tbody>
+                        {visibleData.map((tradingPair, index) => {
+                            try {
+                                return (
+                                    <tr>
+                                        <td>{(current - 1) * 4 + index + 1}</td>
+                                        <td>
+                                            <div className="pair">
+                                                <img src={eth} alt="" />
+                                                <p>{tradingPair.tradingPair}</p>
+                                            </div>
                                         </td>
-                                    ) : (
-                                        <td style={{ color: "#CF202F" }}>
-                                            {tradingPair.ROI}%
+                                        <td>{tradingPair.positionType}</td>
+                                        <td>
+                                            <div className="link-container">
+                                                <img
+                                                    src={arbitrum}
+                                                    alt="Arbitrum network icon"
+                                                />
+                                                <Link
+                                                    to={tradingPair.entryTX}
+                                                    id="link"
+                                                    target="_blank"
+                                                >
+                                                    {tradingPair.entryPrice}{" "}
+                                                    USDC
+                                                </Link>
+                                            </div>
                                         </td>
-                                    )}
-                                </tr>
-                            );
-                        } catch {
-                            return (
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            );
-                        }
-                    })}
-                </tbody>
+                                        <td>
+                                            <div className="link-container">
+                                                <img src={arbitrum} alt="" />
+                                                <Link
+                                                    to={tradingPair.exitTX}
+                                                    id="link"
+                                                    target="_blank"
+                                                >
+                                                    {tradingPair.exitPrice} USDC
+                                                </Link>
+                                            </div>
+                                        </td>
+                                        {tradingPair.ROI > 0 ? (
+                                            <td style={{ color: "#A5DF08" }}>
+                                                {tradingPair.ROI}%
+                                            </td>
+                                        ) : (
+                                            <td style={{ color: "#CF202F" }}>
+                                                {tradingPair.ROI}%
+                                            </td>
+                                        )}
+                                    </tr>
+                                );
+                            } catch {
+                                return (
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                );
+                            }
+                        })}
+                    </tbody>
+                )}
             </table>
             <div className="pagination">
                 <img
