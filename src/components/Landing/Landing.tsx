@@ -6,6 +6,7 @@ import Intro from "./Intro/Intro";
 import Footer from "./Footer/Footer";
 
 import "./Landing.scss";
+
 import { tradingPairDTO, tradingPairDataDTO } from "../../utils/dto";
 
 const Landing = () => {
@@ -30,7 +31,7 @@ const Landing = () => {
             setData(data.messages);
         };
 
-        fetchData().catch(console.error);
+        fetchData().catch(() => {});
     }, []);
 
     return (

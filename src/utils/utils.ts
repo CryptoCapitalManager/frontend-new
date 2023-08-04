@@ -1,8 +1,8 @@
-const dateEquals = (firstDate: Date, secondDate: Date) => {
+const isSameYearAndMonth = (firstDate: Date, secondDate: Date) => {
     return (
-        firstDate.getMonth() === secondDate.getMonth() &&
-        firstDate.getFullYear() === secondDate.getFullYear()
+        firstDate.getFullYear() === secondDate.getFullYear() &&
+        firstDate.getMonth() === secondDate.getMonth()
     );
 };
 
-export { dateEquals };
+export { isSameYearAndMonth };

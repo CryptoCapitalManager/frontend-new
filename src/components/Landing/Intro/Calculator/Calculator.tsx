@@ -2,6 +2,7 @@ import { FC, useEffect, useRef, useState } from "react";
 
 import "./Calculator.scss";
 import { calculatorProps } from "../../../../utils/props";
+import { isSameYearAndMonth } from "../../../../utils/utils";
 
 const Calculator: FC<calculatorProps> = ({ data }) => {
     const time = useRef("1 year");
@@ -13,6 +14,7 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
     const [extra, setExtra] = useState<number>(100);
     const [maxPeriod, setMaxPeriod] = useState<string>("2 years");
     const [totalDeposit, setTotalDeposit] = useState<number>(2200);
+    const [investmentValue, setInvestmentValue] = useState<number>(3300);
 
     useEffect(() => {
         updateMaxPeriod();
@@ -26,6 +28,8 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
         } else {
             setTotalDeposit(initial);
         }
+
+        calculate();
     }, [initial, extra, period]);
 
     const updateMaxPeriod = () => {
@@ -125,14 +129,7 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
             }
         }
 
-        return exists != 0 ? true : false;
-    };
-
-    const isSameYearAndMonth = (firstDate: Date, secondDate: Date) => {
-        return (
-            firstDate.getFullYear() === secondDate.getFullYear() &&
-            firstDate.getMonth() === secondDate.getMonth()
-        );
+        return exists !== 0 ? true : false;
     };
 
     const getROIofMonth = (date: Date): number => {
@@ -151,7 +148,27 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
         return Number((ROI * 100 - 100).toFixed(2));
     };
 
-    const calculate = () => {};
+    const calculate = () => {
+        const usedROIs = groupedROIs.current.slice(
+            groupedROIs.current.length - period,
+            groupedROIs.current.length
+        );
+
+        let profit = 0;
+
+        console.log(groupedROIs);
+        console.log(usedROIs);
+
+        for (let i = 0; i < usedROIs.length; i++) {
+            if (i === 0) {
+                profit += initial * (usedROIs[i] / 100);
+            } else {
+                profit += (profit + extra) * (usedROIs[i] / 100);
+            }
+        }
+
+        setInvestmentValue(Number(profit.toFixed(2)));
+    };
 
     return (
         <div className="Calculator">
@@ -216,13 +233,15 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                         <div className="result">
                             <div className="invested">
                                 <p id="title">Investment value</p>
-                                <p id="amount">3300 USDC</p>
+                                <p id="amount">
+                                    {totalDeposit + investmentValue} USDC
+                                </p>
                             </div>
                             <div className="break"></div>
                             <div className="additional">
                                 <div className="total">
                                     <p id="title">Total deposit</p>
-                                    <p id="amount">{totalDeposit}</p>
+                                    <p id="amount">{totalDeposit} USDC</p>
                                 </div>
                                 <div className="period">
                                     <p id="title">Period</p>
