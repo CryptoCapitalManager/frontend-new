@@ -1,15 +1,65 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 import "./Calculator.scss";
 import { calculatorProps } from "../../../../utils/props";
-import { tradingPairDTO } from "../../../../utils/dto";
 
 const Calculator: FC<calculatorProps> = ({ data }) => {
     const time = useRef("1 year");
+    const maxPeriodValue = useRef(24);
+    const groupedROIs = useRef<number[]>([]);
 
-    const [period, setPeriod] = useState(12);
-    const [initial, setInitial] = useState(1000);
-    const [extra, setExtra] = useState(100);
+    const [period, setPeriod] = useState<number>(12);
+    const [initial, setInitial] = useState<number>(1000);
+    const [extra, setExtra] = useState<number>(100);
+    const [maxPeriod, setMaxPeriod] = useState<string>("2 years");
+    const [totalDeposit, setTotalDeposit] = useState<number>(2200);
+
+    useEffect(() => {
+        updateMaxPeriod();
+        handlePeriodChange(Math.round(maxPeriodValue.current / 2));
+        groupROIs();
+    }, [data]);
+
+    useEffect(() => {
+        if (period > 1) {
+            setTotalDeposit(initial + (period - 1) * extra);
+        } else {
+            setTotalDeposit(initial);
+        }
+    }, [initial, extra, period]);
+
+    const updateMaxPeriod = () => {
+        try {
+            getMaxPeriod();
+
+            const years = Math.floor(maxPeriodValue.current / 12);
+            const months = Math.floor(
+                maxPeriodValue.current - ((years * 12) % 12)
+            );
+
+            let result = "";
+
+            if (years > 0) {
+                if (years === 1) {
+                    result += ` ${years} year`;
+                } else {
+                    result += ` ${years} years`;
+                }
+            }
+
+            if (months > 0) {
+                if (months === 1) {
+                    result += ` ${months} month`;
+                } else {
+                    result += ` ${months} months`;
+                }
+            }
+
+            setMaxPeriod(result);
+        } catch {
+            setMaxPeriod("2 years");
+        }
+    };
 
     const handlePeriodChange = (newPeriod: number) => {
         setPeriod(newPeriod);
@@ -36,37 +86,72 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
         }
 
         time.current = result;
-
-        const maxDate = new Date();
-        let minDate = new Date();
-
-        minDate.setFullYear(minDate.getFullYear() - years);
-        minDate.setMonth(minDate.getMonth() - months);
-
-        console.log(filterDates(minDate, maxDate));
     };
 
-    const filterDates = (minDate: Date, maxDate: Date): tradingPairDTO[] => {
-        console.log(
-            `${minDate.getDate()}.${
-                minDate.getMonth() + 1
-            }.${minDate.getFullYear()} AND ${maxDate.getDate()}.${
-                maxDate.getMonth() + 1
-            }.${maxDate.getFullYear()}`
-        );
+    const getMaxPeriod = () => {
+        const maxPeriod =
+            Math.ceil(
+                (new Date(data[0].date).getTime() -
+                    new Date(data[data.length - 1].date).getTime()) /
+                    (1000 * 60 * 60 * 24 * 31)
+            ) + 1;
 
-        const result: tradingPairDTO[] = [];
+        maxPeriodValue.current = maxPeriod;
+    };
 
-        data.forEach((tradingPair) => {
-            const date = new Date(tradingPair.date);
+    const groupROIs = () => {
+        const ROIs: number[] = [];
 
-            if (minDate <= date && date <= maxDate) {
-                result.push(tradingPair);
+        try {
+            const temp: Date = new Date(data[data.length - 1].date);
+            temp.setMonth(temp.getMonth() - 1);
+
+            for (let i = 1; i <= maxPeriodValue.current; i++) {
+                temp.setMonth(temp.getMonth() + 1);
+
+                ROIs.push(getROIofMonth(temp));
             }
-        });
 
-        return result;
+            groupedROIs.current = ROIs;
+        } catch {}
     };
+
+    const yearAndMonthExist = (date: Date): boolean => {
+        let exists: number = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            if (isSameYearAndMonth(new Date(data[i].date), date)) {
+                exists++;
+            }
+        }
+
+        return exists != 0 ? true : false;
+    };
+
+    const isSameYearAndMonth = (firstDate: Date, secondDate: Date) => {
+        return (
+            firstDate.getFullYear() === secondDate.getFullYear() &&
+            firstDate.getMonth() === secondDate.getMonth()
+        );
+    };
+
+    const getROIofMonth = (date: Date): number => {
+        if (!yearAndMonthExist(date)) {
+            return 0;
+        }
+
+        let ROI: number = 1;
+
+        for (let i = 0; i < data.length; i++) {
+            if (isSameYearAndMonth(new Date(data[i].date), date)) {
+                ROI = ROI * (1 + data[i].realROI / 100);
+            }
+        }
+
+        return Number((ROI * 100 - 100).toFixed(2));
+    };
+
+    const calculate = () => {};
 
     return (
         <div className="Calculator">
@@ -100,16 +185,17 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                                 type="range"
                                 id="period"
                                 min={1}
-                                max={24}
+                                max={maxPeriodValue.current}
                                 step={1}
                                 value={period}
                                 onChange={(e) => {
                                     handlePeriodChange(Number(e.target.value));
+                                    getMaxPeriod();
                                 }}
                             />
                             <div className="limits">
                                 <p>1 month</p>
-                                <p>2 years</p>
+                                <p>{maxPeriod}</p>
                             </div>
                         </div>
                         <div className="extra">
@@ -136,11 +222,11 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                             <div className="additional">
                                 <div className="total">
                                     <p id="title">Total deposit</p>
-                                    <p id="amount">2100 USDC</p>
+                                    <p id="amount">{totalDeposit}</p>
                                 </div>
                                 <div className="period">
                                     <p id="title">Period</p>
-                                    <p id="amount">1 year</p>
+                                    <p id="amount">{time.current}</p>
                                 </div>
                             </div>
                             <div className="btn">Get started</div>
