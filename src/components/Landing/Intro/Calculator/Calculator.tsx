@@ -161,9 +161,9 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
             investment = investment * ((100 + usedROIs[i]) / 100);
         }
 
-        const value = investment - totalDeposit;
+        const value = Number(investment.toFixed(2)) - totalDeposit;
 
-        setInvestmentValue(Number(value.toFixed(2)));
+        setInvestmentValue(value);
     };
 
     return (

@@ -55,10 +55,6 @@ const Table: FC<tableProps> = ({ data }) => {
         }
     }, [current]);
 
-    useEffect(() => {
-        console.log("radi");
-    }, [pages]);
-
     const handlePagination = (page: number) => {
         let visible: tradingPairDTO[] = [];
 
