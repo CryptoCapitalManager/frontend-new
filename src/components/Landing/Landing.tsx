@@ -9,6 +9,8 @@ import "./Landing.scss";
 
 import { tradingPairDTO, tradingPairDataDTO } from "../../utils/dto";
 
+import mock from "../../res/mock.json";
+
 const Landing = () => {
     const how = useRef(null);
     const about = useRef(null);
@@ -31,7 +33,9 @@ const Landing = () => {
             setData(data.messages);
         };
 
-        fetchData().catch(() => {});
+        fetchData().catch(() => {
+            setData((mock as tradingPairDataDTO).messages);
+        });
     }, []);
 
     return (

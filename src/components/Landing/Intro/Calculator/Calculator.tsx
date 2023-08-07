@@ -154,20 +154,16 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
             groupedROIs.current.length
         );
 
-        let profit = 0;
-
-        console.log(groupedROIs);
-        console.log(usedROIs);
+        let investment = initial;
 
         for (let i = 0; i < usedROIs.length; i++) {
-            if (i === 0) {
-                profit += initial * (usedROIs[i] / 100);
-            } else {
-                profit += (profit + extra) * (usedROIs[i] / 100);
-            }
+            if (i != 0) investment += extra;
+            investment = investment * ((100 + usedROIs[i]) / 100);
         }
 
-        setInvestmentValue(Number(profit.toFixed(2)));
+        const value = investment - totalDeposit;
+
+        setInvestmentValue(Number(value.toFixed(2)));
     };
 
     return (

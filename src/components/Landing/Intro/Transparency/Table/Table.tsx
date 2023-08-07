@@ -16,7 +16,6 @@ const Table: FC<tableProps> = ({ data }) => {
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
 
-    // Will start when data is loaded
     useEffect(() => {
         if (data[0] === undefined) {
             return;
@@ -30,6 +29,35 @@ const Table: FC<tableProps> = ({ data }) => {
 
         setVisibleData(visible);
     }, [data]);
+
+    useEffect(() => {
+        if (current - 1 === 0) {
+            return;
+        }
+
+        const newPages: number[] = pages;
+
+        if (current - 1 === pages[4]) {
+            for (let i = 0; i < newPages.length; i++) {
+                newPages[i] += 5;
+            }
+
+            setPages(newPages);
+        }
+        if (current + 1 === pages[0]) {
+            const newPages: number[] = pages;
+
+            for (let i = 0; i < newPages.length; i++) {
+                newPages[i] -= 5;
+            }
+
+            setPages(newPages);
+        }
+    }, [current]);
+
+    useEffect(() => {
+        console.log("radi");
+    }, [pages]);
 
     const handlePagination = (page: number) => {
         let visible: tradingPairDTO[] = [];
