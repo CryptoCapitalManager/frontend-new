@@ -2,14 +2,13 @@ import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { tableProps } from "../../../../../utils/props";
+import { tradingPairDTO } from "../../../../../utils/dto";
 
 import "./Table.scss";
 
 import arrow from "../../../../../res/svg/arrow.svg";
 import arbitrum from "../../../../../res/svg/arbitrum.svg";
 import eth from "../../../../../res/svg/eth-usdc.svg";
-
-import { tradingPairDTO } from "../../../../../utils/dto";
 
 const Table: FC<tableProps> = ({ data }) => {
     const [current, setCurrent] = useState<number>(1);
@@ -31,27 +30,30 @@ const Table: FC<tableProps> = ({ data }) => {
     }, [data]);
 
     useEffect(() => {
-        if (current - 1 === 0) {
+        if (current === 1) {
             return;
         }
 
-        const newPages: number[] = pages;
+        const multiplier = Number((current / 5).toFixed(0));
 
-        if (current - 1 === pages[4]) {
-            for (let i = 0; i < newPages.length; i++) {
-                newPages[i] += 5;
-            }
-
-            setPages(newPages);
+        if ((current - 1) % 5 === 0) {
+            setPages([
+                multiplier * 5 + 1,
+                multiplier * 5 + 2,
+                multiplier * 5 + 3,
+                multiplier * 5 + 4,
+                multiplier * 5 + 5,
+            ]);
         }
-        if (current + 1 === pages[0]) {
-            const newPages: number[] = pages;
 
-            for (let i = 0; i < newPages.length; i++) {
-                newPages[i] -= 5;
-            }
-
-            setPages(newPages);
+        if (current % 5 === 0) {
+            setPages([
+                (multiplier - 1) * 5 + 1,
+                (multiplier - 1) * 5 + 2,
+                (multiplier - 1) * 5 + 3,
+                (multiplier - 1) * 5 + 4,
+                (multiplier - 1) * 5 + 5,
+            ]);
         }
     }, [current]);
 
