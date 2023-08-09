@@ -5,41 +5,74 @@ import { calculatorProps } from "../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../utils/utils";
 
 const Calculator: FC<calculatorProps> = ({ data }) => {
-    const time = useRef("1 year");
-    const maxPeriodValue = useRef(24);
+    const currentPeriodTxt = useRef("1 year");
+    const maxPeriodTxt = useRef("2 years");
+
     const groupedROIs = useRef<number[]>([]);
 
-    const [period, setPeriod] = useState<number>(12);
-    const [initial, setInitial] = useState<number>(1000);
-    const [extra, setExtra] = useState<number>(100);
-    const [maxPeriod, setMaxPeriod] = useState<string>("2 years");
+    const [periodValue, setPeriodValue] = useState<number>(12);
+    const [maxPeriodValue, setMaxPeriodValue] = useState<number>(24);
+
+    const [initialDeposit, setInitialDeposit] = useState<number>(1000);
+    const [extraDeposit, setExtraDeposit] = useState<number>(100);
     const [totalDeposit, setTotalDeposit] = useState<number>(2200);
+
     const [investmentValue, setInvestmentValue] = useState<number>(3300);
 
+    // initial data load
     useEffect(() => {
-        updateMaxPeriod();
-        handlePeriodChange(Math.round(maxPeriodValue.current / 2));
-        groupROIs();
+        setPeriodValues();
     }, [data]);
 
     useEffect(() => {
-        if (period > 1) {
-            setTotalDeposit(initial + (period - 1) * extra);
-        } else {
-            setTotalDeposit(initial);
-        }
+        setTotalDeposit(initialDeposit + periodValue * extraDeposit);
 
         calculate();
-    }, [initial, extra, period]);
+    }, [periodValue, initialDeposit, extraDeposit]);
 
-    const updateMaxPeriod = () => {
+    const setPeriodValues = () => {
+        const maxPeriod = updateMaxPeriodValue();
+        setMaxPeriodText(maxPeriod);
+
+        getGroupedROIs(maxPeriod);
+
+        const current = updateCurrentPriodValue(maxPeriod);
+        updatePeriodValue(current);
+    };
+
+    const updateMaxPeriodValue = (): number => {
         try {
-            getMaxPeriod();
+            // Get max period
+            const maxPeriod =
+                Math.ceil(
+                    (new Date(data[0].date).getTime() -
+                        new Date(data[data.length - 1].date).getTime()) /
+                        (1000 * 60 * 60 * 24 * 31)
+                ) + 1;
 
-            const years = Math.floor(maxPeriodValue.current / 12);
-            const months = Math.floor(
-                maxPeriodValue.current - ((years * 12) % 12)
-            );
+            // Update max period value
+            setMaxPeriodValue(maxPeriod);
+
+            return maxPeriod;
+        } catch {
+            setMaxPeriodValue(24);
+
+            return 24;
+        }
+    };
+
+    const updateCurrentPriodValue = (maxPeriod: number): number => {
+        const currentPeriod = maxPeriod / 2;
+
+        setPeriodValue(currentPeriod);
+
+        return currentPeriod;
+    };
+
+    const setMaxPeriodText = (maxPeriod: number) => {
+        try {
+            const years = Math.floor(maxPeriod / 12);
+            const months = Math.floor(maxPeriod - ((years * 12) % 12));
 
             let result = "";
 
@@ -59,17 +92,15 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                 }
             }
 
-            setMaxPeriod(result);
+            maxPeriodTxt.current = result;
         } catch {
-            setMaxPeriod("2 years");
+            maxPeriodTxt.current = "2 years";
         }
     };
 
-    const handlePeriodChange = (newPeriod: number) => {
-        setPeriod(newPeriod);
-
-        const years = Math.floor(newPeriod / 12);
-        const months = (newPeriod - years * 12) % 12;
+    const setPeriodText = (newPeriodValue: number) => {
+        const years = Math.floor(newPeriodValue / 12);
+        const months = (newPeriodValue - years * 12) % 12;
 
         let result = "";
 
@@ -89,28 +120,17 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
             }
         }
 
-        time.current = result;
+        currentPeriodTxt.current = result;
     };
 
-    const getMaxPeriod = () => {
-        const maxPeriod =
-            Math.ceil(
-                (new Date(data[0].date).getTime() -
-                    new Date(data[data.length - 1].date).getTime()) /
-                    (1000 * 60 * 60 * 24 * 31)
-            ) + 1;
-
-        maxPeriodValue.current = maxPeriod;
-    };
-
-    const groupROIs = () => {
-        const ROIs: number[] = [];
-
+    const getGroupedROIs = (maxPeriod: number) => {
         try {
+            const ROIs: number[] = [];
+
             const temp: Date = new Date(data[data.length - 1].date);
             temp.setMonth(temp.getMonth() - 1);
 
-            for (let i = 1; i <= maxPeriodValue.current; i++) {
+            for (let i = 1; i <= maxPeriod; i++) {
                 temp.setMonth(temp.getMonth() + 1);
 
                 ROIs.push(getROIofMonth(temp));
@@ -118,6 +138,11 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
 
             groupedROIs.current = ROIs;
         } catch {}
+    };
+
+    const updatePeriodValue = (newPeriodValue: number) => {
+        setPeriodValue(newPeriodValue);
+        setPeriodText(newPeriodValue);
     };
 
     const yearAndMonthExist = (date: Date): boolean => {
@@ -150,20 +175,22 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
 
     const calculate = () => {
         const usedROIs = groupedROIs.current.slice(
-            groupedROIs.current.length - period,
+            groupedROIs.current.length - periodValue,
             groupedROIs.current.length
         );
 
-        let investment = initial;
+        let investment = initialDeposit;
+
+        console.log(usedROIs);
 
         for (let i = 0; i < usedROIs.length; i++) {
-            if (i != 0) investment += extra;
+            if (i !== 0) investment += extraDeposit;
             investment = investment * ((100 + usedROIs[i]) / 100);
         }
 
-        const value = Number(investment.toFixed(2)) - totalDeposit;
+        const deposit = initialDeposit + periodValue * extraDeposit;
 
-        setInvestmentValue(value);
+        setInvestmentValue(investment - deposit);
     };
 
     return (
@@ -183,9 +210,16 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                             <div className="input-container">
                                 <input
                                     type="text"
-                                    value={initial}
+                                    value={initialDeposit}
                                     onChange={(e) => {
-                                        setInitial(Number(e.target.value));
+                                        const previousValue = initialDeposit;
+                                        const newValue = Number(e.target.value);
+
+                                        if (!Number.isNaN(newValue)) {
+                                            setInitialDeposit(Number(newValue));
+                                        } else {
+                                            setInitialDeposit(previousValue);
+                                        }
                                     }}
                                 />
                                 <p>USDC</p>
@@ -193,22 +227,21 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                         </div>
                         <div className="period">
                             <p id="title">Period</p>
-                            <p id="duration">{time.current}</p>
+                            <p id="duration">{currentPeriodTxt.current}</p>
                             <input
                                 type="range"
                                 id="period"
                                 min={1}
-                                max={maxPeriodValue.current}
+                                max={maxPeriodValue}
                                 step={1}
-                                value={period}
+                                value={periodValue}
                                 onChange={(e) => {
-                                    handlePeriodChange(Number(e.target.value));
-                                    getMaxPeriod();
+                                    updatePeriodValue(Number(e.target.value));
                                 }}
                             />
                             <div className="limits">
                                 <p>1 month</p>
-                                <p>{maxPeriod}</p>
+                                <p>{maxPeriodTxt.current}</p>
                             </div>
                         </div>
                         <div className="extra">
@@ -216,9 +249,16 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                             <div className="input-container">
                                 <input
                                     type="text"
-                                    value={extra}
+                                    value={extraDeposit}
                                     onChange={(e) => {
-                                        setExtra(Number(e.target.value));
+                                        const previousValue = extraDeposit;
+                                        const newValue = Number(e.target.value);
+
+                                        if (!Number.isNaN(newValue)) {
+                                            setExtraDeposit(Number(newValue));
+                                        } else {
+                                            setExtraDeposit(previousValue);
+                                        }
                                     }}
                                 />
                                 <p>USDC</p>
@@ -230,7 +270,10 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                             <div className="invested">
                                 <p id="title">Investment value</p>
                                 <p id="amount">
-                                    {totalDeposit + investmentValue} USDC
+                                    {(totalDeposit + investmentValue).toFixed(
+                                        2
+                                    )}{" "}
+                                    USDC
                                 </p>
                             </div>
                             <div className="break"></div>
@@ -241,7 +284,9 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                                 </div>
                                 <div className="period">
                                     <p id="title">Period</p>
-                                    <p id="amount">{time.current}</p>
+                                    <p id="amount">
+                                        {currentPeriodTxt.current}
+                                    </p>
                                 </div>
                             </div>
                             <div className="btn">Get started</div>
