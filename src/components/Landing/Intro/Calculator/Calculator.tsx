@@ -174,14 +174,9 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
     };
 
     const calculate = () => {
-        const usedROIs = groupedROIs.current.slice(
-            groupedROIs.current.length - periodValue,
-            groupedROIs.current.length
-        );
+        const usedROIs = groupedROIs.current.slice(0, periodValue);
 
         let investment = initialDeposit;
-
-        console.log(usedROIs);
 
         for (let i = 0; i < usedROIs.length; i++) {
             if (i !== 0) investment += extraDeposit;
