@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Story.scss";
 
-import photo from "../../../../res/svg/mock-photo.svg";
+import founder from "../../../../res/png/bojan-founder.png";
 import email from "../../../../res/svg/email-circle.svg";
 import twitter from "../../../../res/svg/twitter-circle.svg";
 import linkedin from "../../../../res/svg/linkedin-circle.svg";
@@ -32,7 +32,7 @@ const Story: FC<storyProps> = ({ about }) => {
                     </p>
                 </div>
                 <div className="creator">
-                    <img src={photo} alt="Mock profile" />
+                    <img id="founder" src={founder} alt="Mock profile" />
                     <div className="links">
                         <Link to="mailto:goretic.bojan@investiva.app">
                             <img src={email} alt="send email" />
