@@ -1,0 +1,86 @@
+@import "../../../../../index.scss";
+
+.Navbar {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        .top-shadow {
+            $size: calc(100vw * 0.4);
+
+            height: $size;
+            width: $size;
+            position: absolute;
+
+            $top: calc($size * 0.7);
+            top: -$top;
+
+            border-radius: 611px;
+            background: #c3f53c;
+            filter: blur(200px);
+        }
+
+        .header {
+            width: 100%;
+            position: relative;
+
+            height: 94px;
+            border-bottom: 2px solid #000;
+            background: rgba(2, 2, 2, 0.8);
+            backdrop-filter: blur(15px);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            #logo {
+                margin-left: 38px;
+            }
+
+            .btns {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                margin-right: 42px;
+
+                .btn {
+                    color: #fff;
+                    font-family: "Roboto";
+                    font-size: 19px;
+                    font-style: normal;
+                    font-weight: 400;
+
+                    margin-right: 40px;
+                }
+
+                .btn:hover {
+                    cursor: pointer;
+                    opacity: 0.5;
+                }
+
+                .btn-get-started {
+                    padding: 12px 27px;
+
+                    border-radius: 30px;
+                    border: 1px solid #fff;
+
+                    color: #c3f53c;
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                }
+
+                .btn-get-started:hover {
+                    cursor: pointer;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}

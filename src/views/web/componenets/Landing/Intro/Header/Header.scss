@@ -1,0 +1,73 @@
+@import "../../../../../../index.scss";
+
+.Header {
+    z-index: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 135px;
+
+    .txt-container {
+        z-index: 10;
+        #regular {
+            color: #ffffff;
+            text-align: center;
+            font-family: "Roboto";
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        #highlighted {
+            color: #c3f53c;
+            text-align: center;
+            font-family: "Roboto";
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        #subtext {
+            margin-top: 34px;
+
+            color: #ffffff;
+            text-align: center;
+            font-family: "Roboto";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
+
+    .btn {
+        z-index: 10;
+        padding: 12px 27px;
+
+        margin-top: 87px;
+
+        border-radius: 30px;
+        background: #c3f53c;
+
+        color: #000;
+        font-family: "Roboto";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .btn:hover {
+        cursor: pointer;
+        filter: brightness(0.8);
+    }
+
+    #hidden-logo {
+        z-index: 0;
+        width: 100vw;
+        position: relative;
+        top: calc(-100vw * 0.105);
+        left: calc(100vw * 0.026);
+    }
+}
