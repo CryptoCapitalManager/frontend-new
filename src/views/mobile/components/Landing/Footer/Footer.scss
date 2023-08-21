@@ -1,0 +1,64 @@
+@import "../../../../../index.scss";
+
+.footer-mobile {
+    height: 350px;
+
+    background: #0052bd;
+
+    .container-web {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .logo-container-web {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 276px;
+                height: 48px;
+            }
+
+            p {
+                margin: 0;
+                margin-top: 23px;
+
+                color: #eee;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+
+                img {
+                    width: 120px;
+                    height: 21px;
+
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+
+        .media-container-web {
+            width: 220px;
+
+            margin-top: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            #media-btn-web:hover {
+                cursor: pointer;
+                opacity: 0.6;
+            }
+        }
+    }
+}

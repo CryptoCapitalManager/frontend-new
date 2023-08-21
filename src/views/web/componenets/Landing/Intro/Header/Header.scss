@@ -1,6 +1,6 @@
 @import "../../../../../../index.scss";
 
-.Header {
+.header-main-web {
     z-index: 0;
 
     display: flex;
@@ -10,9 +10,9 @@
 
     margin-top: 135px;
 
-    .txt-container {
+    .txt-container-web {
         z-index: 10;
-        #regular {
+        #regular-web {
             color: #ffffff;
             text-align: center;
             font-family: "Roboto";
@@ -21,7 +21,7 @@
             font-weight: 300;
         }
 
-        #highlighted {
+        #highlighted-web {
             color: #c3f53c;
             text-align: center;
             font-family: "Roboto";
@@ -30,7 +30,7 @@
             font-weight: 700;
         }
 
-        #subtext {
+        #subtext-web {
             margin-top: 34px;
 
             color: #ffffff;
@@ -42,7 +42,7 @@
         }
     }
 
-    .btn {
+    .btn-web {
         z-index: 10;
         padding: 12px 27px;
 
@@ -56,14 +56,14 @@
         font-size: 20px;
         font-style: normal;
         font-weight: 600;
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+        }
     }
 
-    .btn:hover {
-        cursor: pointer;
-        filter: brightness(0.8);
-    }
-
-    #hidden-logo {
+    #hidden-logo-web {
         z-index: 0;
         width: 100vw;
         position: relative;

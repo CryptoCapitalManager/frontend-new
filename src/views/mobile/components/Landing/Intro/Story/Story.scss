@@ -1,0 +1,120 @@
+.story-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .text-mobile {
+            display: flex;
+            flex-direction: column;
+
+            #title-mobile {
+                margin: 0px 56px 0px 40px;
+
+                color: #eee;
+                font-family: "Roboto";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #header-mobile {
+                margin: 30px 56px 64px 40px;
+                margin-top: 25px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+            #description-mobile {
+                margin: 0px 56px 0px 40px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+
+        .creator-mobile {
+            position: relative;
+
+            margin-top: 80px;
+
+            #founder-mobile {
+                width: 398px;
+                height: 495.64px;
+
+                border-radius: 10px;
+                background: #d9d9d9;
+            }
+
+            .links-mobile {
+                position: absolute;
+                bottom: 30px;
+
+                z-index: 20;
+                width: calc(100% - 278px);
+
+                margin-left: 156px;
+                margin-right: 122px;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img {
+                    &:hover {
+                        cursor: pointer;
+                        filter: brightness(60%);
+                    }
+                }
+            }
+
+            .description-mobile {
+                width: 134px;
+
+                position: absolute;
+                top: 320px;
+                right: -40px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+
+                padding: 13px 16px;
+                margin: auto;
+
+                border-radius: 5px 5px 5px 0px;
+                background: #c3f53c;
+
+                #name-mobile {
+                    color: #000;
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                }
+
+                #title-mobile {
+                    color: #000;
+                    font-family: "Roboto";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

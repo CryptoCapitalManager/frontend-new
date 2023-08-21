@@ -1,0 +1,43 @@
+.stats-main-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .stats-mobile {
+        position: relative;
+
+        padding: 56px 260.75px;
+
+        background: #0052bd;
+
+        position: relative;
+
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .stat-mobile {
+            #numbers-mobile {
+                color: #fff;
+                text-align: center;
+                font-family: "Roboto";
+                font-size: 47.25px;
+                font-style: normal;
+                font-weight: 500;
+            }
+
+            #description-mobile {
+                margin-top: 14px;
+
+                color: #fff;
+                text-align: center;
+                font-family: "Roboto";
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+    }
+}

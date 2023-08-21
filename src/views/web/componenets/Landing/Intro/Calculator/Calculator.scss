@@ -1,19 +1,18 @@
-.Calculator {
+.calculator-web {
     height: 100vh;
-    margin-bottom: 206px;
 
-    .container {
+    .container-web {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        .text {
+        .text-web {
             width: calc(100% - 2 * 162px);
 
             display: flex;
             flex-direction: column;
 
-            #title {
+            #title-web {
                 color: #eee;
                 font-family: "Roboto";
                 font-size: 16px;
@@ -22,7 +21,7 @@
                 text-transform: uppercase;
             }
 
-            #header {
+            #text-header-web {
                 margin-top: 25px;
 
                 color: #fff;
@@ -32,7 +31,7 @@
                 font-weight: 400;
             }
 
-            #subtext {
+            #subtext-web {
                 margin-top: 15px;
 
                 color: #fff;
@@ -43,7 +42,7 @@
             }
         }
 
-        .calculator-container {
+        .calculator-container-web {
             display: flex;
             justify-content: space-between;
 
@@ -51,13 +50,13 @@
 
             margin-top: 35px;
 
-            .input {
+            .input-web {
                 width: 470px;
 
                 margin-right: 130px;
 
-                .amount {
-                    #title {
+                .amount-web {
+                    #title-web {
                         color: #328bff;
                         font-family: "Roboto";
                         font-size: 20px;
@@ -65,7 +64,7 @@
                         font-weight: 400;
                     }
 
-                    .input-container {
+                    .input-container-web {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -105,10 +104,10 @@
                     }
                 }
 
-                .period {
+                .period-web {
                     margin-top: 60px;
 
-                    #title {
+                    #title-web {
                         color: #328bff;
                         font-family: "Roboto";
                         font-size: 20px;
@@ -116,7 +115,7 @@
                         font-weight: 400;
                     }
 
-                    #duration {
+                    #duration-web {
                         margin-top: 30px;
                         margin-bottom: 20px;
 
@@ -141,11 +140,7 @@
                         }
                     }
 
-                    input::-webkit-slider-thumb {
-                        cursor: pointer;
-                    }
-
-                    .limits {
+                    .limits-web {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -162,10 +157,10 @@
                     }
                 }
 
-                .extra {
+                .extra-web {
                     margin-top: 70px;
 
-                    #title {
+                    #title-web {
                         color: #328bff;
                         font-family: "Roboto";
                         font-size: 20px;
@@ -173,7 +168,7 @@
                         font-weight: 400;
                     }
 
-                    .input-container {
+                    .input-container-web {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -214,7 +209,7 @@
                 }
             }
 
-            .result-shadow {
+            .result-shadow-web {
                 width: 590px;
                 border-radius: 4.163px;
                 background: var(
@@ -223,7 +218,8 @@
                 );
                 display: flex;
                 border-radius: 4.2px;
-                .result {
+
+                .result-web {
                     width: 100%;
                     margin: 1px;
 
@@ -234,10 +230,10 @@
                     border-radius: 4.2px;
                     background: rgb(19, 53, 125);
 
-                    .invested {
+                    .invested-web {
                         margin-top: 45px;
 
-                        #title {
+                        #title-web {
                             color: #fff;
                             text-align: center;
                             font-family: "Roboto";
@@ -246,7 +242,7 @@
                             font-weight: 400;
                         }
 
-                        #amount {
+                        #amount-web {
                             margin-top: 18px;
 
                             color: #fff;
@@ -258,7 +254,7 @@
                         }
                     }
 
-                    .break {
+                    .break-web {
                         margin: 52px 70px 45px 70px;
 
                         background: #eee;
@@ -266,15 +262,15 @@
                         height: 1px;
                     }
 
-                    .additional {
+                    .additional-web {
                         display: flex;
                         align-items: center;
                         justify-content: space-evenly;
 
                         margin-bottom: 65px;
 
-                        .total {
-                            #title {
+                        .total-web {
+                            #title-web {
                                 color: #fff;
                                 text-align: center;
                                 font-family: "Roboto";
@@ -283,7 +279,7 @@
                                 font-weight: 400;
                             }
 
-                            #amount {
+                            #amount-web {
                                 margin-top: 15px;
 
                                 color: #fff;
@@ -295,8 +291,8 @@
                             }
                         }
 
-                        .period {
-                            #title {
+                        .period-web {
+                            #title-web {
                                 color: #fff;
                                 text-align: center;
                                 font-family: "Roboto";
@@ -305,7 +301,7 @@
                                 font-weight: 400;
                             }
 
-                            #amount {
+                            #amount-web {
                                 margin-top: 15px;
 
                                 color: #fff;
@@ -318,7 +314,7 @@
                         }
                     }
 
-                    .btn {
+                    .btn-web {
                         width: fit-content;
 
                         margin-left: auto;
@@ -334,11 +330,11 @@
                         font-size: 20px;
                         font-style: normal;
                         font-weight: 500;
-                    }
 
-                    .btn:hover {
-                        cursor: pointer;
-                        opacity: 0.6;
+                        &:hover {
+                            cursor: pointer;
+                            opacity: 0.6;
+                        }
                     }
                 }
             }

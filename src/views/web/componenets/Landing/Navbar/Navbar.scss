@@ -1,7 +1,7 @@
 @import "../../../../../index.scss";
 
-.Navbar {
-    .container {
+.navbar-web {
+    .container-web {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -9,7 +9,7 @@
 
         position: relative;
 
-        .top-shadow {
+        .top-shadow-web {
             $size: calc(100vw * 0.4);
 
             height: $size;
@@ -24,7 +24,7 @@
             filter: blur(200px);
         }
 
-        .header {
+        .navbar-header-web {
             width: 100%;
             position: relative;
 
@@ -37,18 +37,18 @@
             align-items: center;
             justify-content: space-between;
 
-            #logo {
+            #logo-web {
                 margin-left: 38px;
             }
 
-            .btns {
+            .btns-web {
                 display: flex;
                 align-items: center;
                 justify-content: center;
 
                 margin-right: 42px;
 
-                .btn {
+                .btn-web {
                     color: #fff;
                     font-family: "Roboto";
                     font-size: 19px;
@@ -56,14 +56,14 @@
                     font-weight: 400;
 
                     margin-right: 40px;
+
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.5;
+                    }
                 }
 
-                .btn:hover {
-                    cursor: pointer;
-                    opacity: 0.5;
-                }
-
-                .btn-get-started {
+                .btn-get-started-web {
                     padding: 12px 27px;
 
                     border-radius: 30px;
@@ -74,11 +74,11 @@
                     font-size: 20px;
                     font-style: normal;
                     font-weight: 500;
-                }
 
-                .btn-get-started:hover {
-                    cursor: pointer;
-                    opacity: 0.5;
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.5;
+                    }
                 }
             }
         }

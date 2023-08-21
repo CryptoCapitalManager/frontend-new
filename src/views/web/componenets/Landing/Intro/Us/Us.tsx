@@ -11,11 +11,11 @@ const Us = () => {
     const [protocolTab, SetProtocolTab] = useState<string>("unselected");
 
     return (
-        <div className="Us">
-            <div className="container">
-                <div className="tabs">
+        <div className="us-web">
+            <div className="container-web">
+                <div className="tabs-web">
                     <div
-                        className="tab"
+                        className="tab-web"
                         id={expertiseTab}
                         onClick={() => {
                             setShowProtocol(false);
@@ -23,11 +23,11 @@ const Us = () => {
                             SetProtocolTab("unselected");
                         }}
                     >
-                        <p id="tab-text">Our expertise</p>
-                        <div className="underline" />
+                        <p id="tab-text-web">Our expertise</p>
+                        <div className="underline-web" />
                     </div>
                     <div
-                        className="tab"
+                        className="tab-web"
                         id={protocolTab}
                         onClick={() => {
                             setShowProtocol(true);
@@ -35,17 +35,17 @@ const Us = () => {
                             SetProtocolTab("selected");
                         }}
                     >
-                        <p id="tab-text">Our protocol</p>
-                        <div className="underline" />
+                        <p id="tab-text-web">Our protocol</p>
+                        <div className="underline-web" />
                     </div>
                 </div>
-                <div className="text-container">
-                    <p id="heading">
+                <div className="text-container-web">
+                    <p id="heading-web">
                         Transparent
                         <br />
                         trading history
                     </p>
-                    <p id="subtext">
+                    <p id="subtext-web">
                         Results of our traders are transparent
                         <br />
                         on the blockchain. You can see our
@@ -55,21 +55,21 @@ const Us = () => {
                         100% sure that the data is real.
                     </p>
                 </div>
-                <div className="btn-container">
-                    <div className="btn">Get started</div>
+                <div className="btn-container-web">
+                    <div className="btn-web">Get started</div>
                 </div>
             </div>
             {!showProtocol ? (
                 <img
                     src={expertise}
                     alt="Our trading performance"
-                    id="illustration"
+                    id="illustration-web"
                 />
             ) : (
                 <img
                     src={protocol}
                     alt="Our trading performance"
-                    id="illustration"
+                    id="illustration-web"
                 />
             )}
         </div>

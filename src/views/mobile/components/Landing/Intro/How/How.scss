@@ -1,0 +1,127 @@
+.how-mobile {
+    display: flex;
+    flex-direction: column;
+
+    #question-header-mobile {
+        margin: 0px auto 50px 40px;
+
+        color: #fff;
+        font-family: "Roboto";
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    .container-mobile {
+        .element {
+            margin-bottom: 80px;
+
+            #number-mobile {
+                margin: 0px auto 15px 40px;
+
+                color: #c3f53c;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+
+            .line-mobile {
+                margin: 0px 0px 0px 40px;
+
+                width: calc(100% - 80px);
+                height: 4px;
+
+                background: #c3f53c;
+            }
+
+            #description-mobile {
+                margin: 20px auto 56px 40px;
+
+                color: #c3f53c;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+
+            img {
+                margin: 0px auto 0px 40px;
+            }
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        #selected {
+            #number-mobile {
+                color: #c3f53c;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .line-mobile {
+                height: 4px;
+                background: #c3f53c;
+            }
+
+            #description-mobile {
+                color: #c3f53c;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        #unselected {
+            #number-mobile {
+                color: #989ca5;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .line-mobile {
+                height: 4px;
+                width: 50px;
+                background: #989ca5;
+            }
+
+            #description-mobile {
+                color: #989ca5;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -1,16 +1,18 @@
+import { FC } from "react";
+
 import "./Transparency.scss";
 
 import Table from "./Table/Table";
+
 import { transparencyProps } from "../../../../../../utils/props";
-import { FC } from "react";
 
 const Transparency: FC<transparencyProps> = ({ data }) => {
     return (
-        <div className="Transparency">
-            <div className="container">
-                <div className="text">
-                    <p id="title">Our trades</p>
-                    <p id="header">
+        <div className="transparency-web">
+            <div className="container-web">
+                <div className="text-web">
+                    <p id="title-web">Our trades</p>
+                    <p id="header-web">
                         Transparent &<br />
                         trustless track record
                     </p>

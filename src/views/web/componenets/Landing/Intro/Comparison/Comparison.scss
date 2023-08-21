@@ -1,4 +1,4 @@
-.Comparison {
+.comparison-web {
     z-index: 20;
 
     display: flex;
@@ -8,13 +8,13 @@
 
     margin: 100px 160px 155px 135px;
 
-    .text-container {
+    .text-container-web {
         display: flex;
         flex-direction: column;
 
         margin-right: 170px;
 
-        #title {
+        #title-web {
             color: #eee;
             font-family: "Roboto";
             font-size: 16px;
@@ -23,7 +23,7 @@
             text-transform: uppercase;
         }
 
-        #header {
+        #item-header-web {
             margin-top: 25px;
             margin-bottom: 40px;
 
@@ -34,7 +34,7 @@
             font-weight: 400;
         }
 
-        #subtext {
+        #item-subtext-web {
             color: #fff;
             font-family: "Roboto";
             font-size: 20px;
@@ -44,7 +44,7 @@
         }
     }
 
-    .comparison-container {
+    .comparison-container-web {
         display: flex;
         justify-content: center;
 
@@ -57,7 +57,7 @@
             rgba(255, 255, 255, 0.1) 100%
         );
 
-        .traditional {
+        .traditional-web {
             height: 100%;
 
             margin-right: 15px;
@@ -65,7 +65,7 @@
             border-radius: 32px;
             background: rgba(238, 238, 238, 0.8);
 
-            .header-container {
+            .header-container-web {
                 margin-top: 52px;
                 margin-left: 35px;
                 margin-right: 35px;
@@ -76,7 +76,7 @@
 
                 margin-bottom: 36px;
 
-                #header {
+                #item-header-web {
                     color: #111827;
                     text-align: center;
                     font-family: "Roboto";
@@ -85,7 +85,7 @@
                     font-weight: 700;
                 }
 
-                #subheader {
+                #item-subheader-web {
                     color: #4b5563;
                     text-align: center;
                     font-family: "Roboto";
@@ -95,11 +95,11 @@
                 }
             }
 
-            .options {
+            .options-web {
                 margin-left: 26px;
                 margin-right: 26px;
 
-                #option-text {
+                #option-text-web {
                     padding: 23px 20px;
                     margin-bottom: 13px;
 
@@ -111,20 +111,20 @@
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
-                }
 
-                #option-text:last-child {
-                    margin-bottom: 0;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
                 }
             }
 
-            .wrong-container {
+            .wrong-container-web {
                 margin-top: 21px;
                 margin-left: 28px;
                 margin-right: 40px;
                 margin-bottom: 33px;
 
-                #question {
+                #question-web {
                     margin-bottom: 17px;
 
                     color: #000;
@@ -134,7 +134,7 @@
                     font-weight: 600;
                 }
 
-                #wrongs {
+                #wrongs-web {
                     margin: 0;
                     li {
                         margin-bottom: 5px;
@@ -150,7 +150,7 @@
             }
         }
 
-        .investiva {
+        .investiva-web {
             height: 100%;
 
             border-radius: 32px;
@@ -160,7 +160,7 @@
                 #000 42%
             );
 
-            .header-container {
+            .header-container-web {
                 margin-top: 52px;
                 margin-left: 35px;
                 margin-right: 35px;
@@ -171,7 +171,7 @@
 
                 margin-bottom: 36px;
 
-                #header {
+                #item-header-web {
                     color: #fff;
                     text-align: center;
                     font-family: "Roboto";
@@ -180,7 +180,7 @@
                     font-weight: 700;
                 }
 
-                #subheader {
+                #item-subheader-web {
                     color: #eee;
                     text-align: center;
                     font-family: "Roboto";
@@ -190,11 +190,11 @@
                 }
             }
 
-            .options {
+            .options-web {
                 margin-left: 26px;
                 margin-right: 26px;
 
-                .option-container {
+                .option-container-web {
                     display: flex;
                     align-items: center;
                     justify-content: flex-start;
@@ -210,27 +210,27 @@
                         margin-right: 14px;
                     }
 
-                    #option-text {
+                    #option-text-web {
                         color: #4b5563;
                         font-family: "Roboto";
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 400;
                     }
-                }
 
-                .option-container:last-child {
-                    margin-bottom: 0;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
                 }
             }
 
-            .wrong-container {
+            .wrong-container-web {
                 margin-top: 21px;
                 margin-left: 28px;
                 margin-right: 40px;
                 margin-bottom: 33px;
 
-                #question {
+                #question-web {
                     margin-bottom: 17px;
 
                     color: #fff;
@@ -240,7 +240,7 @@
                     font-weight: 600;
                 }
 
-                #wrongs {
+                #wrongs-web {
                     margin: 0;
                     li {
                         color: rgba(238, 238, 238, 0.93);

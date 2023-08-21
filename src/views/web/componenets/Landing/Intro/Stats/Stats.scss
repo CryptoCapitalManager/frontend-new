@@ -1,11 +1,11 @@
-.Stats {
+.stats-main-web {
     position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .stats {
+    .stats-web {
         position: relative;
 
         padding: 56px 260.75px;
@@ -20,8 +20,8 @@
         align-items: center;
         justify-content: space-evenly;
 
-        .stat {
-            #numbers {
+        .stat-web {
+            #numbers-web {
                 color: #fff;
                 text-align: center;
                 font-family: "Roboto";
@@ -30,7 +30,7 @@
                 font-weight: 500;
             }
 
-            #description {
+            #description-web {
                 margin-top: 14px;
 
                 color: #fff;

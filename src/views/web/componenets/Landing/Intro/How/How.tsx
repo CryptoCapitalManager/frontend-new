@@ -40,52 +40,52 @@ const How: FC<howProps> = ({ how }) => {
     };
 
     return (
-        <div className="How" ref={how}>
-            <div className="container">
-                <p id="header">How it works</p>
+        <div className="how-web" ref={how}>
+            <div className="container-web">
+                <p id="question-header-web">How it works</p>
                 <img src={illustration} alt="Protocol step" />
             </div>
-            <div className="options">
+            <div className="options-web">
                 <div
-                    className="option"
+                    className="option-web"
                     id={firstSelection}
                     onClick={() => {
                         handleOptionSelection(1);
                     }}
                 >
-                    <p id="number">01</p>
-                    <div className="line"></div>
-                    <p id="description">
+                    <p id="number-web">01</p>
+                    <div className="line-web"></div>
+                    <p id="description-web">
                         Client deposits USDC to smart
                         <br />
                         contract
                     </p>
                 </div>
                 <div
-                    className="option"
+                    className="option-web"
                     id={secondSelection}
                     onClick={() => {
                         handleOptionSelection(2);
                     }}
                 >
-                    <p id="number">02</p>
-                    <div className="line"></div>
-                    <p id="description">
+                    <p id="number-web">02</p>
+                    <div className="line-web"></div>
+                    <p id="description-web">
                         Asset manager interacts with smart
                         <br />
                         contract and tells it what position to open
                     </p>
                 </div>
                 <div
-                    className="option"
+                    className="option-web"
                     id={thirdSelection}
                     onClick={() => {
                         handleOptionSelection(3);
                     }}
                 >
-                    <p id="number">03</p>
-                    <div className="line"></div>
-                    <p id="description">
+                    <p id="number-web">03</p>
+                    <div className="line-web"></div>
+                    <p id="description-web">
                         Position is open on a DEX and funds are
                         <br />
                         available to the client at any time{" "}

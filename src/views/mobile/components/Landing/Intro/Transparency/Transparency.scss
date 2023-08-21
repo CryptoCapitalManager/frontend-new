@@ -1,0 +1,36 @@
+.transparency-mobile {
+    z-index: 20;
+
+    margin: 0px 0px 100px 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .container-mobile {
+        .text-mobile {
+            margin: 75px 50px 0px 40px;
+
+            display: flex;
+            flex-direction: column;
+
+            #title-mobile {
+                color: #eee;
+                font-family: Roboto;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+                text-align: left;
+            }
+
+            #header-mobile {
+                color: #fff;
+                font-family: Roboto;
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+    }
+}

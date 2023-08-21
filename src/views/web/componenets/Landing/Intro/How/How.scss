@@ -1,6 +1,6 @@
 @import "../../../../../../index.scss";
 
-.How {
+.how-web {
     z-index: 10;
 
     display: flex;
@@ -10,14 +10,14 @@
     padding-top: 100px;
     padding-bottom: 240px;
 
-    .container {
+    .container-web {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
 
         margin-right: 133px;
 
-        #header {
+        #question-header-web {
             width: 100%;
 
             color: #eee;
@@ -36,83 +36,99 @@
         }
     }
 
-    .options {
+    .options-web {
         display: flex;
         flex-direction: column;
 
-        .option {
+        .option-web {
             margin-bottom: 40px;
 
-            #number {
+            #number-web {
                 margin-bottom: 15px;
             }
 
-            .line {
+            .line-web {
                 margin-bottom: 20px;
+            }
+
+            &:first-child {
+                margin-top: 30px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.6;
             }
         }
 
-        .option:first-child {
-            margin-top: 30px;
-        }
-
-        .option:last-child {
-            margin-bottom: 0;
-        }
-
-        .option:hover {
-            cursor: pointer;
-            opacity: 0.6;
-        }
-
         #selected {
-            #number {
+            #number-web {
                 color: #c3f53c;
                 font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
-            .line {
+            .line-web {
                 height: 1px;
                 background: #c3f53c;
             }
 
-            #description {
+            #description-web {
                 color: #c3f53c;
                 font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
 
         #unselected {
-            #number {
+            #number-web {
                 color: #989ca5;
                 font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
-            .line {
+            .line-web {
                 height: 1px;
                 width: 25px;
                 background: #989ca5;
             }
 
-            #description {
+            #description-web {
                 color: #989ca5;
                 font-family: "Roboto";
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: normal;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }

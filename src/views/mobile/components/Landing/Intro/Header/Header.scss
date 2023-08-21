@@ -1,0 +1,74 @@
+@import "../../../../../../index.scss";
+
+.header-main-mobile {
+    display: flex;
+    flex-direction: column;
+
+    .txt-container-mobile {
+        z-index: 10;
+        #regular-mobile {
+            text-align: left;
+            margin-left: 40px;
+
+            color: #ffffff;
+            font-family: "Roboto";
+            font-size: 4rem;
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        #highlighted-mobile {
+            text-align: left;
+            margin-left: 40px;
+
+            color: #c3f53c;
+            font-family: "Roboto";
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        #subtext-mobile {
+            margin-top: 34px;
+            margin-left: 40px;
+
+            text-align: left;
+
+            color: #ffffff;
+            font-family: "Roboto";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
+
+    .btn-mobile {
+        z-index: 10;
+        padding: 12px 27px;
+
+        margin: 87px auto 0px 40px;
+
+        border-radius: 30px;
+        background: #c3f53c;
+
+        color: #000;
+        font-family: "Roboto";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+        }
+    }
+
+    #hidden-logo-mobile {
+        position: relative;
+
+        width: 100%;
+
+        top: 20px;
+        left: 20px;
+    }
+}

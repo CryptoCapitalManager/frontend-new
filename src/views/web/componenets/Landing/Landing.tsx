@@ -39,7 +39,7 @@ const Landing = () => {
     }, []);
 
     return (
-        <div className="Landing">
+        <div className="landing-web">
             <Navbar scrollToSection={scrollToSection} how={how} about={about} />
             <Tag />
             <Intro how={how} about={about} data={data} />

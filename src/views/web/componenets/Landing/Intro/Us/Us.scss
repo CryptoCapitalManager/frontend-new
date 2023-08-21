@@ -1,6 +1,6 @@
 @import "../../../../../../index.scss";
 
-.Us {
+.us-web {
     width: calc(100% - 295px);
 
     display: flex;
@@ -10,7 +10,7 @@
     margin-left: 135px;
     margin-right: 160px;
 
-    .container {
+    .container-web {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -18,22 +18,31 @@
 
         margin-right: 145px;
 
-        .tabs {
+        .tabs-web {
             width: 100%;
 
             display: flex;
             align-items: center;
             justify-content: flex-start;
 
-            .tab {
-                #tab-text {
+            .tab-web {
+                #tab-text-web {
                     margin-right: 10px;
                     margin-left: 10px;
+                }
+
+                &:first-child {
+                    margin-right: 40px;
+                }
+
+                &:hover {
+                    opacity: 0.6;
+                    cursor: pointer;
                 }
             }
 
             #selected {
-                #tab-text {
+                #tab-text-web {
                     color: #c3f53c;
                     text-align: center;
                     font-family: "Roboto";
@@ -41,9 +50,13 @@
                     font-style: normal;
                     font-weight: 500;
                     text-transform: uppercase;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
 
-                .underline {
+                .underline-web {
                     margin-top: 8px;
 
                     height: 3px;
@@ -52,16 +65,20 @@
             }
 
             #unselected {
-                #tab-text {
+                #tab-text-web {
                     color: #eee;
                     font-family: "Roboto";
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
                     text-transform: uppercase;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
 
-                .underline {
+                .underline-web {
                     margin-top: 8px;
 
                     height: 3px;
@@ -69,21 +86,12 @@
                     opacity: 0;
                 }
             }
-
-            .tab:first-child {
-                margin-right: 40px;
-            }
-
-            .tab:hover {
-                cursor: pointer;
-                opacity: 0.6;
-            }
         }
 
-        .text-container {
+        .text-container-web {
             margin-top: 100px;
 
-            #heading {
+            #heading-web {
                 width: 400px;
 
                 margin-left: 25px;
@@ -96,7 +104,7 @@
                 line-height: 108.687%;
             }
 
-            #subtext {
+            #subtext-web {
                 margin-top: 43px;
                 margin-left: 25px;
 
@@ -109,12 +117,12 @@
             }
         }
 
-        .btn-container {
+        .btn-container-web {
             width: 100%;
 
             display: flex;
 
-            .btn {
+            .btn-web {
                 margin-top: 52px;
                 margin-left: 25px;
 
@@ -131,16 +139,16 @@
                 font-weight: 500;
                 line-height: 20px;
                 letter-spacing: 0.1px;
-            }
 
-            .btn:hover {
-                cursor: pointer;
-                opacity: 0.6;
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.6;
+                }
             }
         }
     }
 
-    #illustration {
+    #illustration-web {
         width: 643px;
     }
 }

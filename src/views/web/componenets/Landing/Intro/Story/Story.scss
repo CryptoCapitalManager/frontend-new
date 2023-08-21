@@ -1,11 +1,11 @@
-.Story {
+.story-web {
     display: flex;
     align-items: center;
     justify-content: center;
 
     padding: 140px 0px 180px 0px;
 
-    .container {
+    .container-web {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -13,13 +13,13 @@
         margin-left: 160px;
         margin-right: 280px;
 
-        .text {
+        .text-web {
             display: flex;
             flex-direction: column;
 
-            margin-right: 215px;
+            margin-right: 100px;
 
-            #title {
+            #title-web {
                 color: #eee;
                 font-family: "Roboto";
                 font-size: 16px;
@@ -28,7 +28,7 @@
                 text-transform: uppercase;
             }
 
-            #header {
+            #header-web {
                 margin-top: 25px;
 
                 color: #fff;
@@ -38,7 +38,7 @@
                 font-weight: 400;
             }
 
-            #description {
+            #description-web {
                 margin-top: 65px;
 
                 color: #fff;
@@ -49,10 +49,10 @@
             }
         }
 
-        .creator {
+        .creator-web {
             position: relative;
 
-            #founder {
+            #founder-web {
                 width: 398px;
                 height: 495.64px;
 
@@ -60,7 +60,7 @@
                 background: #d9d9d9;
             }
 
-            .links {
+            .links-web {
                 position: absolute;
                 bottom: 30px;
 
@@ -74,13 +74,15 @@
                 align-items: center;
                 justify-content: space-between;
 
-                img:hover {
-                    cursor: pointer;
-                    filter: brightness(60%);
+                img {
+                    &:hover {
+                        cursor: pointer;
+                        filter: brightness(60%);
+                    }
                 }
             }
 
-            .description {
+            .description-web {
                 width: 134px;
 
                 position: absolute;
@@ -98,7 +100,7 @@
                 border-radius: 5px 5px 5px 0px;
                 background: #c3f53c;
 
-                #name {
+                #name-web {
                     color: #000;
                     font-family: "Roboto";
                     font-size: 20px;
@@ -106,7 +108,7 @@
                     font-weight: 500;
                 }
 
-                #title {
+                #title-web {
                     color: #000;
                     font-family: "Roboto";
                     font-size: 20px;

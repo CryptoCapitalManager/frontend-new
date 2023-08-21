@@ -1,0 +1,60 @@
+.us-mobile {
+    margin-top: 200px;
+
+    .container-mobile {
+        .text-mobile {
+            display: flex;
+            flex-direction: column;
+
+            #title-mobile {
+                margin-left: 40px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #header-mobile {
+                margin-top: 40px;
+                margin-left: 40px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 36px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+            #subtext-mobile {
+                margin-top: 20px;
+                margin-left: 40px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+
+        img {
+            margin-top: 40px;
+            margin-left: 20px;
+
+            width: 456px;
+            height: 250px;
+        }
+
+        &:last-child {
+            margin-top: 120px;
+
+            img {
+                margin-top: 0px;
+            }
+        }
+    }
+}

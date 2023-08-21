@@ -15,10 +15,6 @@ const App = () => {
     };
 
     useEffect(() => {
-        console.log(width);
-    }, [width]);
-
-    useEffect(() => {
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -26,7 +22,7 @@ const App = () => {
         };
     }, []);
 
-    return <div className="App">{width >= 1350 ? <Web /> : <Mobile />}</div>;
+    return <div className="App">{width > 1350 ? <Web /> : <Mobile />}</div>;
 };
 
 export default App;

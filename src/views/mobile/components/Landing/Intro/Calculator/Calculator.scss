@@ -1,0 +1,347 @@
+.calculator-mobile {
+    margin-top: 110px;
+    margin-bottom: 100px;
+
+    .container-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .text-mobile {
+            width: calc(100% - 2 * 80px);
+
+            display: flex;
+            flex-direction: column;
+
+            #title-mobile {
+                color: #eee;
+                font-family: "Roboto";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            #text-header-mobile {
+                margin-top: 25px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+            #subtext-mobile {
+                margin-top: 15px;
+
+                color: #fff;
+                font-family: "Roboto";
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+
+        .calculator-container-mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            width: calc(100% - 2 * 80px);
+
+            margin-top: 35px;
+
+            .input-mobile {
+                width: 100%;
+                .amount-mobile {
+                    #title-mobile {
+                        color: #328bff;
+                        font-family: "Roboto";
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                    }
+
+                    .input-container-mobile {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        width: 100%;
+
+                        border-radius: 4.163px;
+                        border: 1px solid #d9d9d9;
+                        background: rgba(217, 217, 217, 0.1);
+
+                        margin-top: 20px;
+
+                        input {
+                            width: 100%;
+                            background: none;
+                            border: none;
+                            outline: none;
+
+                            margin: 25px 10px 25px 25px;
+
+                            color: #fff;
+                            font-family: "Roboto";
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                        }
+
+                        p {
+                            margin-right: 25px;
+
+                            color: #fff;
+                            font-family: "Roboto";
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                        }
+                    }
+                }
+
+                .period-mobile {
+                    margin-top: 60px;
+
+                    #title-mobile {
+                        color: #328bff;
+                        font-family: "Roboto";
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                    }
+
+                    #duration-mobile {
+                        margin-top: 30px;
+                        margin-bottom: 20px;
+
+                        color: #fff;
+                        font-family: "Roboto";
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 500;
+                    }
+
+                    input {
+                        width: 100%;
+                        margin: 0;
+                        height: 2px;
+
+                        &::-webkit-slider-thumb {
+                            cursor: pointer;
+                        }
+
+                        &::-moz-range-thumb {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .limits-mobile {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        margin-top: 12px;
+
+                        p {
+                            color: #eee;
+                            font-family: "Roboto";
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                        }
+                    }
+                }
+
+                .extra-mobile {
+                    margin-top: 70px;
+
+                    #title-mobile {
+                        color: #328bff;
+                        font-family: "Roboto";
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                    }
+
+                    .input-container-mobile {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        width: 100%;
+
+                        border-radius: 4.163px;
+                        border: 1px solid #d9d9d9;
+                        background: rgba(217, 217, 217, 0.1);
+
+                        margin-top: 20px;
+
+                        input {
+                            width: 100%;
+                            background: none;
+                            border: none;
+                            outline: none;
+
+                            margin: 25px 10px 25px 25px;
+
+                            color: #fff;
+                            font-family: "Roboto";
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                        }
+
+                        p {
+                            margin-right: 25px;
+
+                            color: #fff;
+                            font-family: "Roboto";
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            .result-shadow-mobile {
+                margin-top: 80px;
+
+                width: 100%;
+
+                border-radius: 4.163px;
+                background: var(
+                    --linear,
+                    linear-gradient(180deg, #1f2126 0%, #548bff 100%)
+                );
+                display: flex;
+                border-radius: 4.2px;
+
+                .result-mobile {
+                    width: 100%;
+                    margin: 1px;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    border-radius: 4.2px;
+                    background: rgb(19, 53, 125);
+
+                    .invested-mobile {
+                        margin-top: 45px;
+
+                        #title-mobile {
+                            color: #fff;
+                            text-align: center;
+                            font-family: "Roboto";
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                        }
+
+                        #amount-mobile {
+                            margin-top: 18px;
+
+                            color: #fff;
+                            text-align: center;
+                            font-family: "Roboto";
+                            font-size: 48px;
+                            font-style: normal;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .break-mobile {
+                        margin: 52px 70px 45px 70px;
+
+                        background: #eee;
+
+                        height: 1px;
+                    }
+
+                    .additional-mobile {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-evenly;
+
+                        margin-bottom: 65px;
+
+                        .total-mobile {
+                            #title-mobile {
+                                color: #fff;
+                                text-align: center;
+                                font-family: "Roboto";
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 400;
+                            }
+
+                            #amount-mobile {
+                                margin-top: 15px;
+
+                                color: #fff;
+                                text-align: center;
+                                font-family: "Roboto";
+                                font-size: 24px;
+                                font-style: normal;
+                                font-weight: 400;
+                            }
+                        }
+
+                        .period-mobile {
+                            #title-mobile {
+                                color: #fff;
+                                text-align: center;
+                                font-family: "Roboto";
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 400;
+                            }
+
+                            #amount-mobile {
+                                margin-top: 15px;
+
+                                color: #fff;
+                                text-align: center;
+                                font-family: "Roboto";
+                                font-size: 24px;
+                                font-style: normal;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+
+                    .btn-mobile {
+                        width: fit-content;
+
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-bottom: 40px;
+
+                        padding: 12px 27px;
+                        border-radius: 30px;
+                        background: #c3f53c;
+
+                        color: #000;
+                        text-align: center;
+                        font-family: "Roboto";
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 500;
+
+                        &:hover {
+                            cursor: pointer;
+                            opacity: 0.6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

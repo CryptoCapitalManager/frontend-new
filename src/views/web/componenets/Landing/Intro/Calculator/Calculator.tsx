@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 
 import "./Calculator.scss";
+
 import { calculatorProps } from "../../../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../../../utils/utils";
 
@@ -189,22 +190,22 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
     };
 
     return (
-        <div className="Calculator">
-            <div className="container">
-                <div className="text">
-                    <p id="title">Calculate your earnings</p>
-                    <p id="header">Investment & ROI calculator</p>
-                    <p id="subtext">
+        <div className="calculator-web">
+            <div className="container-web">
+                <div className="text-web">
+                    <p id="title-web">Calculate your earnings</p>
+                    <p id="text-header-web">Investment & ROI calculator</p>
+                    <p id="subtext-web">
                         Based on our trading success from the previous year
                     </p>
                 </div>
-                <div className="calculator-container">
-                    <div className="input">
-                        <div className="amount">
-                            <p id="title">Initial deposit</p>
-                            <div className="input-container">
+                <div className="calculator-container-web">
+                    <div className="input-web">
+                        <div className="amount-web">
+                            <p id="title-web">Initial deposit</p>
+                            <div className="input-container-web">
                                 <input
-                                    type="text"
+                                    type="text-web"
                                     value={initialDeposit}
                                     onChange={(e) => {
                                         const previousValue = initialDeposit;
@@ -220,12 +221,12 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                                 <p>USDC</p>
                             </div>
                         </div>
-                        <div className="period">
-                            <p id="title">Period</p>
-                            <p id="duration">{currentPeriodTxt.current}</p>
+                        <div className="period-web">
+                            <p id="title-web">Period</p>
+                            <p id="duration-web">{currentPeriodTxt.current}</p>
                             <input
                                 type="range"
-                                id="period"
+                                id="period-web"
                                 min={1}
                                 max={maxPeriodValue}
                                 step={1}
@@ -234,14 +235,14 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                                     updatePeriodValue(Number(e.target.value));
                                 }}
                             />
-                            <div className="limits">
+                            <div className="limits-web">
                                 <p>1 month</p>
                                 <p>{maxPeriodTxt.current}</p>
                             </div>
                         </div>
-                        <div className="extra">
-                            <p id="title">Extra monthly deposit</p>
-                            <div className="input-container">
+                        <div className="extra-web">
+                            <p id="title-web">Extra monthly deposit</p>
+                            <div className="input-container-web">
                                 <input
                                     type="text"
                                     value={extraDeposit}
@@ -260,31 +261,31 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="result-shadow">
-                        <div className="result">
-                            <div className="invested">
-                                <p id="title">Investment value</p>
-                                <p id="amount">
+                    <div className="result-shadow-web">
+                        <div className="result-web">
+                            <div className="invested-web">
+                                <p id="title-web">Investment value</p>
+                                <p id="amount-web">
                                     {(totalDeposit + investmentValue).toFixed(
                                         2
                                     )}{" "}
                                     USDC
                                 </p>
                             </div>
-                            <div className="break"></div>
-                            <div className="additional">
-                                <div className="total">
-                                    <p id="title">Total deposit</p>
-                                    <p id="amount">{totalDeposit} USDC</p>
+                            <div className="break-web"></div>
+                            <div className="additional-web">
+                                <div className="total-web">
+                                    <p id="title-web">Total deposit</p>
+                                    <p id="amount-web">{totalDeposit} USDC</p>
                                 </div>
-                                <div className="period">
-                                    <p id="title">Period</p>
-                                    <p id="amount">
+                                <div className="period-web">
+                                    <p id="title-web">Period</p>
+                                    <p id="amount-web">
                                         {currentPeriodTxt.current}
                                     </p>
                                 </div>
                             </div>
-                            <div className="btn">Get started</div>
+                            <div className="btn-web">Get started</div>
                         </div>
                     </div>
                 </div>

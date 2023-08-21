@@ -7,9 +7,13 @@ interface navbarProps {
     about: React.MutableRefObject<null>;
 }
 
-interface introProps {
+interface introWebProps {
     how: React.MutableRefObject<null>;
     about: React.MutableRefObject<null>;
+    data: tradingPairDTO[];
+}
+
+interface introMobileProps {
     data: tradingPairDTO[];
 }
 
@@ -35,7 +39,8 @@ interface tableProps {
 
 export {
     type navbarProps,
-    type introProps,
+    type introWebProps,
+    type introMobileProps,
     type howProps,
     type storyProps,
     type calculatorProps,

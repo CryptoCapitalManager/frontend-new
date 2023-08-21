@@ -11,11 +11,11 @@ import Calculator from "./Calculator/Calculator";
 
 import "./Intro.scss";
 
-import { introProps } from "../../../../../utils/props";
+import { introWebProps } from "../../../../../utils/props";
 
-const Intro: FC<introProps> = ({ how, about, data }) => {
+const Intro: FC<introWebProps> = ({ how, about, data }) => {
     return (
-        <div className="Intro">
+        <div className="intro-web">
             <Header />
             <Us />
             <How how={how} />

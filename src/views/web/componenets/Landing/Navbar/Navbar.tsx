@@ -8,14 +8,14 @@ import { navbarProps } from "../../../../../utils/props";
 
 const Navbar: FC<navbarProps> = ({ scrollToSection, how, about }) => {
     return (
-        <div className="Navbar">
-            <div className="container">
-                <div className="top-shadow"></div>
-                <div className="header">
-                    <img id="logo" src={logo} alt="Investiva logo" />
-                    <div className="btns">
+        <div className="navbar-web">
+            <div className="container-web">
+                <div className="top-shadow-web"></div>
+                <div className="navbar-header-web">
+                    <img id="logo-web" src={logo} alt="Investiva logo" />
+                    <div className="btns-web">
                         <div
-                            className="btn"
+                            className="btn-web"
                             onClick={() => {
                                 scrollToSection(how);
                             }}
@@ -23,14 +23,14 @@ const Navbar: FC<navbarProps> = ({ scrollToSection, how, about }) => {
                             How it works
                         </div>
                         <div
-                            className="btn"
+                            className="btn-web"
                             onClick={() => {
                                 scrollToSection(about);
                             }}
                         >
                             About Us
                         </div>
-                        <div className="btn-get-started">Get Started</div>
+                        <div className="btn-get-started-web">Get Started</div>
                     </div>
                 </div>
             </div>

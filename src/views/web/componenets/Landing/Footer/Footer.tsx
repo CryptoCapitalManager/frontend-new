@@ -11,9 +11,9 @@ import instagram from "../../../../../res/svg/instagram.svg";
 
 const Footer = () => {
     return (
-        <div className="Footer">
-            <div className="container">
-                <div className="logo-container">
+        <div className="footer-web">
+            <div className="container-web">
+                <div className="logo-container-web">
                     <img src={investiva} alt="Investiva logo" />
                     <p>
                         Backed by{" "}
@@ -22,31 +22,31 @@ const Footer = () => {
                         </Link>
                     </p>
                 </div>
-                <div className="media-container">
+                <div className="media-container-web">
                     <Link
                         to="mailto:goretic.bojan@investiva.app"
-                        id="media-btn"
+                        id="media-btn-web"
                     >
                         <img src={email} alt="Contact by email" />
                     </Link>
                     <Link
                         to="https://www.linkedin.com/in/bojan-goretic-85781b232"
                         target="_blank"
-                        id="media-btn"
+                        id="media-btn-web"
                     >
                         <img src={linkedin} alt="Connect via LinkedIn" />
                     </Link>
                     <Link
                         to="https://twitter.com/kibo_01?t=_-Z6OwFlY3QLgjYAilRgaQ&s=09"
                         target="_blank"
-                        id="media-btn"
+                        id="media-btn-web"
                     >
                         <img src={twitter} alt="Follow on Twitter" />
                     </Link>
                     <Link
                         to="https://instagram.com/goreticb?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
                         target="_blank"
-                        id="media-btn"
+                        id="media-btn-web"
                     >
                         <img src={instagram} alt="Follow on Instagram" />
                     </Link>

@@ -4,19 +4,23 @@ import hidden from "../../../../../../res/png/hidden-logo.png";
 
 const Header = () => {
     return (
-        <div className="Header">
-            <div className="txt-container">
-                <p id="regular">Experience True</p>
-                <p id="highlighted">Trustlessness</p>
-                <p id="regular">in Crypro Trading</p>
-                <p id="subtext">
+        <div className="header-main-web">
+            <div className="txt-container-web">
+                <p id="regular-web">Experience True</p>
+                <p id="highlighted-web">Trustlessness</p>
+                <p id="regular-web">in Crypto Trading</p>
+                <p id="subtext-web">
                     Enjoy peace of mind knowing that your
                     <br />
                     investments are safe and secure.
                 </p>
             </div>
-            <div className="btn">Get Started</div>
-            <img src={hidden} alt="Hidden Investiva logo" id="hidden-logo" />
+            <div className="btn-web">Get Started</div>
+            <img
+                src={hidden}
+                alt="Hidden Investiva logo"
+                id="hidden-logo-web"
+            />
         </div>
     );
 };

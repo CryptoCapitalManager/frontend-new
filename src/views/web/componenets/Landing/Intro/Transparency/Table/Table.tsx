@@ -70,7 +70,7 @@ const Table: FC<tableProps> = ({ data }) => {
     };
 
     return (
-        <div className="Table">
+        <div className="table-web">
             <table>
                 <thead>
                     <tr style={{ width: "100%" }}>
@@ -125,21 +125,24 @@ const Table: FC<tableProps> = ({ data }) => {
                                     <tr>
                                         <td>{(current - 1) * 4 + index + 1}</td>
                                         <td>
-                                            <div className="pair">
-                                                <img src={eth} alt="" />
+                                            <div className="pair-web">
+                                                <img
+                                                    src={eth}
+                                                    alt="Pair symbol"
+                                                />
                                                 <p>{tradingPair.tradingPair}</p>
                                             </div>
                                         </td>
                                         <td>{tradingPair.positionType}</td>
                                         <td>
-                                            <div className="link-container">
+                                            <div className="link-container-web">
                                                 <img
                                                     src={arbitrum}
                                                     alt="Arbitrum network icon"
                                                 />
                                                 <Link
                                                     to={tradingPair.entryTX}
-                                                    id="link"
+                                                    id="link-web"
                                                     target="_blank"
                                                 >
                                                     {tradingPair.entryPrice}{" "}
@@ -148,11 +151,11 @@ const Table: FC<tableProps> = ({ data }) => {
                                             </div>
                                         </td>
                                         <td>
-                                            <div className="link-container">
+                                            <div className="link-container-web">
                                                 <img src={arbitrum} alt="" />
                                                 <Link
                                                     to={tradingPair.exitTX}
-                                                    id="link"
+                                                    id="link-web"
                                                     target="_blank"
                                                 >
                                                     {tradingPair.exitPrice} USDC
@@ -186,18 +189,18 @@ const Table: FC<tableProps> = ({ data }) => {
                     </tbody>
                 )}
             </table>
-            <div className="pagination">
+            <div className="pagination-web">
                 <img
                     src={arrow}
-                    alt=""
+                    alt="Left arrow"
                     className={current === 1 ? "arrow unselectable" : "arrow"}
-                    id="left"
+                    id="left-web"
                     onClick={() => {
                         handlePagination(current - 1);
                         setCurrent(current - 1);
                     }}
                 />
-                <div className="pages">
+                <div className="pages-web">
                     {pages.map((page) => {
                         return page === current ? (
                             <div
@@ -227,13 +230,13 @@ const Table: FC<tableProps> = ({ data }) => {
                 </div>
                 <img
                     src={arrow}
-                    alt=""
+                    alt="Right arrow"
                     className={
                         (current + 1) * 4 - data.length >= 4
                             ? "arrow unselectable"
                             : "arrow"
                     }
-                    id="right"
+                    id="right-web"
                     onClick={() => {
                         handlePagination(current + 1);
                         setCurrent(current + 1);

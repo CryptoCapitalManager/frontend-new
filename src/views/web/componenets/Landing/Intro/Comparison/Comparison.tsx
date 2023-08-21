@@ -4,16 +4,16 @@ import checked from "../../../../../../res/svg/checked.svg";
 
 const Comparison = () => {
     return (
-        <div className="Comparison">
-            <div className="text-container">
-                <p id="title">Comparison</p>
-                <p id="header">
+        <div className="comparison-web">
+            <div className="text-container-web">
+                <p id="title-web">Comparison</p>
+                <p id="item-header-web">
                     Traditional asset
                     <br />
                     management vs <br />
                     Investiva
                 </p>
-                <p id="subtext">
+                <p id="item-subtext-web">
                     Traditional approaches suffer from a lack
                     <br />
                     of regulation and transparency, leaving
@@ -31,32 +31,32 @@ const Comparison = () => {
                     that is more secure and trustworthy.
                 </p>
             </div>
-            <div className="comparison-container">
-                <div className="traditional">
-                    <div className="header-container">
-                        <p id="header">Traditional</p>
-                        <p id="subheader">Asset management</p>
+            <div className="comparison-container-web">
+                <div className="traditional-web">
+                    <div className="header-container-web">
+                        <p id="item-header-web">Traditional</p>
+                        <p id="item-subheader-web">Asset management</p>
                     </div>
-                    <div className="options">
-                        <p id="option-text">
+                    <div className="options-web">
+                        <p id="option-text-web">
                             No hedge funds & no
                             <br />
                             regulation
                         </p>
-                        <p id="option-text">
+                        <p id="option-text-web">
                             Asset manager can lie
                             <br />
                             about performance
                         </p>
-                        <p id="option-text">
+                        <p id="option-text-web">
                             Your crypto is in the hands
                             <br />
                             of your asset manager
                         </p>
                     </div>
-                    <div className="wrong-container">
-                        <p id="question">What can go wrong?</p>
-                        <ul id="wrongs">
+                    <div className="wrong-container-web">
+                        <p id="question-web">What can go wrong?</p>
+                        <ul id="wrongs-web">
                             <li>Theft of deposits</li>
                             <li>CEX declaring bankruptcy</li>
                             <li>
@@ -67,40 +67,40 @@ const Comparison = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="investiva">
-                    <div className="header-container">
-                        <p id="header">Investiva</p>
-                        <p id="subheader">Asset management</p>
+                <div className="investiva-web">
+                    <div className="header-container-web">
+                        <p id="item-header-web">Investiva</p>
+                        <p id="item-subheader-web">Asset management</p>
                     </div>
-                    <div className="options">
-                        <div className="option-container">
+                    <div className="options-web">
+                        <div className="option-container-web">
                             <img src={checked} alt="Checked" />
-                            <p id="option-text">
+                            <p id="option-text-web">
                                 Smart contract
                                 <br />
                                 regulated
                             </p>
                         </div>
-                        <div className="option-container">
+                        <div className="option-container-web">
                             <img src={checked} alt="Checked" />
-                            <p id="option-text">
+                            <p id="option-text-web">
                                 Asset manager can’t
                                 <br />
                                 fake their performance
                             </p>
                         </div>
-                        <div className="option-container">
+                        <div className="option-container-web">
                             <img src={checked} alt="Checked" />
-                            <p id="option-text">
+                            <p id="option-text-web">
                                 Your crypto is in
                                 <br />
                                 your hands
                             </p>
                         </div>
                     </div>
-                    <div className="wrong-container">
-                        <p id="question">What can go wrong?</p>
-                        <ul id="wrongs">
+                    <div className="wrong-container-web">
+                        <p id="question-web">What can go wrong?</p>
+                        <ul id="wrongs-web">
                             <li>
                                 Loss of a couple of % of
                                 <br />

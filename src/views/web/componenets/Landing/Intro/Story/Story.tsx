@@ -12,16 +12,16 @@ import { storyProps } from "../../../../../../utils/props";
 
 const Story: FC<storyProps> = ({ about }) => {
     return (
-        <div className="Story" ref={about}>
-            <div className="container">
-                <div className="text">
-                    <p id="title">Our story</p>
-                    <p id="header">
+        <div className="story-web" ref={about}>
+            <div className="container-web">
+                <div className="text-web">
+                    <p id="title-web">Our story</p>
+                    <p id="header-web">
                         Harnessing the full
                         <br />
                         power of blockchain
                     </p>
-                    <p id="description">
+                    <p id="description-web">
                         Investiva was founded by Bojan, a 22-year-old software
                         engineer with a passion for blockchain and
                         cryptocurrency. Bojan has entered the crypto industry in
@@ -31,9 +31,9 @@ const Story: FC<storyProps> = ({ about }) => {
                         harness the full power of blockchain for their needs.
                     </p>
                 </div>
-                <div className="creator">
-                    <img id="founder" src={founder} alt="Mock profile" />
-                    <div className="links">
+                <div className="creator-web">
+                    <img id="founder-web" src={founder} alt="Bojan Goretić" />
+                    <div className="links-web">
                         <Link to="mailto:goretic.bojan@investiva.app">
                             <img src={email} alt="send email" />
                         </Link>
@@ -50,9 +50,9 @@ const Story: FC<storyProps> = ({ about }) => {
                             <img src={twitter} alt="connect on twitter" />
                         </Link>
                     </div>
-                    <div className="description">
-                        <p id="name">Bojan Goretić</p>
-                        <p id="title">Founder & CEO</p>
+                    <div className="description-web">
+                        <p id="name-web">Bojan Goretić</p>
+                        <p id="title-web">Founder & CEO</p>
                     </div>
                 </div>
             </div>
