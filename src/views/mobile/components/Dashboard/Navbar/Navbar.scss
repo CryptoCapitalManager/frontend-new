@@ -1,0 +1,28 @@
+.navbar-dashboard-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    height: 250px;
+
+    #logo {
+        margin: 100px auto 100px auto;
+
+        z-index: 10;
+    }
+
+    .top-shadow {
+        position: absolute;
+
+        top: -30vw;
+
+        width: 50vw;
+        height: 50vw;
+
+        border-radius: 50vw;
+        background: #c3f53c;
+        filter: blur(250px);
+    }
+}

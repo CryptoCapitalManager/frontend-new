@@ -1,6 +1,7 @@
 import "./Header.scss";
 
 import hidden from "../../../../../../res/png/hidden-logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -17,7 +18,10 @@ const Header = () => {
                     and secure.
                 </p>
             </div>
-            <div className="btn-mobile">Get Started</div>
+            <Link to={"/dashboard"} className="btn-mobile">
+                <div>Get Started</div>
+            </Link>
+
             <img
                 src={hidden}
                 alt="Hidden Investiva logo"

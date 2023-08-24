@@ -4,6 +4,7 @@ import "./Calculator.scss";
 
 import { calculatorProps } from "../../../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../../../utils/utils";
+import { Link } from "react-router-dom";
 
 const Calculator: FC<calculatorProps> = ({ data }) => {
     const currentPeriodTxt = useRef("1 year");
@@ -289,7 +290,9 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="btn-mobile">Get started</div>
+                            <Link to={"/dashboard"} className="btn-mobile">
+                                <div>Get started</div>
+                            </Link>
                         </div>
                     </div>
                 </div>

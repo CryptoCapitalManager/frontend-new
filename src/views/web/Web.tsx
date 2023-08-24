@@ -1,11 +1,13 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 
 import Landing from "./componenets/Landing/Landing";
 
 const Web = () => {
     return (
         <BrowserRouter>
-            <Landing />
+            <Routes>
+                <Route path="/" element={<Landing />} />
+            </Routes>
         </BrowserRouter>
     );
 };
