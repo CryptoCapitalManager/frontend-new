@@ -1,14 +1,16 @@
 @import "../../../../../../index.scss";
 
 .header-main-mobile {
+    overflow-x: clip;
+
     display: flex;
     flex-direction: column;
 
     .txt-container-mobile {
         z-index: 10;
         #regular-mobile {
+            margin-left: 10vw;
             text-align: left;
-            margin-left: 40px;
 
             color: #ffffff;
             font-family: "Roboto";
@@ -18,8 +20,8 @@
         }
 
         #highlighted-mobile {
+            margin-left: 10vw;
             text-align: left;
-            margin-left: 40px;
 
             color: #c3f53c;
             font-family: "Roboto";
@@ -29,14 +31,13 @@
         }
 
         #subtext-mobile {
+            margin-left: 10vw;
             margin-top: 34px;
-            margin-left: 40px;
-
             text-align: left;
 
             color: #ffffff;
             font-family: "Roboto";
-            font-size: 20px;
+            font-size: 35px !important;
             font-style: normal;
             font-weight: 400;
         }
@@ -46,7 +47,7 @@
         z-index: 10;
         padding: 12px 27px;
 
-        margin: 87px auto 0px 40px;
+        margin: 200px auto 0px 10vw;
 
         border-radius: 30px;
         background: #c3f53c;
@@ -64,6 +65,8 @@
     }
 
     #hidden-logo-mobile {
+        margin-left: 4vw;
+
         position: relative;
 
         width: 100%;

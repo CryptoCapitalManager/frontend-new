@@ -2,8 +2,11 @@
     display: flex;
     flex-direction: column;
 
+    margin-left: 10vw;
+    margin-top: 15vw;
+
     #question-header-mobile {
-        margin: 0px auto 50px 40px;
+        margin: 0px auto 50px 0px;
 
         color: #fff;
         font-family: "Roboto";
@@ -18,7 +21,7 @@
             margin-bottom: 80px;
 
             #number-mobile {
-                margin: 0px auto 15px 40px;
+                margin: 0px auto 15px 0px;
 
                 color: #c3f53c;
                 font-family: "Roboto";
@@ -29,7 +32,7 @@
             }
 
             .line-mobile {
-                margin: 0px 0px 0px 40px;
+                margin: 0px 0px 0px 0px;
 
                 width: calc(100% - 80px);
                 height: 4px;
@@ -38,7 +41,7 @@
             }
 
             #description-mobile {
-                margin: 20px auto 56px 40px;
+                margin: 20px auto 56px 0px;
 
                 color: #c3f53c;
                 font-family: "Roboto";
@@ -49,7 +52,9 @@
             }
 
             img {
-                margin: 0px auto 0px 40px;
+                width: 77vw;
+
+                margin: 0px auto 0px 0px;
             }
 
             &:last-child {

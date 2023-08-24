@@ -1,31 +1,35 @@
 .navbar-mobile {
+    overflow-x: clip;
+
     position: relative;
 
     width: 100%;
 
-    margin-bottom: 280px;
+    margin-bottom: 400px;
 
     #logo {
-        width: 290px;
-        height: 50px;
+        height: 6vw;
 
         position: relative;
 
-        top: 72px;
-        left: 40px;
+        top: 18.5vw;
+        left: 10vw;
     }
 
     .top-shadow {
-        width: 400px;
-        height: 400px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        width: 100vw;
+        height: 100vw;
 
         border-radius: 391px;
         background: #c3f53c;
-        filter: blur(200px);
+        filter: blur(350px);
 
         position: absolute;
 
-        top: -150px;
-        right: 0px;
+        top: -60vw;
+        right: -46vw;
     }
 }

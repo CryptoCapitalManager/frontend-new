@@ -6,30 +6,13 @@ const Comparison = () => {
     return (
         <div className="comparison-mobile">
             <p id="header-mobile">Comparison</p>
-            <p id="title-mobile">
-                Traditiona asset
-                <br />
-                management vs
-                <br />
-                Investiva
-            </p>
+            <p id="title-mobile">Traditiona asset management vs Investiva</p>
             <p id="description-mobile">
-                Traditional approaches suffer from a lack
-                <br />
-                of regulation and transparency, leaving
-                <br />
-                clients vulnerable to various risks.
-                <br />
-                Investiva aimes to revolutionize asset
-                <br />
-                management through smart contract
-                <br />
-                technology and blockchain transparency.
-                <br />
-                It creates an investment ecosystem in the
-                <br />
-                crypto world that is more secure and
-                <br />
+                Traditional approaches suffer from a lack of regulation and
+                transparency, leaving clients vulnerable to various risks.
+                Investiva aimes to revolutionize asset management through smart
+                contract technology and blockchain transparency. It creates an
+                investment ecosystem in the crypto world that is more secure and
                 trustworthy.
             </p>
             <div className="comparison-table-shadow">

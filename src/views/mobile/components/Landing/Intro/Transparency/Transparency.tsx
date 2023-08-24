@@ -13,8 +13,7 @@ const Transparency: FC<transparencyProps> = ({ data }) => {
                 <div className="text-mobile">
                     <p id="title-mobile">Our trades</p>
                     <p id="header-mobile">
-                        Transparent &<br />
-                        trustless track record
+                        Transparent & trustless track record
                     </p>
                 </div>
                 <Table data={data} />

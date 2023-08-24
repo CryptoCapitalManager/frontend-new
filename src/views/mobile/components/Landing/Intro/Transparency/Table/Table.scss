@@ -1,6 +1,6 @@
 .table-mobile {
     width: calc(100% - 80px);
-    margin: 70px auto 0px auto;
+    margin-top: 70px;
 
     table {
         width: 100%;
@@ -14,13 +14,13 @@
                 th {
                     background: #191b1f;
                     border-bottom: 1px solid #1f2126;
-                    height: 44px;
+                    height: 70px;
 
                     text-align: left;
 
                     color: #c3c5cb;
                     font-family: "Roboto";
-                    font-size: 16px;
+                    font-size: 28px !important;
                     font-style: normal;
                     font-weight: 400;
 
@@ -58,14 +58,14 @@
         tbody {
             tr {
                 td {
-                    height: 46px;
+                    height: 70px;
                     border-bottom: 1px solid #1f2126;
                     background: #191b1f;
                     text-align: left;
 
                     color: #fff;
                     font-family: "Roboto";
-                    font-size: 16px;
+                    font-size: 28px !important;
                     font-style: normal;
                     font-weight: 400;
 
@@ -73,6 +73,10 @@
                         display: flex;
                         align-items: center;
                         justify-content: flex-start;
+
+                        p {
+                            font-size: 28px !important;
+                        }
 
                         img {
                             margin-right: 20px;
@@ -145,7 +149,7 @@
         background: #191b1f;
 
         .pages-mobile {
-            margin: 0px 14px 0px 14px;
+            margin: 0px 40px 0px 40px;
 
             display: flex;
 
@@ -154,8 +158,8 @@
                 align-items: center;
                 justify-content: center;
 
-                width: 26px;
-                height: 26px;
+                width: 60px;
+                height: 60px;
 
                 &:hover {
                     cursor: pointer;
@@ -169,7 +173,7 @@
 
                 color: #fff;
                 font-family: "Roboto";
-                font-size: 16px;
+                font-size: 28px !important;
                 font-style: normal;
                 font-weight: 600;
             }
@@ -177,13 +181,15 @@
             #unselected {
                 color: #c3c5cb;
                 font-family: "Roboto";
-                font-size: 16px;
+                font-size: 28px !important;
                 font-style: normal;
                 font-weight: 400;
             }
         }
 
         .arrow {
+            width: 30px;
+
             &:hover {
                 cursor: pointer;
                 opacity: 0.6;
