@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/frontend-new/static/css/main.35b2c882.css",
-    "main.js": "/frontend-new/static/js/main.1057a419.js",
+    "main.css": "/frontend-new/static/css/main.8ded2452.css",
+    "main.js": "/frontend-new/static/js/main.713325df.js",
     "static/media/bojan-founder.png": "/frontend-new/static/media/bojan-founder.bdd8e0220dd55b50519f.png",
     "static/media/our-experience.svg": "/frontend-new/static/media/our-experience.fff57980a4b30c86ff571f6c9a852d0c.svg",
     "static/media/hidden-logo.png": "/frontend-new/static/media/hidden-logo.5f4908ad198ef500b259.png",
@@ -12,6 +12,7 @@
     "static/media/eth-usdc.svg": "/frontend-new/static/media/eth-usdc.8d94fa4283c1c2a8c50ea49a8951e4bf.svg",
     "static/media/tag.svg": "/frontend-new/static/media/tag.7959f121150464e88c176bc177452a07.svg",
     "static/media/investiva-logo.svg": "/frontend-new/static/media/investiva-logo.18fd5d07cb0b8d7384b163b84b8e5b3a.svg",
+    "static/media/investiva-logo-black.svg": "/frontend-new/static/media/investiva-logo-black.fa4aac2d24154e6368bed295bb939268.svg",
     "static/media/arbitrum.svg": "/frontend-new/static/media/arbitrum.867016c63736870e2e718023555e0379.svg",
     "static/media/attic42-logo.svg": "/frontend-new/static/media/attic42-logo.8143819b716cbc32a3558a0cebef13d4.svg",
     "static/media/instagram.svg": "/frontend-new/static/media/instagram.cb4f914eaf99bc335a8fd94cc54d5603.svg",
@@ -25,11 +26,11 @@
     "static/media/arrow.svg": "/frontend-new/static/media/arrow.85bf12688180de5ceec813bcf9d1a9e5.svg",
     "static/media/checked-fact.svg": "/frontend-new/static/media/checked-fact.2c59c4f257ea89305d0df53ab33aff0b.svg",
     "static/media/checked.svg": "/frontend-new/static/media/checked.31533a3d62953bbc2b3758dd33300b0c.svg",
-    "main.35b2c882.css.map": "/frontend-new/static/css/main.35b2c882.css.map",
-    "main.1057a419.js.map": "/frontend-new/static/js/main.1057a419.js.map"
+    "main.8ded2452.css.map": "/frontend-new/static/css/main.8ded2452.css.map",
+    "main.713325df.js.map": "/frontend-new/static/js/main.713325df.js.map"
   },
   "entrypoints": [
-    "static/css/main.35b2c882.css",
-    "static/js/main.1057a419.js"
+    "static/css/main.8ded2452.css",
+    "static/js/main.713325df.js"
   ]
 }
