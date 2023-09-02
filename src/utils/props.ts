@@ -1,5 +1,11 @@
 import React from "react";
 import { tradingPairDTO } from "./dto";
+import { Provider } from "ethers";
+
+interface landingProps {
+    toCalc: boolean;
+    setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 interface navbarProps {
     scrollToSection: (ref: React.MutableRefObject<any>) => void;
@@ -37,7 +43,31 @@ interface tableProps {
     data: tradingPairDTO[];
 }
 
+interface onboardingProps {
+    address: string;
+    setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
+    balanceUSDC: string;
+}
+
+interface onboardingNavbarProps {
+    address: string;
+}
+
+interface welcomeProps {
+    setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface depositProps {
+    balanceUSDC: string;
+}
+
+interface dashboardProps {
+    wallet: Provider | undefined;
+    address: string;
+}
+
 export {
+    type landingProps,
     type navbarProps,
     type introWebProps,
     type introMobileProps,
@@ -46,4 +76,9 @@ export {
     type calculatorProps,
     type transparencyProps,
     type tableProps,
+    type onboardingProps,
+    type onboardingNavbarProps,
+    type depositProps,
+    type welcomeProps,
+    type dashboardProps,
 };

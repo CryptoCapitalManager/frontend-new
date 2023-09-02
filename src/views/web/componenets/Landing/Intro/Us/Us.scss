@@ -10,6 +10,15 @@
     margin-left: 135px;
     margin-right: 160px;
 
+    img {
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
     .container-web {
         display: flex;
         flex-direction: column;
@@ -139,6 +148,14 @@
                 font-weight: 500;
                 line-height: 20px;
                 letter-spacing: 0.1px;
+                text-decoration: none;
+
+                user-drag: none;
+                -webkit-user-drag: none;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
 
                 &:hover {
                     cursor: pointer;

@@ -17,7 +17,11 @@ const Footer = () => {
                     <img src={investiva} alt="Investiva logo" />
                     <p>
                         Backed by{" "}
-                        <Link to="https://attic42.com" target="_blank">
+                        <Link
+                            to="https://attic42.com"
+                            target="_blank"
+                            id="attic-link"
+                        >
                             <img src={attic42} alt="Attic42 logo" />
                         </Link>
                     </p>

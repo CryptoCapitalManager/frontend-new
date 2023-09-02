@@ -5,6 +5,7 @@ import "./Navbar.scss";
 import logo from "../../../../../res/svg/investiva-logo.svg";
 
 import { navbarProps } from "../../../../../utils/props";
+import { Link } from "react-router-dom";
 
 const Navbar: FC<navbarProps> = ({ scrollToSection, how, about }) => {
     return (
@@ -30,7 +31,12 @@ const Navbar: FC<navbarProps> = ({ scrollToSection, how, about }) => {
                         >
                             About Us
                         </div>
-                        <div className="btn-get-started-web">Get Started</div>
+                        <Link
+                            to={"/onboarding"}
+                            className="btn-get-started-web"
+                        >
+                            Get Started
+                        </Link>
                     </div>
                 </div>
             </div>

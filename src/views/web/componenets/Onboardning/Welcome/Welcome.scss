@@ -1,0 +1,109 @@
+.welcome-web {
+    position: absolute;
+
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .heading-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 50px;
+
+        #normal {
+            color: #000;
+            text-align: center;
+            font-family: "Roboto";
+            font-size: 72px;
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        #highlighted {
+            color: #c3f53c;
+            font-family: "Roboto";
+            font-size: 72px;
+            font-style: normal;
+            font-weight: 700;
+        }
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 70px;
+
+        padding: 25px 40px;
+
+        background: #c3f53c;
+        border-radius: 40px;
+
+        color: #000;
+        text-align: center;
+        font-family: "Roboto";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(
+                    0deg,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    rgba(255, 255, 255, 0.2) 100%
+                ),
+                #c3f53c;
+            box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.1);
+        }
+
+        &:active {
+            background: linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.05) 0%,
+                    rgba(0, 0, 0, 0.05) 100%
+                ),
+                #c3f53c;
+        }
+    }
+
+    .suggestion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        #question {
+            color: #3c3c3c;
+            text-align: center;
+            font-family: "Roboto";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+
+            margin-bottom: 5px;
+        }
+
+        #link {
+            color: #0052ff;
+            text-align: center;
+            font-family: "Roboto";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-decoration: none;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.6;
+            }
+        }
+    }
+}

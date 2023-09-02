@@ -34,17 +34,22 @@ const Story: FC<storyProps> = ({ about }) => {
                 <div className="creator-web">
                     <img id="founder-web" src={founder} alt="Bojan Goretić" />
                     <div className="links-web">
-                        <Link to="mailto:goretic.bojan@investiva.app">
+                        <Link
+                            to="mailto:goretic.bojan@investiva.app"
+                            id="contact-btn"
+                        >
                             <img src={email} alt="send email" />
                         </Link>
                         <Link
                             to="https://www.linkedin.com/in/bojan-goretic-85781b232"
+                            id="contact-btn"
                             target="_blank"
                         >
                             <img src={linkedin} alt="connect on linkedin" />
                         </Link>
                         <Link
                             to="https://twitter.com/kibo_01?t=_-Z6OwFlY3QLgjYAilRgaQ&s=09"
+                            id="contact-btn"
                             target="_blank"
                         >
                             <img src={twitter} alt="connect on twitter" />

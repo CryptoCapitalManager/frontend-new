@@ -1,14 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Landing from "./components/Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
 
 const Mobile = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="frontend-new">
             <Routes>
                 <Route path="/" element={<Landing />} />
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/notice" element={<Dashboard />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>
     );

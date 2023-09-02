@@ -35,6 +35,15 @@
                 font-style: normal;
                 font-weight: 400;
 
+                #attic-link {
+                    user-drag: none;
+                    -webkit-user-drag: none;
+                    user-select: none;
+                    -moz-user-select: none;
+                    -webkit-user-select: none;
+                    -ms-user-select: none;
+                }
+
                 img {
                     width: 120px;
                     height: 20px;
@@ -57,6 +66,13 @@
             justify-content: space-between;
 
             #media-btn-web {
+                user-drag: none;
+                -webkit-user-drag: none;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+
                 &:hover {
                     cursor: pointer;
                     opacity: 0.6;

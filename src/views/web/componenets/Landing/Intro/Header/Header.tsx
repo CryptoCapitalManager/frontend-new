@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./Header.scss";
 
 import hidden from "../../../../../../res/png/hidden-logo.png";
@@ -15,7 +17,9 @@ const Header = () => {
                     investments are safe and secure.
                 </p>
             </div>
-            <div className="btn-web">Get Started</div>
+            <Link to={"/onboarding"} className="btn-web">
+                Get Started
+            </Link>
             <img
                 src={hidden}
                 alt="Hidden Investiva logo"

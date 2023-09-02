@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 
 import Navbar from "./Navbar/Navbar";
 import Tag from "./Tag/Tag";
@@ -10,8 +10,9 @@ import "./Landing.scss";
 import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
 
 import mock from "../../../../res/mock.json";
+import { landingProps } from "../../../../utils/props";
 
-const Landing = () => {
+const Landing: FC<landingProps> = ({ toCalc, setToCalc }) => {
     const how = useRef(null);
     const about = useRef(null);
     const [data, setData] = useState<tradingPairDTO[]>([]);
@@ -37,6 +38,16 @@ const Landing = () => {
             setData((mock as tradingPairDataDTO).messages);
         });
     }, []);
+
+    useEffect(() => {
+        if (toCalc) {
+            const location = document.getElementsByClassName("calculator-web");
+            if (location) {
+                location[0].scrollIntoView({ behavior: "smooth" });
+                setToCalc(false);
+            }
+        }
+    }, [toCalc]);
 
     return (
         <div className="landing-web">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./Us.scss";
 
@@ -56,7 +57,9 @@ const Us = () => {
                     </p>
                 </div>
                 <div className="btn-container-web">
-                    <div className="btn-web">Get started</div>
+                    <Link className="btn-web" to={"/onboarding"}>
+                        Get started
+                    </Link>
                 </div>
             </div>
             {!showProtocol ? (
