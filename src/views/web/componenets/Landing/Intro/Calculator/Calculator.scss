@@ -1,6 +1,7 @@
 .calculator-web {
     height: 100vh;
 
+    padding-top: 30px;
     margin-bottom: 200px;
 
     .container-web {
@@ -9,7 +10,7 @@
         align-items: center;
 
         .text-web {
-            width: calc(100% - 2 * 162px);
+            width: calc(100% - 20vw);
 
             display: flex;
             flex-direction: column;
@@ -48,7 +49,7 @@
             display: flex;
             justify-content: space-between;
 
-            width: calc(100% - 2 * 162px);
+            width: calc(100% - 20vw);
 
             margin-top: 35px;
 

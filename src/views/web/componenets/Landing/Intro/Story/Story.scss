@@ -3,15 +3,14 @@
     align-items: center;
     justify-content: center;
 
-    padding: 140px 0px 180px 0px;
+    padding: 140px 0px 100px 0px;
 
     .container-web {
         display: flex;
         align-items: center;
         justify-content: center;
 
-        margin-left: 160px;
-        margin-right: 280px;
+        width: calc(100% - 20vw);
 
         .text-web {
             display: flex;
@@ -50,6 +49,8 @@
         }
 
         .creator-web {
+            margin-right: 120px;
+
             position: relative;
 
             #founder-web {

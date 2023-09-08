@@ -77,7 +77,8 @@ const connectToWallet = async () => {
 const metamaskConnectionCheck = async (
     setAddress: React.Dispatch<string>,
     setProvider: React.Dispatch<React.SetStateAction<Provider | undefined>>,
-    setBalanceUSDC: React.Dispatch<React.SetStateAction<string>>
+    setBalanceUSDC: React.Dispatch<React.SetStateAction<string>>,
+    setInvestedAmount: React.Dispatch<React.SetStateAction<string>>
 ) => {
     // Check if using any wallet
     if (!window.ethereum) {
@@ -126,6 +127,9 @@ const metamaskConnectionCheck = async (
     const balance = await constractUSDC.balanceOf(accounts[0]);
 
     setBalanceUSDC(balance.toString());
+
+    // TODO: Calculate how much a user invested
+    setInvestedAmount("0");
 };
 
 const metamaskListener = async () => {

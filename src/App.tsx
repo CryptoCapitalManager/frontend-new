@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 import "./App.scss";
 
@@ -6,13 +7,16 @@ import Web from "./views/web/Web";
 import Mobile from "./views/mobile/Mobile";
 
 const App = () => {
-    const [width, setWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    const handleResize = () => {
-        setWidth(window.innerWidth);
-    };
+    const ref = useRef<any>(null);
+    const [appHeight, setAppHeigh] = useState<number>(0);
 
     useEffect(() => {
+        function handleResize() {
+            setWindowWidth(window.innerWidth);
+        }
+
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -20,7 +24,21 @@ const App = () => {
         };
     }, []);
 
-    return <div className="App">{width > 1350 ? <Web /> : <Mobile />}</div>;
+    useEffect(() => {
+        if (ref.current) {
+            setAppHeigh(ref.current.clientHeight);
+        }
+    }, [windowWidth]);
+
+    return (
+        <div className="App" ref={ref}>
+            {isMobile ? (
+                <Mobile />
+            ) : (
+                <Web appHeight={appHeight} windowWidth={windowWidth} />
+            )}
+        </div>
+    );
 };
 
 export default App;

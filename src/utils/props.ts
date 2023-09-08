@@ -2,6 +2,11 @@ import React from "react";
 import { tradingPairDTO } from "./dto";
 import { Provider } from "ethers";
 
+interface webProps {
+    appHeight: number;
+    windowWidth: number;
+}
+
 interface landingProps {
     toCalc: boolean;
     setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
@@ -62,11 +67,32 @@ interface depositProps {
 }
 
 interface dashboardProps {
+    appHeight: number;
+    windowWidth: number;
     wallet: Provider | undefined;
     address: string;
+    balanceUSDC: string;
+    investedAmount: string;
+}
+
+interface investProps {
+    appHeight: number;
+    balanceUSDC: string;
+    setInvestVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface withdrawProps {
+    appHeight: number;
+    investedAmount: string;
+    setWithdrawVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface transactionsTableProps {
+    windowWidth: number;
 }
 
 export {
+    type webProps,
     type landingProps,
     type navbarProps,
     type introWebProps,
@@ -81,4 +107,7 @@ export {
     type depositProps,
     type welcomeProps,
     type dashboardProps,
+    type investProps,
+    type withdrawProps,
+    type transactionsTableProps,
 };
