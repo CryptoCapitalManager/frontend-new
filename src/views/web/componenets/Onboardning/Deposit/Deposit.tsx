@@ -19,7 +19,7 @@ const Deposit: FC<depositProps> = ({ balanceUSDC }) => {
                 style={{
                     border:
                         ethers.getBigInt(balanceUSDC) >= ethers.getBigInt(100)
-                            ? "border: 1px solid #F1F2F7;"
+                            ? "1px solid #F1F2F7"
                             : "1px solid #CF202F",
                 }}
             >

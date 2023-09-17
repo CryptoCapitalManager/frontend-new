@@ -28,6 +28,10 @@ const Web: FC<webProps> = ({ appHeight: height, windowWidth: width }) => {
         metamaskListener();
     }, []);
 
+    useEffect(() => {
+        console.log(provider);
+    }, [provider]);
+
     return (
         <BrowserRouter basename="frontend-new">
             <Routes>
