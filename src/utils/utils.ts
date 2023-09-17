@@ -5,13 +5,58 @@ import {
     ARBITRUM_GOERLI_CONFIGURATION,
     ARBITRUM_GOERLI_USDC_ADDRESS,
 } from "./const";
+
 import usdc_abi from "../abi/usdc_goerli.json";
+
+import eth_pair from "../res/svg/trading-pairs/eth-pair.svg";
+import btc_pair from "../res/svg/trading-pairs/bitcoin-pair.svg";
+import arb_pair from "../res/svg/trading-pairs/arb-pair.svg";
+import link_pair from "../res/svg/trading-pairs/link-pair.svg";
+import uni_pair from "../res/svg/trading-pairs/uniswap-pair.svg";
+import sol_pair from "../res/svg/trading-pairs/sol-pair.svg";
+import dodge_pair from "../res/svg/trading-pairs/dodge-pair.svg";
+import xrp_pair from "../res/svg/trading-pairs/xrp-pair.svg";
+import ltc_pair from "../res/svg/trading-pairs/ltc-pair.svg";
 
 const isSameYearAndMonth = (firstDate: Date, secondDate: Date) => {
     return (
         firstDate.getFullYear() === secondDate.getFullYear() &&
         firstDate.getMonth() === secondDate.getMonth()
     );
+};
+
+const getTradingPairIcon = (pair: string): string => {
+    switch (pair) {
+        case "ETH/USDC":
+            return eth_pair;
+
+        case "BTC/USDC":
+            return btc_pair;
+
+        case "ARB/USDC":
+            return arb_pair;
+
+        case "LINK/USDC":
+            return link_pair;
+
+        case "UNI/USDC":
+            return uni_pair;
+
+        case "SOL/USDC":
+            return sol_pair;
+
+        case "DODGE/USDC":
+            return dodge_pair;
+
+        case "XRP/USDC":
+            return xrp_pair;
+
+        case "LTC/USDC":
+            return ltc_pair;
+
+        default:
+            return arb_pair;
+    }
 };
 
 const connectToWallet = async () => {
@@ -156,6 +201,7 @@ const metamaskListener = async () => {
 };
 
 export {
+    getTradingPairIcon,
     isSameYearAndMonth,
     connectToWallet,
     metamaskConnectionCheck,

@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import "./Dashboard.scss";
 
@@ -25,7 +25,9 @@ const Dashboard: FC<dashboardProps> = ({
     const [investVisible, setInvestVisible] = useState<boolean>(false);
     const [withdrawVisible, setWithdrawVisible] = useState<boolean>(false);
 
-    return (
+    return !address ? (
+        <Navigate to={"/onboarding"} />
+    ) : (
         <div className="dashboard-web">
             {investVisible && (
                 <Invest

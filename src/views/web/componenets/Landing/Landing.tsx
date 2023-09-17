@@ -9,10 +9,9 @@ import "./Landing.scss";
 
 import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
 
-import mock from "../../../../res/mock.json";
 import { landingProps } from "../../../../utils/props";
 
-const Landing: FC<landingProps> = ({ toCalc, setToCalc }) => {
+const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowWidth }) => {
     const how = useRef(null);
     const about = useRef(null);
     const [data, setData] = useState<tradingPairDTO[]>([]);
@@ -35,7 +34,7 @@ const Landing: FC<landingProps> = ({ toCalc, setToCalc }) => {
         };
 
         fetchData().catch(() => {
-            setData((mock as tradingPairDataDTO).messages);
+            setData([]);
         });
     }, []);
 
@@ -49,7 +48,11 @@ const Landing: FC<landingProps> = ({ toCalc, setToCalc }) => {
         }
     }, [toCalc]);
 
-    return (
+    return windowWidth < 1195 ? (
+        <div className="landing-web-mini">
+            <p>mini</p>
+        </div>
+    ) : (
         <div className="landing-web">
             <Navbar scrollToSection={scrollToSection} how={how} about={about} />
             <Tag />

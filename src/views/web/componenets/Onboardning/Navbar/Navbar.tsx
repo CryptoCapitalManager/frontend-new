@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from "react";
-import { Provider, ethers } from "ethers";
+import { FC } from "react";
 
 import "./Navbar.scss";
 

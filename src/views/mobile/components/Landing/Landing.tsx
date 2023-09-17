@@ -7,7 +7,7 @@ import Footer from "./Footer/Footer";
 
 import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
 import mock from "../../../../res/mock.json";
-import Navbar from "./Navbar/Navbar";
+import Navbar from "../Dashboard/Navbar/Navbar";
 
 const Landing = () => {
     const [data, setData] = useState<tradingPairDTO[]>([]);

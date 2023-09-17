@@ -10,6 +10,7 @@ interface webProps {
 interface landingProps {
     toCalc: boolean;
     setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
+    windowWidth: number;
 }
 
 interface navbarProps {

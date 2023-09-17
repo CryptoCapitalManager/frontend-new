@@ -1,28 +1,43 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./TransactionsTable.scss";
 
 import arrow from "../../../../../res/svg/arrow.svg";
-import arbitrum from "../../../../../res/svg/arbitrum.svg";
-import eth from "../../../../../res/svg/eth-usdc.svg";
+import arbitrum from "../../../../../res/svg/arb-token.svg";
+import loading from "../../../../../res/svg/loading-animation.svg";
 
 import { transactionsTableProps } from "../../../../../utils/props";
 
-import { tradingPairDTO } from "../../../../../utils/dto";
+import { tradingPairDTO, tradingPairDataDTO } from "../../../../../utils/dto";
 
-import mock from "../../../../../res/mock.json";
+import { getTradingPairIcon } from "../../../../../utils/utils";
 
 const TransactionsTable: FC<transactionsTableProps> = ({
     windowWidth: width,
 }) => {
-    const [data, setData] = useState<tradingPairDTO[]>(mock.messages);
+    const [data, setData] = useState<tradingPairDTO[]>([]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
 
     const [current, setCurrent] = useState<number>(1);
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
 
     const [sortOption, setSortOption] = useState<string>("Sort by date");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetch(
+                "https://investiva-test-api.onrender.com/data/trades"
+            );
+            const data = (await result.json()) as tradingPairDataDTO;
+
+            setData(data.messages);
+        };
+
+        fetchData().catch(() => {
+            setData([]);
+        });
+    }, []);
 
     useEffect(() => {
         switch (sortOption) {
@@ -93,6 +108,18 @@ const TransactionsTable: FC<transactionsTableProps> = ({
         }
     }, [current]);
 
+    const targetRef = useRef<any>();
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+    useLayoutEffect(() => {
+        if (targetRef.current) {
+            setDimensions({
+                width: targetRef.current.offsetWidth!,
+                height: targetRef.current.offsetHeight!,
+            });
+        }
+    }, []);
+
     const handlePagination = (page: number) => {
         let visible: tradingPairDTO[] = [];
 
@@ -106,7 +133,18 @@ const TransactionsTable: FC<transactionsTableProps> = ({
     };
 
     return (
-        <div className="table-container">
+        <div className="table-container" ref={targetRef}>
+            {data.length === 0 && (
+                <div
+                    style={{
+                        width: dimensions.width,
+                        height: dimensions.height,
+                    }}
+                    className="loading-animation-container"
+                >
+                    <img src={loading} id="loading-animation" />
+                </div>
+            )}
             <div className="upper-part">
                 <p>Trading history</p>
                 <select
@@ -181,7 +219,9 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                                         <td>
                                             <div className="pair-web">
                                                 <img
-                                                    src={eth}
+                                                    src={getTradingPairIcon(
+                                                        tradingPair.tradingPair
+                                                    )}
                                                     alt="Pair symbol"
                                                 />
                                                 <p>{tradingPair.tradingPair}</p>

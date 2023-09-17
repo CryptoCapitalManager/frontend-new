@@ -33,7 +33,13 @@ const Web: FC<webProps> = ({ appHeight: height, windowWidth: width }) => {
             <Routes>
                 <Route
                     path="/"
-                    element={<Landing toCalc={toCalc} setToCalc={setToCalc} />}
+                    element={
+                        <Landing
+                            toCalc={toCalc}
+                            setToCalc={setToCalc}
+                            windowWidth={width}
+                        />
+                    }
                 />
                 <Route
                     path="/onboarding"
