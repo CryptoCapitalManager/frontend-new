@@ -14,21 +14,12 @@ const Comparison = () => {
                     Investiva
                 </p>
                 <p id="item-subtext-web">
-                    Traditional approaches suffer from a lack
-                    <br />
-                    of regulation and transparency, leaving
-                    <br />
-                    clients vulnerable to various risks. Investiva
-                    <br />
-                    aimes to revolutionize asset management
-                    <br />
-                    through smart contract technology and
-                    <br />
-                    blockchain transparency. It creates an
-                    <br />
-                    investment ecosystem in the crypto world
-                    <br />
-                    that is more secure and trustworthy.
+                    Traditional approaches suffer from a lack of regulation and
+                    transparency, leaving clients vulnerable to various risks.
+                    Investiva aimes to revolutionize asset management through
+                    smart contract technology and blockchain transparency. It
+                    creates an investment ecosystem in the crypto world that is
+                    more secure and trustworthy.
                 </p>
             </div>
             <div className="comparison-container-web">

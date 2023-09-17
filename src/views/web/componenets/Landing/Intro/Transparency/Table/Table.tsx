@@ -7,8 +7,9 @@ import { tradingPairDTO } from "../../../../../../../utils/dto";
 import "./Table.scss";
 
 import arrow from "../../../../../../../res/svg/arrow.svg";
-import arbitrum from "../../../../../../../res/svg/arbitrum.svg";
-import eth from "../../../../../../../res/svg/eth-usdc.svg";
+import arbitrum from "../../../../../../../res/svg/arb-token.svg";
+
+import { getTradingPairIcon } from "../../../../../../../utils/utils";
 
 const Table: FC<tableProps> = ({ data }) => {
     const [current, setCurrent] = useState<number>(1);
@@ -127,7 +128,9 @@ const Table: FC<tableProps> = ({ data }) => {
                                         <td>
                                             <div className="pair-web">
                                                 <img
-                                                    src={eth}
+                                                    src={getTradingPairIcon(
+                                                        tradingPair.tradingPair
+                                                    )}
                                                     alt="Pair symbol"
                                                 />
                                                 <p>{tradingPair.tradingPair}</p>

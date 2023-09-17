@@ -2,11 +2,9 @@
     z-index: 20;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
-    margin: 0px 160px 155px 0px;
-
-    margin-left: 10vw;
+    margin: 0vw 10vw 155px 10vw;
 
     .text-container-web {
         display: flex;
@@ -35,6 +33,8 @@
         }
 
         #item-subtext-web {
+            max-width: 380px;
+
             color: #fff;
             font-family: "Roboto";
             font-size: 20px;
@@ -114,6 +114,10 @@
 
                     &:last-child {
                         margin-bottom: 0;
+                    }
+
+                    @media (max-width: 1460px) {
+                        padding: 23px 15px;
                     }
                 }
             }
@@ -207,7 +211,12 @@
                     border: 1px solid #4b5563;
 
                     img {
-                        margin-right: 14px;
+                        margin-right: 15px;
+
+                        @media (max-width: 1460px) {
+                            margin-left: 5px;
+                            margin-right: 10px;
+                        }
                     }
 
                     #option-text-web {
@@ -220,6 +229,10 @@
 
                     &:last-child {
                         margin-bottom: 0;
+                    }
+
+                    @media (max-width: 1460px) {
+                        padding: 23px 10px 23px 10px;
                     }
                 }
             }
