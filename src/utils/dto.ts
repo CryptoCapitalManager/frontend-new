@@ -14,4 +14,18 @@ interface tradingPairDataDTO {
     messages: tradingPairDTO[];
 }
 
-export { type tradingPairDTO, type tradingPairDataDTO };
+interface userTradesDTO {
+    balance: string;
+    totalDeposited: string;
+    totalWithdrawn: string;
+    balanceChanges: balanceChangeDTO[];
+    ROI: string;
+}
+
+interface balanceChangeDTO {
+    actionType: string;
+    amount: string;
+    date: string;
+}
+
+export { type tradingPairDTO, type tradingPairDataDTO, type userTradesDTO };

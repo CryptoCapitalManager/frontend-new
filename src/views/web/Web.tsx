@@ -10,27 +10,25 @@ import { webProps } from "../../utils/props";
 
 import { metamaskConnectionCheck, metamaskListener } from "../../utils/utils";
 
-const Web: FC<webProps> = ({ appHeight: height, windowWidth: width }) => {
+const Web: FC<webProps> = ({ windowWidth: width }) => {
     const [toCalc, setToCalc] = useState<boolean>(false);
 
     const [provider, setProvider] = useState<Provider>();
-    const [address, setAddress] = useState<string>("Connect");
+    const [address, setAddress] = useState<string>("");
+    const [displayAddress, setDisplayAddress] = useState<string>("Connect");
     const [balanceUSDC, setBalanceUSDC] = useState<string>("0");
-    const [investedAmount, setInvestedAmount] = useState<string>("0");
+    const [hasInvested, setHasInvested] = useState<boolean>(false);
 
     useEffect(() => {
         metamaskConnectionCheck(
             setAddress,
+            setDisplayAddress,
             setProvider,
             setBalanceUSDC,
-            setInvestedAmount
+            setHasInvested
         );
         metamaskListener();
     }, []);
-
-    useEffect(() => {
-        console.log(provider);
-    }, [provider]);
 
     return (
         <BrowserRouter basename="frontend-new">
@@ -49,9 +47,10 @@ const Web: FC<webProps> = ({ appHeight: height, windowWidth: width }) => {
                     path="/onboarding"
                     element={
                         <Onboarding
-                            address={address}
+                            displayAddress={displayAddress}
                             setToCalc={setToCalc}
                             balanceUSDC={balanceUSDC}
+                            hasInvested={hasInvested}
                         />
                     }
                 />
@@ -59,12 +58,12 @@ const Web: FC<webProps> = ({ appHeight: height, windowWidth: width }) => {
                     path="/dashboard"
                     element={
                         <Dashboard
-                            appHeight={height}
                             windowWidth={width}
                             wallet={provider}
                             address={address}
+                            displayAddress={displayAddress}
                             balanceUSDC={balanceUSDC}
-                            investedAmount={investedAmount}
+                            hasInvested={hasInvested}
                         />
                     }
                 />

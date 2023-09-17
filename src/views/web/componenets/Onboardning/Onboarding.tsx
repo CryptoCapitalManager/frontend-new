@@ -10,17 +10,15 @@ import { onboardingProps } from "../../../../utils/props";
 import { Navigate } from "react-router-dom";
 
 const Onboarding: FC<onboardingProps> = ({
-    address,
+    displayAddress,
     setToCalc,
     balanceUSDC,
+    hasInvested,
 }) => {
-    // Use later to see if user invested in the platform
-    const [hasInvested, setHasInvested] = useState(false);
-
     return (
         <div className="onboarding-web">
-            <Navbar address={address} />
-            {address === "Connect" ? (
+            <Navbar displayAddress={displayAddress} />
+            {displayAddress === "Connect" ? (
                 <Welcome setToCalc={setToCalc} />
             ) : hasInvested ? (
                 <Navigate to={"/dashboard"} />

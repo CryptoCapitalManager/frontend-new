@@ -4,9 +4,11 @@ import { Provider, ethers } from "ethers";
 import {
     ARBITRUM_GOERLI_CONFIGURATION,
     ARBITRUM_GOERLI_USDC_ADDRESS,
+    TRADING_GOERLI_ADDRESS,
 } from "./const";
 
 import usdc_abi from "../abi/usdc_goerli.json";
+import trading_abi from "../abi/trading.json";
 
 import eth_pair from "../res/svg/trading-pairs/eth-pair.svg";
 import btc_pair from "../res/svg/trading-pairs/bitcoin-pair.svg";
@@ -121,9 +123,10 @@ const connectToWallet = async () => {
 
 const metamaskConnectionCheck = async (
     setAddress: React.Dispatch<string>,
+    setDisplayAddress: React.Dispatch<string>,
     setProvider: React.Dispatch<React.SetStateAction<Provider | undefined>>,
     setBalanceUSDC: React.Dispatch<React.SetStateAction<string>>,
-    setInvestedAmount: React.Dispatch<React.SetStateAction<string>>
+    setInvestedAmount: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     // Check if using any wallet
     if (!window.ethereum) {
@@ -154,10 +157,11 @@ const metamaskConnectionCheck = async (
         return;
     }
 
-    const proviver = new ethers.BrowserProvider(metamask);
+    const provider = new ethers.BrowserProvider(metamask);
 
-    setProvider(proviver);
-    setAddress(
+    setProvider(provider);
+    setAddress(accounts[0]);
+    setDisplayAddress(
         `0x${accounts[0].slice(2, 5).toUpperCase()}...${accounts[0]
             .slice(accounts[0].length - 4)
             .toUpperCase()}`
@@ -166,15 +170,23 @@ const metamaskConnectionCheck = async (
     const constractUSDC = new ethers.Contract(
         ARBITRUM_GOERLI_USDC_ADDRESS,
         usdc_abi.abi,
-        proviver
+        provider
     );
 
     const balance = await constractUSDC.balanceOf(accounts[0]);
 
     setBalanceUSDC(balance.toString());
 
-    // TODO: Calculate how much a user invested
-    setInvestedAmount("0");
+    const trading = new ethers.Contract(
+        TRADING_GOERLI_ADDRESS,
+        trading_abi.abi,
+        provider
+    );
+
+    const hasInvested =
+        (await trading.getUserInvestments(accounts[0])).length !== 0;
+
+    setInvestedAmount(hasInvested);
 };
 
 const metamaskListener = async () => {

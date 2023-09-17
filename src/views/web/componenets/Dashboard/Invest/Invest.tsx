@@ -9,19 +9,14 @@ import usdc from "../../../../../res/svg/usdc-balance.svg";
 import { investProps } from "../../../../../utils/props";
 
 const Invest: FC<investProps> = ({
-    appHeight,
+    dashboardHeight,
     balanceUSDC,
     setInvestVisible,
 }) => {
     const [investAmount, setInvestAmount] = useState<number>(0);
 
-    // TODO: Check to see why appHeight is not set in some cases
-    useEffect(() => {
-        //console.log(appHeight);
-    }, []);
-
     return (
-        <div className="invest-tab" style={{ height: `${appHeight}px` }}>
+        <div className="invest-tab" style={{ height: `${dashboardHeight}px` }}>
             <div className="container">
                 <div className="tab-header">
                     <p id="header">Deposit</p>

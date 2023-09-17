@@ -3,7 +3,6 @@ import { tradingPairDTO } from "./dto";
 import { Provider } from "ethers";
 
 interface webProps {
-    appHeight: number;
     windowWidth: number;
 }
 
@@ -50,13 +49,14 @@ interface tableProps {
 }
 
 interface onboardingProps {
-    address: string;
+    displayAddress: string;
     setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
     balanceUSDC: string;
+    hasInvested: boolean;
 }
 
 interface onboardingNavbarProps {
-    address: string;
+    displayAddress: string;
 }
 
 interface welcomeProps {
@@ -68,28 +68,29 @@ interface depositProps {
 }
 
 interface dashboardProps {
-    appHeight: number;
     windowWidth: number;
     wallet: Provider | undefined;
     address: string;
+    displayAddress: string;
     balanceUSDC: string;
-    investedAmount: string;
+    hasInvested: boolean;
 }
 
 interface investProps {
-    appHeight: number;
+    dashboardHeight: number;
     balanceUSDC: string;
     setInvestVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface withdrawProps {
-    appHeight: number;
+    dashboardHeight: number;
     investedAmount: string;
     setWithdrawVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface transactionsTableProps {
     windowWidth: number;
+    earliestDate: Date;
 }
 
 export {

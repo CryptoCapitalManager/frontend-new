@@ -13,7 +13,10 @@ import { tradingPairDTO, tradingPairDataDTO } from "../../../../../utils/dto";
 
 import { getTradingPairIcon } from "../../../../../utils/utils";
 
-const TransactionsTable: FC<transactionsTableProps> = ({ windowWidth }) => {
+const TransactionsTable: FC<transactionsTableProps> = ({
+    windowWidth,
+    earliestDate,
+}) => {
     const [data, setData] = useState<tradingPairDTO[]>([]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
 
@@ -47,6 +50,16 @@ const TransactionsTable: FC<transactionsTableProps> = ({ windowWidth }) => {
             height: tableRef.current.offsetHeight,
         });
     }, []);
+
+    useEffect(() => {
+        if (data.length !== 0) {
+            const filteredData = data.filter(
+                (trade) => earliestDate <= new Date(trade.date)
+            );
+
+            setData(filteredData);
+        }
+    }, [earliestDate]);
 
     useEffect(() => {
         setTableDimensions({

@@ -8,14 +8,17 @@ import usdc from "../../../../../res/svg/usdc-balance.svg";
 import { withdrawProps } from "../../../../../utils/props";
 
 const Withdraw: FC<withdrawProps> = ({
-    appHeight,
+    dashboardHeight,
     investedAmount,
     setWithdrawVisible,
 }) => {
     const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
 
     return (
-        <div className="withdraw-tab" style={{ height: `${appHeight}px` }}>
+        <div
+            className="withdraw-tab"
+            style={{ height: `${dashboardHeight}px` }}
+        >
             <div className="container">
                 <div className="tab-header">
                     <p id="header">Deposit</p>

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 import "./Dashboard.scss";
@@ -8,46 +8,84 @@ import usdc from "../../../../res/svg/usdc-icon.svg";
 import placeholder from "../../../../res/svg/graph-placeholder.svg";
 import roi from "../../../../res/svg/roi-placeholder.svg";
 
-import { dashboardProps } from "../../../../utils/props";
-
 import Invest from "./Invest/Invest";
 import Withdraw from "./Withdraw/Withdraw";
 import TransactionsTable from "./TransactionsTable/TransactionsTable";
 
+import { userTradesDTO } from "../../../../utils/dto";
+import { dashboardProps } from "../../../../utils/props";
+
 const Dashboard: FC<dashboardProps> = ({
-    appHeight: height,
-    windowWidth: width,
+    windowWidth,
     wallet,
     address,
+    displayAddress,
     balanceUSDC,
-    investedAmount,
+    hasInvested,
 }) => {
     const [investVisible, setInvestVisible] = useState<boolean>(false);
     const [withdrawVisible, setWithdrawVisible] = useState<boolean>(false);
+    const [userTrades, setUserTrades] = useState<userTradesDTO>(
+        {} as userTradesDTO
+    );
+    const [earliestDate, setEarliestDate] = useState<Date>(new Date());
 
-    return !address ? (
+    const dashboardRef = useRef<any>(null);
+    const [dashboardDimensions, setDashboardDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (address.length !== 0) {
+                const result = await fetch(
+                    "https://investiva-test-api.onrender.com/data/user-account/0x199bD1ce2a507975304Dea14bB2f06023292c188"
+                    //`https://investiva-test-api.onrender.com/data/user-account/${address}`
+                );
+
+                const data = (await result.json()) as userTradesDTO;
+
+                setUserTrades(data);
+                setEarliestDate(new Date(data.balanceChanges[0].date));
+            }
+        };
+
+        fetchData().catch(() => {});
+    }, []);
+
+    useEffect(() => {
+        if (dashboardRef.current) {
+            setDashboardDimensions({
+                width: dashboardRef.current.offsetWidth,
+                height: dashboardRef.current.offsetHeight,
+            });
+        }
+    }, [windowWidth]);
+
+    return !wallet || !hasInvested ? (
         <Navigate to={"/onboarding"} />
     ) : (
-        <div className="dashboard-web">
+        <div className="dashboard-web" ref={dashboardRef}>
             {investVisible && (
                 <Invest
-                    appHeight={height}
+                    dashboardHeight={dashboardDimensions.height}
                     balanceUSDC={balanceUSDC}
                     setInvestVisible={setInvestVisible}
                 />
             )}
             {withdrawVisible && (
                 <Withdraw
-                    appHeight={height}
+                    dashboardHeight={dashboardDimensions.height}
                     setWithdrawVisible={setWithdrawVisible}
-                    investedAmount={investedAmount}
+                    investedAmount={"0"}
                 />
             )}
             <div className="navbar">
                 <Link to="/" id="back-link">
                     <img src={logo} alt="Investiva logo" id="logo" />
                 </Link>
-                <div className="btn-nonclickable">{address}</div>
+                <div className="btn-nonclickable">{displayAddress}</div>
             </div>
             <div className="interface">
                 <div className="windows">
@@ -114,7 +152,10 @@ const Dashboard: FC<dashboardProps> = ({
                         </div>
                     </div>
                 </div>
-                <TransactionsTable windowWidth={width} />
+                <TransactionsTable
+                    windowWidth={windowWidth}
+                    earliestDate={earliestDate}
+                />
             </div>
         </div>
     );
