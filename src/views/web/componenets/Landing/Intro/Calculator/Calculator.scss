@@ -53,6 +53,16 @@
 
             margin-top: 35px;
 
+            .loading-animation-container {
+                position: absolute;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: hsla(220, 11%, 11%, 0.85);
+            }
+
             .input-web {
                 width: 470px;
 

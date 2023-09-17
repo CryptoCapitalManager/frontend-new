@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { tableProps } from "../../../../../../../utils/props";
@@ -8,6 +8,7 @@ import "./Table.scss";
 
 import arrow from "../../../../../../../res/svg/arrow.svg";
 import arbitrum from "../../../../../../../res/svg/arb-token.svg";
+import loading from "../../../../../../../res/svg/loading-animation.svg";
 
 import { getTradingPairIcon } from "../../../../../../../utils/utils";
 
@@ -15,6 +16,19 @@ const Table: FC<tableProps> = ({ data }) => {
     const [current, setCurrent] = useState<number>(1);
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
+
+    const tableRef = useRef<any>(null);
+    const [tableDimensions, setTableDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        setTableDimensions({
+            width: tableRef.current.offsetWidth,
+            height: tableRef.current.offsetHeight,
+        });
+    }, []);
 
     useEffect(() => {
         if (data[0] === undefined) {
@@ -71,7 +85,18 @@ const Table: FC<tableProps> = ({ data }) => {
     };
 
     return (
-        <div className="table-web">
+        <div className="table-web" ref={tableRef}>
+            {data.length === 0 && (
+                <div
+                    className="loading-animation-container"
+                    style={{
+                        width: tableDimensions.width,
+                        height: tableDimensions.height,
+                    }}
+                >
+                    <img src={loading} id="loading-animation" />
+                </div>
+            )}
             <table>
                 <thead>
                     <tr style={{ width: "100%" }}>

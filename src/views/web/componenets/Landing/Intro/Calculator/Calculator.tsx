@@ -1,10 +1,12 @@
 import { FC, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./Calculator.scss";
 
+import loading from "../../../../../../res/svg/loading-animation.svg";
+
 import { calculatorProps } from "../../../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../../../utils/utils";
-import { Link } from "react-router-dom";
 
 const Calculator: FC<calculatorProps> = ({ data }) => {
     const currentPeriodTxt = useRef("1 year");
@@ -20,6 +22,19 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
     const [totalDeposit, setTotalDeposit] = useState<number>(2200);
 
     const [investmentValue, setInvestmentValue] = useState<number>(3300);
+
+    const elementRef = useRef<any>(null);
+    const [elementDimensions, setElementDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        setElementDimensions({
+            width: elementRef.current.offsetWidth,
+            height: elementRef.current.offsetHeight,
+        });
+    }, []);
 
     // initial data load
     useEffect(() => {
@@ -200,7 +215,18 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                         Based on our trading success from the previous year
                     </p>
                 </div>
-                <div className="calculator-container-web">
+                <div className="calculator-container-web" ref={elementRef}>
+                    {data.length === 0 && (
+                        <div
+                            className="loading-animation-container"
+                            style={{
+                                width: elementDimensions.width,
+                                height: elementDimensions.height,
+                            }}
+                        >
+                            <img src={loading} id="loading-animation" />
+                        </div>
+                    )}
                     <div className="input-web">
                         <div className="amount-web">
                             <p id="title-web">Initial deposit</p>
