@@ -13,9 +13,7 @@ import { tradingPairDTO, tradingPairDataDTO } from "../../../../../utils/dto";
 
 import { getTradingPairIcon } from "../../../../../utils/utils";
 
-const TransactionsTable: FC<transactionsTableProps> = ({
-    windowWidth: width,
-}) => {
+const TransactionsTable: FC<transactionsTableProps> = ({ windowWidth }) => {
     const [data, setData] = useState<tradingPairDTO[]>([]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
 
@@ -23,6 +21,12 @@ const TransactionsTable: FC<transactionsTableProps> = ({
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
 
     const [sortOption, setSortOption] = useState<string>("Sort by date");
+
+    const tableRef = useRef<any>(null);
+    const [tableDimensions, setTableDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,7 +41,19 @@ const TransactionsTable: FC<transactionsTableProps> = ({
         fetchData().catch(() => {
             setData([]);
         });
+
+        setTableDimensions({
+            width: tableRef.current.offsetWidth,
+            height: tableRef.current.offsetHeight,
+        });
     }, []);
+
+    useEffect(() => {
+        setTableDimensions({
+            width: tableRef.current.offsetWidth!,
+            height: tableRef.current.offsetHeight!,
+        });
+    }, [windowWidth]);
 
     useEffect(() => {
         switch (sortOption) {
@@ -108,18 +124,6 @@ const TransactionsTable: FC<transactionsTableProps> = ({
         }
     }, [current]);
 
-    const targetRef = useRef<any>();
-    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-    useLayoutEffect(() => {
-        if (targetRef.current) {
-            setDimensions({
-                width: targetRef.current.offsetWidth!,
-                height: targetRef.current.offsetHeight!,
-            });
-        }
-    }, []);
-
     const handlePagination = (page: number) => {
         let visible: tradingPairDTO[] = [];
 
@@ -133,12 +137,12 @@ const TransactionsTable: FC<transactionsTableProps> = ({
     };
 
     return (
-        <div className="table-container" ref={targetRef}>
+        <div className="table-container" ref={tableRef}>
             {data.length === 0 && (
                 <div
                     style={{
-                        width: dimensions.width,
-                        height: dimensions.height,
+                        width: tableDimensions.width,
+                        height: tableDimensions.height,
                     }}
                     className="loading-animation-container"
                 >
@@ -165,10 +169,16 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                         <th style={{ width: "3%" }}>#</th>
                         <th style={{ width: "45%" }}>Trading pair</th>
                         <th style={{ width: "10%" }}>Position</th>
-                        <th style={{ width: "14%" }} hidden={width < 1195}>
+                        <th
+                            style={{ width: "14%" }}
+                            hidden={windowWidth < 1195}
+                        >
                             Entry price
                         </th>
-                        <th style={{ width: "14%" }} hidden={width < 1195}>
+                        <th
+                            style={{ width: "14%" }}
+                            hidden={windowWidth < 1195}
+                        >
                             Exit price
                         </th>
                         <th style={{ width: "5%" }}>ROI</th>
@@ -180,32 +190,32 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={width < 1195}></td>
-                            <td hidden={width < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={width < 1195}></td>
-                            <td hidden={width < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={width < 1195}></td>
-                            <td hidden={width < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={width < 1195}></td>
-                            <td hidden={width < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowWidth < 1195}></td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -228,7 +238,7 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                                             </div>
                                         </td>
                                         <td>{tradingPair.positionType}</td>
-                                        <td hidden={width < 1195}>
+                                        <td hidden={windowWidth < 1195}>
                                             <div className="link-container-web">
                                                 <img
                                                     src={arbitrum}
@@ -244,7 +254,7 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                                                 </Link>
                                             </div>
                                         </td>
-                                        <td hidden={width < 1195}>
+                                        <td hidden={windowWidth < 1195}>
                                             <div className="link-container-web">
                                                 <img src={arbitrum} alt="" />
                                                 <Link
