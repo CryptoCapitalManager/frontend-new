@@ -14,18 +14,18 @@ interface tradingPairDataDTO {
     messages: tradingPairDTO[];
 }
 
-interface userTradesDTO {
-    balance: string;
-    totalDeposited: string;
-    totalWithdrawn: string;
+interface userDataDTO {
+    balance: number;
+    totalDeposited: number;
+    totalWithdrawn: number;
     balanceChanges: balanceChangeDTO[];
-    ROI: string;
+    ROI: number;
 }
 
 interface balanceChangeDTO {
     actionType: string;
-    amount: string;
+    amount: number;
     date: string;
 }
 
-export { type tradingPairDTO, type tradingPairDataDTO, type userTradesDTO };
+export { type tradingPairDTO, type tradingPairDataDTO, type userDataDTO };

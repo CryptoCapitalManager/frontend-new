@@ -61,6 +61,11 @@ const getTradingPairIcon = (pair: string): string => {
     }
 };
 
+const formatBalanceString = (balance: string): string => {
+    const dotIndex = balance.indexOf(".");
+    return dotIndex !== -1 ? balance.substring(0, dotIndex + 2) : balance;
+};
+
 const connectToWallet = async () => {
     if (!window.ethereum) {
         // Ako ne postoji
@@ -215,6 +220,7 @@ const metamaskListener = async () => {
 export {
     getTradingPairIcon,
     isSameYearAndMonth,
+    formatBalanceString,
     connectToWallet,
     metamaskConnectionCheck,
     metamaskListener,

@@ -1,21 +1,18 @@
-import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./TransactionsTable.scss";
 
 import arrow from "../../../../../res/svg/arrow.svg";
 import arbitrum from "../../../../../res/svg/arb-token.svg";
-import loading from "../../../../../res/svg/loading-animation.svg";
 
 import { transactionsTableProps } from "../../../../../utils/props";
-
-import { tradingPairDTO, tradingPairDataDTO } from "../../../../../utils/dto";
-
+import { tradingPairDTO } from "../../../../../utils/dto";
 import { getTradingPairIcon } from "../../../../../utils/utils";
 
 const TransactionsTable: FC<transactionsTableProps> = ({
     windowWidth,
-    earliestDate,
+    userTrades,
 }) => {
     const [data, setData] = useState<tradingPairDTO[]>([]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
@@ -25,48 +22,9 @@ const TransactionsTable: FC<transactionsTableProps> = ({
 
     const [sortOption, setSortOption] = useState<string>("Sort by date");
 
-    const tableRef = useRef<any>(null);
-    const [tableDimensions, setTableDimensions] = useState({
-        width: 0,
-        height: 0,
-    });
-
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await fetch(
-                "https://investiva-test-api.onrender.com/data/trades"
-            );
-            const data = (await result.json()) as tradingPairDataDTO;
-
-            setData(data.messages);
-        };
-
-        fetchData().catch(() => {
-            setData([]);
-        });
-
-        setTableDimensions({
-            width: tableRef.current.offsetWidth,
-            height: tableRef.current.offsetHeight,
-        });
-    }, []);
-
-    useEffect(() => {
-        if (data.length !== 0) {
-            const filteredData = data.filter(
-                (trade) => earliestDate <= new Date(trade.date)
-            );
-
-            setData(filteredData);
-        }
-    }, [earliestDate]);
-
-    useEffect(() => {
-        setTableDimensions({
-            width: tableRef.current.offsetWidth!,
-            height: tableRef.current.offsetHeight!,
-        });
-    }, [windowWidth]);
+        setData(userTrades);
+    }, [userTrades]);
 
     useEffect(() => {
         switch (sortOption) {
@@ -150,18 +108,7 @@ const TransactionsTable: FC<transactionsTableProps> = ({
     };
 
     return (
-        <div className="table-container" ref={tableRef}>
-            {data.length === 0 && (
-                <div
-                    style={{
-                        width: tableDimensions.width,
-                        height: tableDimensions.height,
-                    }}
-                    className="loading-animation-container"
-                >
-                    <img src={loading} id="loading-animation" />
-                </div>
-            )}
+        <div className="table-container">
             <div className="upper-part">
                 <p>Trading history</p>
                 <select

@@ -90,7 +90,7 @@ interface withdrawProps {
 
 interface transactionsTableProps {
     windowWidth: number;
-    earliestDate: Date;
+    userTrades: tradingPairDTO[];
 }
 
 export {
