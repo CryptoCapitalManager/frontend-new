@@ -127,11 +127,12 @@ const connectToWallet = async () => {
 };
 
 const metamaskConnectionCheck = async (
+    setDataLoaded: React.Dispatch<boolean>,
     setAddress: React.Dispatch<string>,
     setDisplayAddress: React.Dispatch<string>,
     setProvider: React.Dispatch<React.SetStateAction<Provider | undefined>>,
     setBalanceUSDC: React.Dispatch<React.SetStateAction<string>>,
-    setInvestedAmount: React.Dispatch<React.SetStateAction<boolean>>
+    setHasInvested: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     // Check if using any wallet
     if (!window.ethereum) {
@@ -191,7 +192,13 @@ const metamaskConnectionCheck = async (
     const hasInvested =
         (await trading.getUserInvestments(accounts[0])).length !== 0;
 
-    setInvestedAmount(hasInvested);
+    console.log(hasInvested);
+
+    setHasInvested(hasInvested);
+
+    setDataLoaded(true);
+
+    console.log(provider);
 };
 
 const metamaskListener = async () => {

@@ -49,6 +49,8 @@ interface tableProps {
 }
 
 interface onboardingProps {
+    windowWidth: number;
+    dataLoaded: boolean;
     displayAddress: string;
     setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
     balanceUSDC: string;

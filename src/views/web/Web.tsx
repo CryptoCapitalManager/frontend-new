@@ -13,6 +13,7 @@ import { metamaskConnectionCheck, metamaskListener } from "../../utils/utils";
 const Web: FC<webProps> = ({ windowWidth: width }) => {
     const [toCalc, setToCalc] = useState<boolean>(false);
 
+    const [dataLoaded, setDataLoaded] = useState<boolean>(false);
     const [provider, setProvider] = useState<Provider>();
     const [address, setAddress] = useState<string>("");
     const [displayAddress, setDisplayAddress] = useState<string>("Connect");
@@ -21,6 +22,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
 
     useEffect(() => {
         metamaskConnectionCheck(
+            setDataLoaded,
             setAddress,
             setDisplayAddress,
             setProvider,
@@ -47,6 +49,8 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
                     path="/onboarding"
                     element={
                         <Onboarding
+                            windowWidth={width}
+                            dataLoaded={dataLoaded}
                             displayAddress={displayAddress}
                             setToCalc={setToCalc}
                             balanceUSDC={balanceUSDC}

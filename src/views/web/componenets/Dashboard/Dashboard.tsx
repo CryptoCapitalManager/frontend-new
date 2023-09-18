@@ -1,11 +1,22 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    Legend,
+    LineElement,
+    LinearScale,
+    PointElement,
+    Title,
+    Tooltip,
+    Filler,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 import "./Dashboard.scss";
 
 import logo from "../../../../res/svg/investiva-logo-black.svg";
 import usdc from "../../../../res/svg/usdc-icon.svg";
-import placeholder from "../../../../res/svg/graph-placeholder.svg";
 import roi from "../../../../res/svg/roi-placeholder.svg";
 import loading from "../../../../res/svg/loading-animation.svg";
 
@@ -29,6 +40,17 @@ const Dashboard: FC<dashboardProps> = ({
     balanceUSDC,
     hasInvested,
 }) => {
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        PointElement,
+        LineElement,
+        Title,
+        Tooltip,
+        Filler,
+        Legend
+    );
+
     const [investVisible, setInvestVisible] = useState<boolean>(false);
     const [withdrawVisible, setWithdrawVisible] = useState<boolean>(false);
     const [userData, setUserData] = useState<userDataDTO>();
@@ -40,12 +62,70 @@ const Dashboard: FC<dashboardProps> = ({
         height: 0,
     });
 
+    const options = {
+        responsive: true,
+
+        plugins: {
+            filler: {
+                propagate: false,
+            },
+            title: {
+                display: false,
+            },
+            legend: {
+                display: false,
+            },
+        },
+        interaction: {
+            intersect: false,
+        },
+        scales: {
+            y: {
+                ticks: {
+                    display: false,
+                },
+                grid: { drawBorder: false, display: false },
+                border: { display: false },
+            },
+            x: {
+                ticks: {
+                    display: false,
+                },
+                grid: { drawBorder: false, display: false },
+                border: { display: false },
+            },
+        },
+    };
+
+    const labels = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+    ];
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                fill: "start",
+                label: "Deposit",
+                data: [200, 600, 1000, 120, 200, 300, 300],
+                borderColor: "rgba(0, 82, 255, 1)",
+                backgroundColor: "rgba(195, 245, 60, 0.30)",
+                lineTension: 0,
+            },
+        ],
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             if (address.length !== 0) {
                 let result = await fetch(
-                    "https://investiva-test-api.onrender.com/data/user-account/0x199bD1ce2a507975304Dea14bB2f06023292c188"
-                    //`https://investiva-test-api.onrender.com/data/user-account/${address}`
+                    `https://investiva-test-api.onrender.com/data/user-account/${address}`
                 );
 
                 const data = (await result.json()) as userDataDTO;
@@ -159,7 +239,7 @@ const Dashboard: FC<dashboardProps> = ({
                         </div>
                     </div>
                     <div className="balance-graph-window">
-                        <img src={placeholder} alt="Balance graph" />
+                        <Line options={options} data={data} />
                     </div>
                     <div className="roi-window">
                         <div className="top-part">
