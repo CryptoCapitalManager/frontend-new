@@ -108,7 +108,7 @@ const Dashboard: FC<dashboardProps> = ({
                 const data = (await result.json()) as userDataDTO;
 
                 setUserData(data);
-                setMaxYPoint(maxYpoint(data));
+                setMaxYPoint(maxYpoint(data.balanceChanges));
                 setGraphData(filterUserData(data, filterPeriod));
 
                 result = await fetch(
@@ -150,6 +150,10 @@ const Dashboard: FC<dashboardProps> = ({
             setGraphData(filterUserData(userData, filterPeriod));
         }
     }, [filterPeriod]);
+
+    useEffect(() => {
+        setMaxYPoint(maxYpoint(graphData));
+    }, [graphData]);
 
     return !wallet || !hasInvested ? (
         <Navigate to={"/onboarding"} />

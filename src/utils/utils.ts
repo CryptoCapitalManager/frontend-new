@@ -70,10 +70,10 @@ const formatBalanceString = (balance: string): string => {
         : `${balance}.0`;
 };
 
-const maxYpoint = (userData: userDataDTO): number => {
+const maxYpoint = (userData: balanceChangeDTO[]): number => {
     let maxYpoint = 0;
 
-    userData.balanceChanges.forEach((change) => {
+    userData.forEach((change) => {
         if (maxYpoint < change.amount) {
             maxYpoint = change.amount;
         }
