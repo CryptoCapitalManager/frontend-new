@@ -48,10 +48,7 @@ const Withdraw: FC<withdrawProps> = ({
                                     setWithdrawAmount(Number(e.target.value));
                                 }
                             }}
-                            disabled={
-                                ethers.getBigInt(investedAmount) ===
-                                ethers.getBigInt(0)
-                            }
+                            disabled={+investedAmount === 0}
                         />
                     </div>
                     <div className="right">

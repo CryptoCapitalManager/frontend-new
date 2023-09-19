@@ -63,7 +63,18 @@ const getTradingPairIcon = (pair: string): string => {
 
 const formatBalanceString = (balance: string): string => {
     const dotIndex = balance.indexOf(".");
-    return dotIndex !== -1 ? balance.substring(0, dotIndex + 2) : balance;
+    return dotIndex !== -1
+        ? balance.substring(0, dotIndex + 2)
+        : `${balance}.0`;
+};
+
+const formatPercentage = (percentage: number): string => {
+    const result = percentage.toFixed(1);
+    return result;
+};
+
+const calculateROIEarnings = (roi: number, totalDeposit: number): string => {
+    return formatBalanceString(((roi * totalDeposit) / 100).toString());
 };
 
 const connectToWallet = async () => {
@@ -152,6 +163,8 @@ const metamaskConnectionCheck = async (
 
     // Check if any account is connected
     if (accounts.length === 0) {
+        // TODO: Tell user to open up metamask
+
         return;
     }
 
@@ -192,13 +205,9 @@ const metamaskConnectionCheck = async (
     const hasInvested =
         (await trading.getUserInvestments(accounts[0])).length !== 0;
 
-    console.log(hasInvested);
-
     setHasInvested(hasInvested);
 
     setDataLoaded(true);
-
-    console.log(provider);
 };
 
 const metamaskListener = async () => {
@@ -228,6 +237,8 @@ export {
     getTradingPairIcon,
     isSameYearAndMonth,
     formatBalanceString,
+    formatPercentage,
+    calculateROIEarnings,
     connectToWallet,
     metamaskConnectionCheck,
     metamaskListener,

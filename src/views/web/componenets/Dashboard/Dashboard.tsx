@@ -10,6 +10,7 @@ import {
     Title,
     Tooltip,
     Filler,
+    LineOptions,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -30,7 +31,11 @@ import {
     userDataDTO,
 } from "../../../../utils/dto";
 import { dashboardProps } from "../../../../utils/props";
-import { formatBalanceString } from "../../../../utils/utils";
+import {
+    calculateROIEarnings,
+    formatBalanceString,
+    formatPercentage,
+} from "../../../../utils/utils";
 
 const Dashboard: FC<dashboardProps> = ({
     windowWidth,
@@ -62,9 +67,12 @@ const Dashboard: FC<dashboardProps> = ({
         height: 0,
     });
 
-    const options = {
-        responsive: true,
+    const gradient = document.createElement("canvas").getContext("2d");
+    const gradientFill = gradient?.createLinearGradient(0, 0, 0, 400);
+    gradientFill!.addColorStop(0, "rgba(0, 82, 255, 0.5)");
+    gradientFill!.addColorStop(1, "rgba(0, 82, 255, 0)");
 
+    const options = {
         plugins: {
             filler: {
                 propagate: false,
@@ -75,6 +83,19 @@ const Dashboard: FC<dashboardProps> = ({
             legend: {
                 display: false,
             },
+            tooltip: {
+                labelColor: "rgba(0, 0, 0, 1)",
+                callbacks: {
+                    label: (context: any) => {
+                        const amount = context.parsed.y;
+
+                        return `${amount} USDC`;
+                    },
+                    title: (context: any) => {
+                        return "";
+                    },
+                },
+            },
         },
         interaction: {
             intersect: false,
@@ -84,14 +105,20 @@ const Dashboard: FC<dashboardProps> = ({
                 ticks: {
                     display: false,
                 },
-                grid: { drawBorder: false, display: false },
+                grid: {
+                    drawBorder: false,
+                    display: false,
+                },
                 border: { display: false },
             },
             x: {
                 ticks: {
                     display: false,
                 },
-                grid: { drawBorder: false, display: false },
+                grid: {
+                    drawBorder: false,
+                    display: false,
+                },
                 border: { display: false },
             },
         },
@@ -115,8 +142,10 @@ const Dashboard: FC<dashboardProps> = ({
                 label: "Deposit",
                 data: [200, 600, 1000, 120, 200, 300, 300],
                 borderColor: "rgba(0, 82, 255, 1)",
-                backgroundColor: "rgba(195, 245, 60, 0.30)",
+                borderWidth: 1,
+                backgroundColor: gradientFill,
                 lineTension: 0,
+                pointRadius: 0,
             },
         ],
     };
@@ -155,7 +184,7 @@ const Dashboard: FC<dashboardProps> = ({
         if (dashboardRef.current) {
             setDashboardDimensions({
                 width: dashboardRef.current.offsetWidth,
-                height: dashboardRef.current.offsetHeight,
+                height: dashboardRef.current.offsetHeight + 51,
             });
         }
     }, [windowWidth]);
@@ -218,7 +247,21 @@ const Dashboard: FC<dashboardProps> = ({
                                     : "0"}
                             </p>
                         </div>
-                        <p id="initial-amount">1500 USDC Initial investment</p>
+                        <div className="balance-info">
+                            <p id="balance-info-text">
+                                {`Total deposited amount: ${formatBalanceString(
+                                    userData
+                                        ? userData.totalDeposited.toString()
+                                        : "0"
+                                )} USDC`}
+                            </p>
+                            <p id="balance-info-text">{`Total withdrawn amount: ${formatBalanceString(
+                                userData
+                                    ? userData.totalWithdrawn.toString()
+                                    : "0"
+                            )} USDC`}</p>
+                        </div>
+
                         <div className="btns">
                             <div
                                 className="invest"
@@ -239,18 +282,21 @@ const Dashboard: FC<dashboardProps> = ({
                         </div>
                     </div>
                     <div className="balance-graph-window">
+                        <div className="top">
+                            <p>Overview</p>
+                            <select id="interval">
+                                <option value="1">Last 30 days</option>
+                                <option value="3">Last 3 months</option>
+                                <option value="6">Last 6 months</option>
+                                <option value="9">Last 9 months</option>
+                                <option value="12">Last year</option>
+                            </select>
+                        </div>
                         <Line options={options} data={data} />
                     </div>
                     <div className="roi-window">
                         <div className="top-part">
                             <p>Insight</p>
-                            <select id="time-interval">
-                                <option>Last 30 days</option>
-                                <option>Last 3 months</option>
-                                <option>Last 6 months</option>
-                                <option>Last 9 months</option>
-                                <option>Last year</option>
-                            </select>
                         </div>
                         <div className="indicators">
                             <div className="roi-indicator">
@@ -258,16 +304,21 @@ const Dashboard: FC<dashboardProps> = ({
                                     <p>ROI</p>
                                     <img src={roi} alt="ROI indicator" />
                                 </div>
-                                <p>32%</p>
+                                <p>
+                                    {`${formatPercentage(
+                                        userData ? userData.ROI : 0
+                                    )}%`}
+                                </p>
                             </div>
-                            <p id="amount">That’s 500 USDC</p>
-                        </div>
-                        <div className="bottom-part">
-                            <p id="percentage">83%</p>
-                            <p id="text">
-                                Predicted ROI
-                                <br />
-                                by end of year
+                            <p id="amount">
+                                {`That's ${
+                                    userData
+                                        ? calculateROIEarnings(
+                                              userData.ROI,
+                                              userData.totalDeposited
+                                          )
+                                        : "0"
+                                } USDC`}
                             </p>
                         </div>
                     </div>

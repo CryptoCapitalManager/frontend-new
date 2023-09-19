@@ -25,15 +25,17 @@ const Onboarding: FC<onboardingProps> = ({
     });
     const pageRef = useRef<any>(null);
 
-    // FIX: Temporary fix for fetch error from the blockchain
+    // TODO: Fix temporary fix for fetch error from the blockchain
     useEffect(() => {
+        /*
+        console.log(hasInvested);
         if (!dataLoaded) {
             const timer = setTimeout(() => {
                 window.location.reload();
-            }, 8000);
+            }, 18000);
 
             return () => clearTimeout(timer);
-        }
+        }*/
     }, []);
 
     useEffect(() => {
