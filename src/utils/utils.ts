@@ -10,6 +10,8 @@ import {
 import usdc_abi from "../abi/usdc_goerli.json";
 import trading_abi from "../abi/trading.json";
 
+import { balanceChangeDTO, userDataDTO } from "./dto";
+
 import eth_pair from "../res/svg/trading-pairs/eth-pair.svg";
 import btc_pair from "../res/svg/trading-pairs/bitcoin-pair.svg";
 import arb_pair from "../res/svg/trading-pairs/arb-pair.svg";
@@ -64,8 +66,50 @@ const getTradingPairIcon = (pair: string): string => {
 const formatBalanceString = (balance: string): string => {
     const dotIndex = balance.indexOf(".");
     return dotIndex !== -1
-        ? balance.substring(0, dotIndex + 2)
+        ? balance.substring(0, dotIndex + 3)
         : `${balance}.0`;
+};
+
+const maxYpoint = (userData: userDataDTO): number => {
+    let maxYpoint = 0;
+
+    userData.balanceChanges.forEach((change) => {
+        if (maxYpoint < change.amount) {
+            maxYpoint = change.amount;
+        }
+    });
+
+    maxYpoint = Math.round(maxYpoint / 100) * 175;
+
+    return maxYpoint;
+};
+
+const filterUserData = (
+    userData: userDataDTO,
+    period: number
+): balanceChangeDTO[] => {
+    const currentDate = new Date().getTime();
+    const subtractedMonths = period * 31 * 24 * 60 * 60 * 1000;
+
+    const periodThreshold = new Date(currentDate - subtractedMonths);
+
+    const filteredData: balanceChangeDTO[] = [];
+
+    userData.balanceChanges.forEach((change) => {
+        if (new Date(change.date) > periodThreshold) {
+            filteredData.push({
+                actionType: change.actionType,
+                amount: change.amount,
+                date: change.date,
+            });
+        }
+    });
+
+    if (filteredData.length === 1) {
+        filteredData.push(filteredData[0]);
+    }
+
+    return filteredData;
 };
 
 const formatPercentage = (percentage: number): string => {
@@ -242,4 +286,6 @@ export {
     connectToWallet,
     metamaskConnectionCheck,
     metamaskListener,
+    maxYpoint,
+    filterUserData,
 };

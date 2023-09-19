@@ -1,18 +1,6 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    Legend,
-    LineElement,
-    LinearScale,
-    PointElement,
-    Title,
-    Tooltip,
-    Filler,
-    LineOptions,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+import { AreaChart, Area, Tooltip, ResponsiveContainer, YAxis } from "recharts";
 
 import "./Dashboard.scss";
 
@@ -26,6 +14,7 @@ import Withdraw from "./Withdraw/Withdraw";
 import TransactionsTable from "./TransactionsTable/TransactionsTable";
 
 import {
+    balanceChangeDTO,
     tradingPairDTO,
     tradingPairDataDTO,
     userDataDTO,
@@ -33,9 +22,53 @@ import {
 import { dashboardProps } from "../../../../utils/props";
 import {
     calculateROIEarnings,
+    filterUserData,
     formatBalanceString,
     formatPercentage,
+    maxYpoint,
 } from "../../../../utils/utils";
+
+const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+        return (
+            <div
+                className="container"
+                style={{
+                    background: "rgba(68, 68, 68, 1)",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "7px 5px",
+                    borderRadius: "5px 5px 5px 5px",
+                }}
+            >
+                <p
+                    className="custom-tooltip"
+                    style={{
+                        color: "rgba(255, 255, 255, 1)",
+                        fontFamily: "Roboto",
+                        fontSize: "20px",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                    }}
+                >{`${formatBalanceString(payload[0].value.toString())}`}</p>
+                <p
+                    style={{
+                        marginLeft: "5px",
+                        color: "rgba(255, 255, 255, 1)",
+                        fontFamily: "Roboto",
+                        fontSize: "14px",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                    }}
+                >
+                    USDC
+                </p>
+            </div>
+        );
+    }
+
+    return null;
+};
 
 const Dashboard: FC<dashboardProps> = ({
     windowWidth,
@@ -45,17 +78,6 @@ const Dashboard: FC<dashboardProps> = ({
     balanceUSDC,
     hasInvested,
 }) => {
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        PointElement,
-        LineElement,
-        Title,
-        Tooltip,
-        Filler,
-        Legend
-    );
-
     const [investVisible, setInvestVisible] = useState<boolean>(false);
     const [withdrawVisible, setWithdrawVisible] = useState<boolean>(false);
     const [userData, setUserData] = useState<userDataDTO>();
@@ -67,88 +89,14 @@ const Dashboard: FC<dashboardProps> = ({
         height: 0,
     });
 
-    const gradient = document.createElement("canvas").getContext("2d");
-    const gradientFill = gradient?.createLinearGradient(0, 0, 0, 400);
-    gradientFill!.addColorStop(0, "rgba(0, 82, 255, 0.5)");
-    gradientFill!.addColorStop(1, "rgba(0, 82, 255, 0)");
-
-    const options = {
-        plugins: {
-            filler: {
-                propagate: false,
-            },
-            title: {
-                display: false,
-            },
-            legend: {
-                display: false,
-            },
-            tooltip: {
-                labelColor: "rgba(0, 0, 0, 1)",
-                callbacks: {
-                    label: (context: any) => {
-                        const amount = context.parsed.y;
-
-                        return `${amount} USDC`;
-                    },
-                    title: (context: any) => {
-                        return "";
-                    },
-                },
-            },
-        },
-        interaction: {
-            intersect: false,
-        },
-        scales: {
-            y: {
-                ticks: {
-                    display: false,
-                },
-                grid: {
-                    drawBorder: false,
-                    display: false,
-                },
-                border: { display: false },
-            },
-            x: {
-                ticks: {
-                    display: false,
-                },
-                grid: {
-                    drawBorder: false,
-                    display: false,
-                },
-                border: { display: false },
-            },
-        },
-    };
-
-    const labels = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-    ];
-
-    const data = {
-        labels,
-        datasets: [
-            {
-                fill: "start",
-                label: "Deposit",
-                data: [200, 600, 1000, 120, 200, 300, 300],
-                borderColor: "rgba(0, 82, 255, 1)",
-                borderWidth: 1,
-                backgroundColor: gradientFill,
-                lineTension: 0,
-                pointRadius: 0,
-            },
-        ],
-    };
+    const graphRef = useRef<any>(null);
+    const [graphDimensions, setGraphDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
+    const [filterPeriod, setFilterPeriod] = useState<number>(1);
+    const [maxYPoint, setMaxYPoint] = useState<number>(0);
+    const [graphData, setGraphData] = useState<balanceChangeDTO[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -160,6 +108,8 @@ const Dashboard: FC<dashboardProps> = ({
                 const data = (await result.json()) as userDataDTO;
 
                 setUserData(data);
+                setMaxYPoint(maxYpoint(data));
+                setGraphData(filterUserData(data, filterPeriod));
 
                 result = await fetch(
                     "https://investiva-test-api.onrender.com/data/trades"
@@ -187,7 +137,19 @@ const Dashboard: FC<dashboardProps> = ({
                 height: dashboardRef.current.offsetHeight + 51,
             });
         }
+        if (graphRef.current) {
+            setGraphDimensions({
+                width: graphRef.current.offsetWidth - 48,
+                height: graphRef.current.offsetHeight,
+            });
+        }
     }, [windowWidth]);
+
+    useEffect(() => {
+        if (userData) {
+            setGraphData(filterUserData(userData, filterPeriod));
+        }
+    }, [filterPeriod]);
 
     return !wallet || !hasInvested ? (
         <Navigate to={"/onboarding"} />
@@ -281,10 +243,19 @@ const Dashboard: FC<dashboardProps> = ({
                             </div>
                         </div>
                     </div>
-                    <div className="balance-graph-window">
-                        <div className="top">
+                    <div className="balance-graph-window" ref={graphRef}>
+                        <div
+                            className="top"
+                            style={{ width: graphDimensions.width }}
+                        >
                             <p>Overview</p>
-                            <select id="interval">
+                            <select
+                                id="interval"
+                                value={filterPeriod}
+                                onChange={(e) => {
+                                    setFilterPeriod(+e.target.value);
+                                }}
+                            >
                                 <option value="1">Last 30 days</option>
                                 <option value="3">Last 3 months</option>
                                 <option value="6">Last 6 months</option>
@@ -292,7 +263,54 @@ const Dashboard: FC<dashboardProps> = ({
                                 <option value="12">Last year</option>
                             </select>
                         </div>
-                        <Line options={options} data={data} />
+                        <ResponsiveContainer width="100%" height="100%">
+                            <AreaChart
+                                data={graphData}
+                                margin={{
+                                    top: 0,
+                                    right: 0,
+                                    left: 0,
+                                    bottom: 0,
+                                }}
+                            >
+                                <Tooltip
+                                    content={<CustomTooltip />}
+                                    cursor={{ fill: "transparent" }}
+                                />
+                                <defs>
+                                    <linearGradient
+                                        id="fillGradient"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            stop-color="#0052FF"
+                                            stop-opacity="0.88"
+                                        />
+                                        <stop
+                                            offset="0.265625"
+                                            stop-color="#0052FF"
+                                            stop-opacity="0.6"
+                                        />
+                                        <stop
+                                            offset="1"
+                                            stop-color="#0052FF"
+                                            stop-opacity="0"
+                                        />
+                                    </linearGradient>
+                                </defs>
+                                <YAxis domain={[0, maxYPoint]} hide={true} />
+                                <Area
+                                    type="linear"
+                                    dataKey="amount"
+                                    stroke="#8884d8"
+                                    fillOpacity={1}
+                                    fill="url(#fillGradient)"
+                                />
+                            </AreaChart>
+                        </ResponsiveContainer>
                     </div>
                     <div className="roi-window">
                         <div className="top-part">

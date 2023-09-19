@@ -28,4 +28,9 @@ interface balanceChangeDTO {
     date: string;
 }
 
-export { type tradingPairDTO, type tradingPairDataDTO, type userDataDTO };
+export {
+    type tradingPairDTO,
+    type tradingPairDataDTO,
+    type balanceChangeDTO,
+    type userDataDTO,
+};
