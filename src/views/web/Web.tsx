@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Provider } from "ethers";
+import { JsonRpcSigner, Provider } from "ethers";
 
 import Landing from "./componenets/Landing/Landing";
 import Onboarding from "./componenets/Onboardning/Onboarding";
@@ -14,7 +14,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
     const [toCalc, setToCalc] = useState<boolean>(false);
 
     const [dataLoaded, setDataLoaded] = useState<boolean>(false);
-    const [provider, setProvider] = useState<Provider>();
+    const [signer, setSigner] = useState<JsonRpcSigner>();
     const [address, setAddress] = useState<string>("");
     const [displayAddress, setDisplayAddress] = useState<string>("Connect");
     const [balanceUSDC, setBalanceUSDC] = useState<string>("0");
@@ -25,7 +25,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
             setDataLoaded,
             setAddress,
             setDisplayAddress,
-            setProvider,
+            setSigner,
             setBalanceUSDC,
             setHasInvested
         );
@@ -63,7 +63,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
                     element={
                         <Dashboard
                             windowWidth={width}
-                            wallet={provider}
+                            signer={signer}
                             address={address}
                             displayAddress={displayAddress}
                             balanceUSDC={balanceUSDC}

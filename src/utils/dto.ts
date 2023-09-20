@@ -28,9 +28,20 @@ interface balanceChangeDTO {
     date: string;
 }
 
+interface withdrawlResponse {
+    args: withdrawlInstance[];
+    inTrade: number;
+}
+
+interface withdrawlInstance {
+    invesmentNumber: number;
+    amount: number;
+}
+
 export {
     type tradingPairDTO,
     type tradingPairDataDTO,
     type balanceChangeDTO,
     type userDataDTO,
+    type withdrawlResponse,
 };

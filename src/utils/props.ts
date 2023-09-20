@@ -1,6 +1,6 @@
 import React from "react";
 import { tradingPairDTO } from "./dto";
-import { Provider } from "ethers";
+import { JsonRpcSigner, Provider } from "ethers";
 
 interface webProps {
     windowWidth: number;
@@ -71,7 +71,7 @@ interface depositProps {
 
 interface dashboardProps {
     windowWidth: number;
-    wallet: Provider | undefined;
+    signer: JsonRpcSigner | undefined;
     address: string;
     displayAddress: string;
     balanceUSDC: string;
@@ -79,12 +79,15 @@ interface dashboardProps {
 }
 
 interface investProps {
+    signer: JsonRpcSigner | undefined;
     dashboardHeight: number;
     balanceUSDC: string;
     setInvestVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface withdrawProps {
+    signer: JsonRpcSigner | undefined;
+    address: string;
     dashboardHeight: number;
     investedAmount: string;
     setWithdrawVisible: React.Dispatch<React.SetStateAction<boolean>>;

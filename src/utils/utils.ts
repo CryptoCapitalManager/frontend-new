@@ -1,5 +1,5 @@
 import React from "react";
-import { Provider, ethers } from "ethers";
+import { JsonRpcSigner, Provider, ethers } from "ethers";
 
 import {
     ARBITRUM_GOERLI_CONFIGURATION,
@@ -185,7 +185,7 @@ const metamaskConnectionCheck = async (
     setDataLoaded: React.Dispatch<boolean>,
     setAddress: React.Dispatch<string>,
     setDisplayAddress: React.Dispatch<string>,
-    setProvider: React.Dispatch<React.SetStateAction<Provider | undefined>>,
+    setSigner: React.Dispatch<React.SetStateAction<JsonRpcSigner | undefined>>,
     setBalanceUSDC: React.Dispatch<React.SetStateAction<string>>,
     setHasInvested: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
@@ -221,8 +221,9 @@ const metamaskConnectionCheck = async (
     }
 
     const provider = new ethers.BrowserProvider(metamask);
+    const signer = await provider.getSigner();
 
-    setProvider(provider);
+    setSigner(signer);
     setAddress(accounts[0]);
     setDisplayAddress(
         `0x${accounts[0].slice(2, 5).toUpperCase()}...${accounts[0]

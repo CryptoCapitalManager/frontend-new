@@ -72,7 +72,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 const Dashboard: FC<dashboardProps> = ({
     windowWidth,
-    wallet,
+    signer,
     address,
     displayAddress,
     balanceUSDC,
@@ -155,7 +155,7 @@ const Dashboard: FC<dashboardProps> = ({
         setMaxYPoint(maxYpoint(graphData));
     }, [graphData]);
 
-    return !wallet || !hasInvested ? (
+    return !signer || !hasInvested ? (
         <Navigate to={"/onboarding"} />
     ) : (
         <div className="dashboard-web" ref={dashboardRef}>
@@ -172,6 +172,7 @@ const Dashboard: FC<dashboardProps> = ({
             )}
             {investVisible && (
                 <Invest
+                    signer={signer}
                     dashboardHeight={dashboardDimensions.height}
                     balanceUSDC={balanceUSDC}
                     setInvestVisible={setInvestVisible}
@@ -179,6 +180,8 @@ const Dashboard: FC<dashboardProps> = ({
             )}
             {withdrawVisible && (
                 <Withdraw
+                    signer={signer}
+                    address={address}
                     dashboardHeight={dashboardDimensions.height}
                     setWithdrawVisible={setWithdrawVisible}
                     investedAmount={
@@ -290,18 +293,18 @@ const Dashboard: FC<dashboardProps> = ({
                                         y2="1"
                                     >
                                         <stop
-                                            stop-color="#0052FF"
-                                            stop-opacity="0.88"
+                                            stopColor="#0052FF"
+                                            stopOpacity="0.88"
                                         />
                                         <stop
                                             offset="0.265625"
-                                            stop-color="#0052FF"
-                                            stop-opacity="0.6"
+                                            stopColor="#0052FF"
+                                            stopOpacity="0.6"
                                         />
                                         <stop
                                             offset="1"
-                                            stop-color="#0052FF"
-                                            stop-opacity="0"
+                                            stopColor="#0052FF"
+                                            stopOpacity="0"
                                         />
                                     </linearGradient>
                                 </defs>

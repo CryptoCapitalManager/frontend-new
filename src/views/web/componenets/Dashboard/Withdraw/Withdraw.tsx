@@ -3,16 +3,56 @@ import { ethers } from "ethers";
 
 import "./Withdraw.scss";
 
+import trading_abi from "../../../../../abi/trading.json";
+
 import usdc from "../../../../../res/svg/usdc-balance.svg";
 
 import { withdrawProps } from "../../../../../utils/props";
+import { TRADING_GOERLI_ADDRESS } from "../../../../../utils/const";
+import { withdrawlResponse } from "../../../../../utils/dto";
 
 const Withdraw: FC<withdrawProps> = ({
+    signer,
+    address,
     dashboardHeight,
     investedAmount,
     setWithdrawVisible,
 }) => {
     const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
+
+    const withdraw = async () => {
+        let withdrawlData: withdrawlResponse;
+
+        try {
+            const result = await fetch(
+                `https://investiva-test-api.onrender.com/user/withdraw/${address}?amount=${withdrawAmount}`
+            );
+            withdrawlData = await result.json();
+        } catch (e) {
+            // TODO: Tell user something went wrong
+            return;
+        }
+
+        console.log(withdrawlData);
+
+        const trading = new ethers.Contract(
+            TRADING_GOERLI_ADDRESS,
+            trading_abi.abi,
+            signer
+        );
+
+        try {
+            await trading.withdrawMultiple(
+                withdrawlData.args,
+                withdrawlData.args.length
+            );
+        } catch (e) {
+            // TODO: Tell user all is good
+            console.log(e);
+        }
+
+        setWithdrawVisible(false);
+    };
 
     return (
         <div
@@ -49,6 +89,12 @@ const Withdraw: FC<withdrawProps> = ({
                                 }
                             }}
                             disabled={+investedAmount === 0}
+                            style={{
+                                color:
+                                    +withdrawAmount > 0
+                                        ? "rgba(0, 0, 0, 1)"
+                                        : "",
+                            }}
                         />
                     </div>
                     <div className="right">
@@ -63,7 +109,14 @@ const Withdraw: FC<withdrawProps> = ({
                 {withdrawAmount === 0 ? (
                     <div className="empty-balance">Enter an amount</div>
                 ) : (
-                    <div className="good-balance"> Deposit to account</div>
+                    <div
+                        className="good-balance"
+                        onClick={() => {
+                            withdraw();
+                        }}
+                    >
+                        Withdraw from account
+                    </div>
                 )}
             </div>
         </div>
