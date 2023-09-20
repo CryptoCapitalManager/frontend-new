@@ -49,6 +49,7 @@ interface tableProps {
 }
 
 interface onboardingProps {
+    signer: JsonRpcSigner | undefined;
     windowWidth: number;
     dataLoaded: boolean;
     displayAddress: string;
@@ -66,6 +67,7 @@ interface welcomeProps {
 }
 
 interface depositProps {
+    signer: JsonRpcSigner | undefined;
     balanceUSDC: string;
 }
 

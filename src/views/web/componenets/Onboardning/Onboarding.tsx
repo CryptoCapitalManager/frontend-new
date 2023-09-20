@@ -12,6 +12,7 @@ import { onboardingProps } from "../../../../utils/props";
 import { Navigate } from "react-router-dom";
 
 const Onboarding: FC<onboardingProps> = ({
+    signer,
     windowWidth,
     dataLoaded,
     displayAddress,
@@ -52,7 +53,7 @@ const Onboarding: FC<onboardingProps> = ({
             ) : hasInvested ? (
                 <Navigate to={"/dashboard"} />
             ) : (
-                <Deposit balanceUSDC={balanceUSDC} />
+                <Deposit signer={signer} balanceUSDC={balanceUSDC} />
             )}
         </div>
     );

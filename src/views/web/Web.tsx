@@ -49,6 +49,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
                     path="/onboarding"
                     element={
                         <Onboarding
+                            signer={signer}
                             windowWidth={width}
                             dataLoaded={dataLoaded}
                             displayAddress={displayAddress}

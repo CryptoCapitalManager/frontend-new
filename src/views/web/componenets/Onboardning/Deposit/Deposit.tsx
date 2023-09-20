@@ -4,14 +4,109 @@ import { ethers } from "ethers";
 
 import "./Deposit.scss";
 
+import trading_abi from "../../../../../abi/trading.json";
+import usdc_abi from "../../../../../abi/usdc_goerli.json";
+
 import usdc from "../../../../../res/svg/usdc-balance.svg";
 
 import { depositProps } from "../../../../../utils/props";
+import {
+    ARBITRUM_GOERLI_USDC_ADDRESS,
+    REJECTED_TRANSACTION,
+    TRADING_GOERLI_ADDRESS,
+    USDC_APPROVAL_NEEDED,
+} from "../../../../../utils/const";
 
-const Deposit: FC<depositProps> = ({ balanceUSDC }) => {
+const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
     const [depositAmount, setDepositAmount] = useState<number>(0);
+    const [goToApproval, setGoToApproval] = useState<boolean>(false);
 
-    return (
+    const deposit = async () => {
+        const parsedAmount = depositAmount * Math.pow(10, 6);
+
+        const trading = new ethers.Contract(
+            TRADING_GOERLI_ADDRESS,
+            trading_abi.abi,
+            signer
+        );
+
+        try {
+            await trading.deposit(parsedAmount);
+
+            // TODO: Tell user transaction has been processed succesfully
+            // TODO: Tell user that window will reload in 10 seconds after previous toast
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 10000);
+        } catch (e: any) {
+            if (e.reason === USDC_APPROVAL_NEEDED) {
+                setGoToApproval(true);
+                return;
+            } else {
+                if (e.reason === REJECTED_TRANSACTION) {
+                    // TODO: Tell user that the action has been rejected
+                } else {
+                    // TODO: Tell user an error occured
+                }
+            }
+        }
+    };
+
+    const approve = async () => {
+        const usdc = new ethers.Contract(
+            ARBITRUM_GOERLI_USDC_ADDRESS,
+            usdc_abi.abi,
+            signer
+        );
+
+        try {
+            await usdc.approve(
+                await signer?.getAddress(),
+                depositAmount * Math.pow(10, 6)
+            );
+        } catch (e: any) {
+            if (e.reason === REJECTED_TRANSACTION) {
+                // TODO: Tell user that the action has been rejected
+                return;
+            } else {
+                // TODO: Tell user an error occured
+                return;
+            }
+        }
+
+        deposit();
+    };
+
+    return goToApproval ? (
+        <div className="approval-panel">
+            <div className="tab-header">
+                <div
+                    className="btn"
+                    onClick={() => {
+                        setGoToApproval(false);
+                        // TODO: Tell user that the deposit has been aborted
+                    }}
+                >
+                    X
+                </div>
+            </div>
+            <div className="notification-field">
+                <p>
+                    To enable the deposit in our smart contract, you need to
+                    approve the spending of USDC.
+                </p>
+            </div>
+            <div
+                className="approval-check"
+                onClick={() => {
+                    approve();
+                }}
+            >
+                Approve spending
+            </div>
+        </div>
+    ) : (
         <div className="deposit-web">
             <p id="header">Deposit</p>
             <div
@@ -61,9 +156,20 @@ const Deposit: FC<depositProps> = ({ balanceUSDC }) => {
             </div>
             {ethers.getBigInt(balanceUSDC) >= ethers.getBigInt(100) ? (
                 depositAmount === 0 ? (
-                    <div className="empty-balance">Enter an amount</div>
+                    <div className="empty-amount">Enter an amount</div>
+                ) : depositAmount >= 100 ? (
+                    <div
+                        className="good-amount"
+                        onClick={() => {
+                            deposit();
+                        }}
+                    >
+                        Deposit to account
+                    </div>
                 ) : (
-                    <div className="good-balance"> Deposit to account</div>
+                    <div className="bad-amount">
+                        Minimum deposit is 100 USDC
+                    </div>
                 )
             ) : (
                 <div className="bad-balance">

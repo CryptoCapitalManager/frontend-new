@@ -8,7 +8,10 @@ import trading_abi from "../../../../../abi/trading.json";
 import usdc from "../../../../../res/svg/usdc-balance.svg";
 
 import { withdrawProps } from "../../../../../utils/props";
-import { TRADING_GOERLI_ADDRESS } from "../../../../../utils/const";
+import {
+    REJECTED_TRANSACTION,
+    TRADING_GOERLI_ADDRESS,
+} from "../../../../../utils/const";
 import { withdrawlResponse } from "../../../../../utils/dto";
 
 const Withdraw: FC<withdrawProps> = ({
@@ -29,11 +32,9 @@ const Withdraw: FC<withdrawProps> = ({
             );
             withdrawlData = await result.json();
         } catch (e) {
-            // TODO: Tell user something went wrong
+            // TODO: Tell user and error occured while prepairing the transaction
             return;
         }
-
-        console.log(withdrawlData);
 
         const trading = new ethers.Contract(
             TRADING_GOERLI_ADDRESS,
@@ -46,9 +47,15 @@ const Withdraw: FC<withdrawProps> = ({
                 withdrawlData.args,
                 withdrawlData.args.length
             );
-        } catch (e) {
-            // TODO: Tell user all is good
-            console.log(e);
+
+            // TODO: Tell user transaction has been sent (create adequate promise toast)
+            // TODO: Tell user that window will reload in 10 seconds after previous toast
+        } catch (e: any) {
+            if (e.reason === REJECTED_TRANSACTION) {
+                // TODO: Tell user that the action has been rejected
+            } else {
+                // TODO: Tell user an error occured
+            }
         }
 
         setWithdrawVisible(false);

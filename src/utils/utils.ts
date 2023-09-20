@@ -191,11 +191,14 @@ const metamaskConnectionCheck = async (
 ) => {
     // Check if using any wallet
     if (!window.ethereum) {
+        // TODO: Tell user that metamask is needed
+        setDataLoaded(true);
         return;
     }
 
     // Check if using metamask
     if (!window.ethereum.isMetaMask) {
+        setDataLoaded(true);
         return;
     }
 
@@ -208,7 +211,7 @@ const metamaskConnectionCheck = async (
     // Check if any account is connected
     if (accounts.length === 0) {
         // TODO: Tell user to open up metamask
-
+        setDataLoaded(true);
         return;
     }
 
