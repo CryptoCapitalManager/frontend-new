@@ -10,9 +10,7 @@ import usdc from "../../../../../res/svg/usdc-balance.svg";
 
 import { investProps } from "../../../../../utils/props";
 import {
-    ARBITRUM_GOERLI_USDC_ADDRESS,
     REJECTED_TRANSACTION,
-    TRADING_GOERLI_ADDRESS,
     USDC_APPROVAL_NEEDED,
 } from "../../../../../utils/const";
 
@@ -29,7 +27,7 @@ const Invest: FC<investProps> = ({
         const parsedAmount = investAmount * Math.pow(10, 6);
 
         const trading = new ethers.Contract(
-            TRADING_GOERLI_ADDRESS,
+            process.env.REACT_APP_TRADING_ADDRESS!,
             trading_abi.abi,
             signer
         );
@@ -62,14 +60,14 @@ const Invest: FC<investProps> = ({
 
     const approve = async () => {
         const usdc = new ethers.Contract(
-            ARBITRUM_GOERLI_USDC_ADDRESS,
+            process.env.REACT_APP_USDC_ADDRESS!,
             usdc_abi.abi,
             signer
         );
 
         try {
             await usdc.approve(
-                await signer?.getAddress(),
+                process.env.REACT_APP_TRADING_ADDRESS,
                 investAmount * Math.pow(10, 6)
             );
         } catch (e: any) {

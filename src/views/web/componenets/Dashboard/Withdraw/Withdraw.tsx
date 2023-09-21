@@ -8,10 +8,7 @@ import trading_abi from "../../../../../abi/trading.json";
 import usdc from "../../../../../res/svg/usdc-balance.svg";
 
 import { withdrawProps } from "../../../../../utils/props";
-import {
-    REJECTED_TRANSACTION,
-    TRADING_GOERLI_ADDRESS,
-} from "../../../../../utils/const";
+import { REJECTED_TRANSACTION } from "../../../../../utils/const";
 import { withdrawlResponse } from "../../../../../utils/dto";
 
 const Withdraw: FC<withdrawProps> = ({
@@ -37,7 +34,7 @@ const Withdraw: FC<withdrawProps> = ({
         }
 
         const trading = new ethers.Contract(
-            TRADING_GOERLI_ADDRESS,
+            process.env.REACT_APP_TRADING_ADDRESS!,
             trading_abi.abi,
             signer
         );

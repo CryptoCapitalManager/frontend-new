@@ -22,51 +22,72 @@ import {
 import { dashboardProps } from "../../../../utils/props";
 import {
     calculateROIEarnings,
+    capitalizeString,
     filterUserData,
     formatBalanceString,
     formatPercentage,
     maxYpoint,
 } from "../../../../utils/utils";
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
         return (
             <div
                 className="container"
                 style={{
-                    background: "rgba(68, 68, 68, 1)",
                     display: "flex",
-                    alignItems: "center",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    background: "rgba(68, 68, 68, 1)",
                     padding: "7px 5px",
-                    borderRadius: "5px 5px 5px 5px",
+                    borderRadius: "5px",
                 }}
             >
                 <p
-                    className="custom-tooltip"
+                    id="event"
                     style={{
                         color: "rgba(255, 255, 255, 1)",
                         fontFamily: "Roboto",
-                        fontSize: "20px",
+                        fontSize: "18px",
                         fontStyle: "normal",
-                        fontWeight: "400",
+                        fontWeight: "500",
                     }}
-                >{`${formatBalanceString(payload[0].value.toString())}`}</p>
-                <p
+                >{`${capitalizeString(payload[0].payload.actionType)}`}</p>
+                <div
+                    className="amount-text"
                     style={{
-                        marginLeft: "5px",
-                        color: "rgba(255, 255, 255, 1)",
-                        fontFamily: "Roboto",
-                        fontSize: "14px",
-                        fontStyle: "normal",
-                        fontWeight: "400",
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: "5px",
                     }}
                 >
-                    USDC
-                </p>
+                    <p
+                        id="amount"
+                        style={{
+                            color: "rgba(255, 255, 255, 1)",
+                            fontFamily: "Roboto",
+                            fontSize: "20px",
+                            fontStyle: "normal",
+                            fontWeight: "400",
+                        }}
+                    >{`${formatBalanceString(payload[0].value.toString())}`}</p>
+                    <p
+                        id="currency"
+                        style={{
+                            color: "rgba(255, 255, 255, 1)",
+                            fontFamily: "Roboto",
+                            fontSize: "14px",
+                            fontStyle: "normal",
+                            fontWeight: "400",
+                            margin: "5.5px 0px 0px 5px",
+                        }}
+                    >
+                        USDC
+                    </p>
+                </div>
             </div>
         );
     }
-
     return null;
 };
 
@@ -106,6 +127,8 @@ const Dashboard: FC<dashboardProps> = ({
                 );
 
                 const data = (await result.json()) as userDataDTO;
+
+                console.log(data.balanceChanges);
 
                 setUserData(data);
                 setMaxYPoint(maxYpoint(data.balanceChanges));

@@ -1,11 +1,5 @@
 import React from "react";
-import { JsonRpcSigner, Provider, ethers } from "ethers";
-
-import {
-    ARBITRUM_GOERLI_CONFIGURATION,
-    ARBITRUM_GOERLI_USDC_ADDRESS,
-    TRADING_GOERLI_ADDRESS,
-} from "./const";
+import { JsonRpcSigner, ethers } from "ethers";
 
 import usdc_abi from "../abi/usdc_goerli.json";
 import trading_abi from "../abi/trading.json";
@@ -152,7 +146,7 @@ const connectToWallet = async () => {
     });
 
     // Proveri chain
-    if (chainId !== ARBITRUM_GOERLI_CONFIGURATION.chainId) {
+    if (chainId !== process.env.REACT_APP_CHAIN_ID) {
         // Nije na Arb mrezi
 
         // Predji na Arb
@@ -160,19 +154,15 @@ const connectToWallet = async () => {
             method: "wallet_addEthereumChain",
             params: [
                 {
-                    chainId: ARBITRUM_GOERLI_CONFIGURATION.chainId,
-                    rpcUrls: ARBITRUM_GOERLI_CONFIGURATION.rpcUrls,
-                    chainName: ARBITRUM_GOERLI_CONFIGURATION.chainName,
+                    chainId: process.env.REACT_APP_CHAIN_ID,
+                    rpcUrls: [process.env.REACT_APP_RPC_URL],
+                    chainName: process.env.REACT_APP_CHAIN_NAME,
                     nativeCurrency: {
-                        name: ARBITRUM_GOERLI_CONFIGURATION.nativeCurrency.name,
-                        symbol: ARBITRUM_GOERLI_CONFIGURATION.nativeCurrency
-                            .symbol,
-                        decimals:
-                            ARBITRUM_GOERLI_CONFIGURATION.nativeCurrency
-                                .decimals,
+                        name: process.env.REACT_APP_CURRENCY_NAME,
+                        symbol: process.env.REACT_APP_SYMBOL,
+                        decimals: +process.env.REACT_APP_DECIMALS!,
                     },
-                    blockExplorerUrls:
-                        ARBITRUM_GOERLI_CONFIGURATION.blockExplorerUrls,
+                    blockExplorerUrls: [process.env.REACT_APP_BLOCK_EXPLORER],
                 },
             ],
         });
@@ -198,15 +188,24 @@ const metamaskConnectionCheck = async (
 
     // Check if using metamask
     if (!window.ethereum.isMetaMask) {
+        // TODO: Tell user that metamask is needed
         setDataLoaded(true);
         return;
     }
 
     const metamask = window.ethereum;
 
-    const accounts: any = await metamask.request({
-        method: "eth_accounts",
-    });
+    let accounts: any;
+
+    try {
+        accounts = await metamask.request({
+            method: "eth_accounts",
+        });
+    } catch (e) {
+        // TODO: Tell user that an error occured while connecting to metamask
+        setDataLoaded(true);
+        return;
+    }
 
     // Check if any account is connected
     if (accounts.length === 0) {
@@ -216,10 +215,17 @@ const metamaskConnectionCheck = async (
     }
 
     // Get current chainID
-    const chainId: any = await metamask.request({ method: "eth_chainId" });
+    let chainId: any;
+    try {
+        chainId = await metamask.request({ method: "eth_chainId" });
+    } catch (e) {
+        // TODO: Tell user that an error occured while connecting to metamask
+        setDataLoaded(true);
+        return;
+    }
 
     // Check chainID
-    if (chainId !== ARBITRUM_GOERLI_CONFIGURATION.chainId) {
+    if (chainId !== process.env.REACT_APP_CHAIN_ID) {
         return;
     }
 
@@ -235,7 +241,7 @@ const metamaskConnectionCheck = async (
     );
 
     const constractUSDC = new ethers.Contract(
-        ARBITRUM_GOERLI_USDC_ADDRESS,
+        process.env.REACT_APP_USDC_ADDRESS!,
         usdc_abi.abi,
         provider
     );
@@ -245,7 +251,7 @@ const metamaskConnectionCheck = async (
     setBalanceUSDC(balance.toString());
 
     const trading = new ethers.Contract(
-        TRADING_GOERLI_ADDRESS,
+        process.env.REACT_APP_TRADING_ADDRESS!,
         trading_abi.abi,
         provider
     );
@@ -275,10 +281,14 @@ const metamaskListener = async () => {
         window.location.reload();
     });
     metamask.on("chainChanged", (chainId) => {
-        if (chainId !== ARBITRUM_GOERLI_CONFIGURATION.chainId) {
+        if (chainId !== process.env.REACT_APP_CHAIN_ID) {
             window.location.reload();
         }
     });
+};
+
+const capitalizeString = (word: string): string => {
+    return `${word.charAt(0).toUpperCase() + word.slice(1)}`;
 };
 
 export {
@@ -292,4 +302,5 @@ export {
     metamaskListener,
     maxYpoint,
     filterUserData,
+    capitalizeString,
 };
