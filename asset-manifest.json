@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend-new/static/css/main.61524d89.css",
-    "main.js": "/frontend-new/static/js/main.455b53d4.js",
+    "main.js": "/frontend-new/static/js/main.67cd4a7c.js",
     "static/media/bojan-founder.png": "/frontend-new/static/media/bojan-founder.bdd8e0220dd55b50519f.png",
     "static/media/our-experience.svg": "/frontend-new/static/media/our-experience.fff57980a4b30c86ff571f6c9a852d0c.svg",
     "static/media/dodge-pair.svg": "/frontend-new/static/media/dodge-pair.e576f7f7fc100c03e82b4e4663543981.svg",
@@ -40,10 +40,10 @@
     "static/media/checked.svg": "/frontend-new/static/media/checked.31533a3d62953bbc2b3758dd33300b0c.svg",
     "static/media/roi-placeholder.svg": "/frontend-new/static/media/roi-placeholder.f48c39fb22849c457310409d31bb99b1.svg",
     "main.61524d89.css.map": "/frontend-new/static/css/main.61524d89.css.map",
-    "main.455b53d4.js.map": "/frontend-new/static/js/main.455b53d4.js.map"
+    "main.67cd4a7c.js.map": "/frontend-new/static/js/main.67cd4a7c.js.map"
   },
   "entrypoints": [
     "static/css/main.61524d89.css",
-    "static/js/main.455b53d4.js"
+    "static/js/main.67cd4a7c.js"
   ]
 }
