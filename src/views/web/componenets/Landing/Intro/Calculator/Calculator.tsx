@@ -8,7 +8,7 @@ import loading from "../../../../../../res/svg/loading-animation.svg";
 import { calculatorProps } from "../../../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../../../utils/utils";
 
-const Calculator: FC<calculatorProps> = ({ data }) => {
+const Calculator: FC<calculatorProps> = ({ windowDimensions, data }) => {
     const currentPeriodTxt = useRef("1 year");
     const maxPeriodTxt = useRef("2 years");
 
@@ -34,7 +34,7 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
             width: elementRef.current.offsetWidth,
             height: elementRef.current.offsetHeight,
         });
-    }, []);
+    }, [windowDimensions]);
 
     // initial data load
     useEffect(() => {

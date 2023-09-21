@@ -49,6 +49,10 @@
             display: flex;
             justify-content: space-between;
 
+            @media (min-width: 1800px) {
+                justify-content: space-evenly;
+            }
+
             width: calc(100% - 20vw);
 
             margin-top: 35px;

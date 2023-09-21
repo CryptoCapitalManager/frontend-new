@@ -13,7 +13,7 @@ import How from "./How/How";
 import { introMobileProps } from "../../../../../utils/props";
 import Comparison from "./Comparison/Comparison";
 
-const Intro: FC<introMobileProps> = ({ data }) => {
+const Intro: FC<introMobileProps> = ({ windowDimensions, data }) => {
     return (
         <div className="intro-mobile">
             <Header />
@@ -21,9 +21,9 @@ const Intro: FC<introMobileProps> = ({ data }) => {
             <How />
             <Comparison />
             <Stats />
-            <Transparency data={data} />
+            <Transparency data={data} windowDimensions={windowDimensions} />
             <Story />
-            <Calculator data={data} />
+            <Calculator data={data} windowDimensions={windowDimensions} />
         </div>
     );
 };

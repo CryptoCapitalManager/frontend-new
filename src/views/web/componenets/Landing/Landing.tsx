@@ -48,7 +48,7 @@ const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowDimensions }) => {
         }
     }, [toCalc]);
 
-    return windowDimensions.width < 1195 ? (
+    return windowDimensions.width < 1360 ? (
         <div className="landing-web-mini">
             <p>mini</p>
         </div>
@@ -56,7 +56,12 @@ const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowDimensions }) => {
         <div className="landing-web">
             <Navbar scrollToSection={scrollToSection} how={how} about={about} />
             <Tag />
-            <Intro how={how} about={about} data={data} />
+            <Intro
+                windowDimensions={windowDimensions}
+                how={how}
+                about={about}
+                data={data}
+            />
             <Footer />
         </div>
     );

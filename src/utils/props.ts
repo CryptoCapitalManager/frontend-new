@@ -6,6 +6,10 @@ interface webProps {
     windowDimensions: windowDimensions;
 }
 
+interface mobileProps {
+    windowDimensions: windowDimensions;
+}
+
 interface windowDimensions {
     width: number;
     height: number;
@@ -17,6 +21,10 @@ interface landingProps {
     windowDimensions: windowDimensions;
 }
 
+interface mobileLandingProps {
+    windowDimensions: windowDimensions;
+}
+
 interface navbarProps {
     scrollToSection: (ref: React.MutableRefObject<any>) => void;
     how: React.MutableRefObject<null>;
@@ -24,6 +32,7 @@ interface navbarProps {
 }
 
 interface introWebProps {
+    windowDimensions: windowDimensions;
     how: React.MutableRefObject<null>;
     about: React.MutableRefObject<null>;
     data: tradingPairDTO[];
@@ -31,6 +40,7 @@ interface introWebProps {
 
 interface introMobileProps {
     data: tradingPairDTO[];
+    windowDimensions: windowDimensions;
 }
 
 interface howProps {
@@ -43,14 +53,17 @@ interface storyProps {
 
 interface calculatorProps {
     data: tradingPairDTO[];
+    windowDimensions: windowDimensions;
 }
 
 interface transparencyProps {
     data: tradingPairDTO[];
+    windowDimensions: windowDimensions;
 }
 
 interface tableProps {
     data: tradingPairDTO[];
+    windowDimensions: windowDimensions;
 }
 
 interface onboardingProps {
@@ -107,6 +120,8 @@ interface transactionsTableProps {
 
 export {
     type webProps,
+    type mobileProps,
+    type mobileLandingProps,
     type landingProps,
     type navbarProps,
     type introWebProps,

@@ -12,7 +12,7 @@ import loading from "../../../../../../../res/svg/loading-animation.svg";
 
 import { getTradingPairIcon } from "../../../../../../../utils/utils";
 
-const Table: FC<tableProps> = ({ data }) => {
+const Table: FC<tableProps> = ({ data, windowDimensions }) => {
     const [current, setCurrent] = useState<number>(1);
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
@@ -28,7 +28,7 @@ const Table: FC<tableProps> = ({ data }) => {
             width: tableRef.current.offsetWidth,
             height: tableRef.current.offsetHeight,
         });
-    }, []);
+    }, [windowDimensions]);
 
     useEffect(() => {
         if (data[0] === undefined) {

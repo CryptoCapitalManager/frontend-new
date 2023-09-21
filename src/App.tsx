@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 
 import "./App.scss";
@@ -8,8 +8,8 @@ import Mobile from "./views/mobile/Mobile";
 
 const App = () => {
     const [windowDimensions, setWindowDimensions] = useState({
-        width: 0,
-        height: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
     });
 
     useEffect(() => {
@@ -27,10 +27,14 @@ const App = () => {
         };
     }, []);
 
+    useEffect(() => {
+        console.log(windowDimensions);
+    }, [windowDimensions]);
+
     return (
         <div className="App">
             {isMobile ? (
-                <Mobile />
+                <Mobile windowDimensions={windowDimensions} />
             ) : (
                 <Web windowDimensions={windowDimensions} />
             )}

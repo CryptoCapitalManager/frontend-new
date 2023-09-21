@@ -7,6 +7,10 @@
     align-items: center;
     justify-content: space-between;
 
+    @media (min-width: 1800px) {
+        justify-content: space-evenly;
+    }
+
     margin: 0vw 10vw 0vw 10vw;
     padding: 100px 0px 240px 0px;
 

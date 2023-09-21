@@ -10,7 +10,7 @@ import { tableProps } from "../../../../../../../utils/props";
 import { tradingPairDTO } from "../../../../../../../utils/dto";
 import { Link } from "react-router-dom";
 
-const Table: FC<tableProps> = ({ data }) => {
+const Table: FC<tableProps> = ({ data, windowDimensions }) => {
     const [current, setCurrent] = useState<number>(1);
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);

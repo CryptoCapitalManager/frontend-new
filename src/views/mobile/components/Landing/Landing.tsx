@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import "./Landing.scss";
 
@@ -8,8 +8,9 @@ import Footer from "./Footer/Footer";
 import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
 import mock from "../../../../res/mock.json";
 import Navbar from "../Dashboard/Navbar/Navbar";
+import { mobileLandingProps } from "../../../../utils/props";
 
-const Landing = () => {
+const Landing: FC<mobileLandingProps> = ({ windowDimensions }) => {
     const [data, setData] = useState<tradingPairDTO[]>([]);
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const Landing = () => {
     return (
         <div className="landing-mobile">
             <Navbar />
-            <Intro data={data} />
+            <Intro windowDimensions={windowDimensions} data={data} />
             <Footer />
         </div>
     );

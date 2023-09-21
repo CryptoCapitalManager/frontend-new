@@ -4,6 +4,10 @@
     display: flex;
     justify-content: space-between;
 
+    @media (min-width: 1800px) {
+        justify-content: space-evenly;
+    }
+
     margin-left: 10vw;
     margin-right: 10vw;
     img {

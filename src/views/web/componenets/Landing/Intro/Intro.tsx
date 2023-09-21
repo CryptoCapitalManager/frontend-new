@@ -13,7 +13,7 @@ import "./Intro.scss";
 
 import { introWebProps } from "../../../../../utils/props";
 
-const Intro: FC<introWebProps> = ({ how, about, data }) => {
+const Intro: FC<introWebProps> = ({ windowDimensions, how, about, data }) => {
     return (
         <div className="intro-web">
             <Header />
@@ -21,9 +21,9 @@ const Intro: FC<introWebProps> = ({ how, about, data }) => {
             <How how={how} />
             <Comparison />
             <Stats />
-            <Transparency data={data} />
+            <Transparency data={data} windowDimensions={windowDimensions} />
             <Story about={about} />
-            <Calculator data={data} />
+            <Calculator data={data} windowDimensions={windowDimensions} />
         </div>
     );
 };

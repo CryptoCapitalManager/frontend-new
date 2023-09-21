@@ -6,7 +6,7 @@ import Table from "./Table/Table";
 
 import { transparencyProps } from "../../../../../../utils/props";
 
-const Transparency: FC<transparencyProps> = ({ data }) => {
+const Transparency: FC<transparencyProps> = ({ data, windowDimensions }) => {
     return (
         <div className="transparency-mobile">
             <div className="container-mobile">
@@ -16,7 +16,7 @@ const Transparency: FC<transparencyProps> = ({ data }) => {
                         Transparent & trustless track record
                     </p>
                 </div>
-                <Table data={data} />
+                <Table data={data} windowDimensions={windowDimensions} />
             </div>
         </div>
     );
