@@ -28,6 +28,7 @@ import {
     formatPercentage,
     maxYpoint,
 } from "../../../../utils/utils";
+import { error } from "../../../../utils/toasts";
 
 const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -92,7 +93,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 };
 
 const Dashboard: FC<dashboardProps> = ({
-    windowWidth,
+    windowDimensions,
     signer,
     address,
     displayAddress,
@@ -102,7 +103,7 @@ const Dashboard: FC<dashboardProps> = ({
     const [investVisible, setInvestVisible] = useState<boolean>(false);
     const [withdrawVisible, setWithdrawVisible] = useState<boolean>(false);
     const [userData, setUserData] = useState<userDataDTO>();
-    const [userTrades, setUserTrades] = useState<tradingPairDTO[]>([]);
+    const [userTrades, setUserTrades] = useState<tradingPairDTO[]>();
 
     const dashboardRef = useRef<any>(null);
     const [dashboardDimensions, setDashboardDimensions] = useState({
@@ -122,35 +123,39 @@ const Dashboard: FC<dashboardProps> = ({
     useEffect(() => {
         const fetchData = async () => {
             if (address.length !== 0) {
-                let result = await fetch(
-                    `https://investiva-test-api.onrender.com/data/user-account/${address}`
-                );
+                try {
+                    let result = await fetch(
+                        `https://investiva-test-api.onrender.com/data/user-account/${address}`
+                    );
 
-                const data = (await result.json()) as userDataDTO;
+                    const data = (await result.json()) as userDataDTO;
 
-                console.log(data.balanceChanges);
+                    setUserData(data);
+                    setMaxYPoint(maxYpoint(data.balanceChanges));
+                    setGraphData(filterUserData(data, filterPeriod));
 
-                setUserData(data);
-                setMaxYPoint(maxYpoint(data.balanceChanges));
-                setGraphData(filterUserData(data, filterPeriod));
+                    result = await fetch(
+                        "https://investiva-test-api.onrender.com/data/trades"
+                    );
+                    const trades = ((await result.json()) as tradingPairDataDTO)
+                        .messages;
 
-                result = await fetch(
-                    "https://investiva-test-api.onrender.com/data/trades"
-                );
-                const trades = ((await result.json()) as tradingPairDataDTO)
-                    .messages;
+                    const earliestDate = new Date(data.balanceChanges[0].date);
 
-                const earliestDate = new Date(data.balanceChanges[0].date);
-
-                setUserTrades(
-                    trades.filter(
-                        (trade) => earliestDate <= new Date(trade.date)
-                    )
-                );
+                    setUserTrades(
+                        trades.filter(
+                            (trade) => earliestDate <= new Date(trade.date)
+                        )
+                    );
+                } catch (e) {
+                    error(
+                        "An error occured while retrieving data from the server"
+                    );
+                }
             }
         };
 
-        fetchData().catch(() => {});
+        fetchData();
     }, []);
 
     useEffect(() => {
@@ -166,7 +171,7 @@ const Dashboard: FC<dashboardProps> = ({
                 height: graphRef.current.offsetHeight,
             });
         }
-    }, [windowWidth]);
+    }, [windowDimensions.width]);
 
     useEffect(() => {
         if (userData) {
@@ -182,12 +187,15 @@ const Dashboard: FC<dashboardProps> = ({
         <Navigate to={"/onboarding"} />
     ) : (
         <div className="dashboard-web" ref={dashboardRef}>
-            {(!userData || userTrades.length === 0) && (
+            {(!userData || !userTrades) && (
                 <div
                     className="loading-animation-container"
                     style={{
                         width: dashboardDimensions.width,
-                        height: dashboardDimensions.height,
+                        height:
+                            windowDimensions.height >= 930
+                                ? "100vh"
+                                : dashboardDimensions.height,
                     }}
                 >
                     <img src={loading} id="loading-animation" />
@@ -372,8 +380,8 @@ const Dashboard: FC<dashboardProps> = ({
                     </div>
                 </div>
                 <TransactionsTable
-                    windowWidth={windowWidth}
-                    userTrades={userTrades}
+                    windowDimensions={windowDimensions}
+                    userTrades={userTrades ? userTrades : []}
                 />
             </div>
         </div>

@@ -1,16 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { JsonRpcSigner, Provider } from "ethers";
+import { JsonRpcSigner } from "ethers";
+import { ToastContainer } from "react-toastify";
 
 import Landing from "./componenets/Landing/Landing";
 import Onboarding from "./componenets/Onboardning/Onboarding";
 import Dashboard from "./componenets/Dashboard/Dashboard";
 
+import "react-toastify/dist/ReactToastify.css";
+
 import { webProps } from "../../utils/props";
 
 import { metamaskConnectionCheck, metamaskListener } from "../../utils/utils";
 
-const Web: FC<webProps> = ({ windowWidth: width }) => {
+const Web: FC<webProps> = ({ windowDimensions: windowDimensions }) => {
     const [toCalc, setToCalc] = useState<boolean>(false);
 
     const [dataLoaded, setDataLoaded] = useState<boolean>(false);
@@ -34,6 +37,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
 
     return (
         <BrowserRouter basename="frontend-new">
+            <ToastContainer />
             <Routes>
                 <Route
                     path="/"
@@ -41,7 +45,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
                         <Landing
                             toCalc={toCalc}
                             setToCalc={setToCalc}
-                            windowWidth={width}
+                            windowDimensions={windowDimensions}
                         />
                     }
                 />
@@ -50,7 +54,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
                     element={
                         <Onboarding
                             signer={signer}
-                            windowWidth={width}
+                            windowDimensions={windowDimensions}
                             dataLoaded={dataLoaded}
                             displayAddress={displayAddress}
                             setToCalc={setToCalc}
@@ -63,7 +67,7 @@ const Web: FC<webProps> = ({ windowWidth: width }) => {
                     path="/dashboard"
                     element={
                         <Dashboard
-                            windowWidth={width}
+                            windowDimensions={windowDimensions}
                             signer={signer}
                             address={address}
                             displayAddress={displayAddress}

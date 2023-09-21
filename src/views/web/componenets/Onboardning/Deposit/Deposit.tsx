@@ -14,6 +14,7 @@ import {
     REJECTED_TRANSACTION,
     USDC_APPROVAL_NEEDED,
 } from "../../../../../utils/const";
+import { error, notify } from "../../../../../utils/toasts";
 
 const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
     const [depositAmount, setDepositAmount] = useState<number>(0);
@@ -43,9 +44,9 @@ const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
                 return;
             } else {
                 if (e.reason === REJECTED_TRANSACTION) {
-                    // TODO: Tell user that the action has been rejected
+                    error("The transaction has been rejected");
                 } else {
-                    // TODO: Tell user an error occured
+                    error("An error occured while processing the transaction");
                 }
             }
         }
@@ -65,10 +66,10 @@ const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
             );
         } catch (e: any) {
             if (e.reason === REJECTED_TRANSACTION) {
-                // TODO: Tell user that the action has been rejected
+                error("The transaction has been rejected");
                 return;
             } else {
-                // TODO: Tell user an error occured
+                error("An error occured while processing the transaction");
                 return;
             }
         }
@@ -83,7 +84,7 @@ const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
                     className="btn"
                     onClick={() => {
                         setGoToApproval(false);
-                        // TODO: Tell user that the deposit has been aborted
+                        notify("Transaction has been aborted");
                     }}
                 >
                     X

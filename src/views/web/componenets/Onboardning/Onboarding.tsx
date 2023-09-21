@@ -13,7 +13,7 @@ import { Navigate } from "react-router-dom";
 
 const Onboarding: FC<onboardingProps> = ({
     signer,
-    windowWidth,
+    windowDimensions,
     dataLoaded,
     displayAddress,
     setToCalc,
@@ -33,7 +33,7 @@ const Onboarding: FC<onboardingProps> = ({
                 height: pageRef.current.offsetHeight,
             });
         }
-    }, [windowWidth]);
+    }, [windowDimensions.width]);
 
     return (
         <div className="onboarding-web" ref={pageRef}>

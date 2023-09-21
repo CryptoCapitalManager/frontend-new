@@ -15,6 +15,7 @@ import sol_pair from "../res/svg/trading-pairs/sol-pair.svg";
 import dodge_pair from "../res/svg/trading-pairs/dodge-pair.svg";
 import xrp_pair from "../res/svg/trading-pairs/xrp-pair.svg";
 import ltc_pair from "../res/svg/trading-pairs/ltc-pair.svg";
+import { error } from "./toasts";
 
 const isSameYearAndMonth = (firstDate: Date, secondDate: Date) => {
     return (
@@ -117,39 +118,42 @@ const calculateROIEarnings = (roi: number, totalDeposit: number): string => {
 
 const connectToWallet = async () => {
     if (!window.ethereum) {
-        // Ako ne postoji
+        error("You must use a ethereum compatible wallet!");
         return;
     }
 
     if (!window.ethereum.isMetaMask) {
-        // Nije metamask
+        error("You must use metamask!");
         return;
     }
 
     const provider = window.ethereum;
 
-    // Povezi se sa sajtom
     try {
-        // Pitaj da se poveze
         await provider.request({
             method: "eth_requestAccounts",
         });
     } catch (e: any) {
-        // -32002 Ceka vec neku transakciju
-        // 4001 korisnik odbio
-        console.log(e.code);
-        return;
+        switch (e.code) {
+            case -32002:
+                error("You already have a pending website connection request!");
+                return;
+            case 4001:
+                error(
+                    "You must approve the website to connect to your wallet!"
+                );
+                return;
+            default:
+                console.log(e);
+                return;
+        }
     }
 
     const chainId: any = await provider.request({
         method: "eth_chainId",
     });
 
-    // Proveri chain
     if (chainId !== process.env.REACT_APP_CHAIN_ID) {
-        // Nije na Arb mrezi
-
-        // Predji na Arb
         await provider.request({
             method: "wallet_addEthereumChain",
             params: [
@@ -188,7 +192,6 @@ const metamaskConnectionCheck = async (
 
     // Check if using metamask
     if (!window.ethereum.isMetaMask) {
-        // TODO: Tell user that metamask is needed
         setDataLoaded(true);
         return;
     }
@@ -202,14 +205,12 @@ const metamaskConnectionCheck = async (
             method: "eth_accounts",
         });
     } catch (e) {
-        // TODO: Tell user that an error occured while connecting to metamask
         setDataLoaded(true);
         return;
     }
 
     // Check if any account is connected
     if (accounts.length === 0) {
-        // TODO: Tell user to open up metamask
         setDataLoaded(true);
         return;
     }
@@ -219,7 +220,6 @@ const metamaskConnectionCheck = async (
     try {
         chainId = await metamask.request({ method: "eth_chainId" });
     } catch (e) {
-        // TODO: Tell user that an error occured while connecting to metamask
         setDataLoaded(true);
         return;
     }

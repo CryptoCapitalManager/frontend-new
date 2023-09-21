@@ -13,6 +13,7 @@ import {
     REJECTED_TRANSACTION,
     USDC_APPROVAL_NEEDED,
 } from "../../../../../utils/const";
+import { error, notify } from "../../../../../utils/toasts";
 
 const Invest: FC<investProps> = ({
     signer,
@@ -48,9 +49,9 @@ const Invest: FC<investProps> = ({
                 return;
             } else {
                 if (e.reason === REJECTED_TRANSACTION) {
-                    // TODO: Tell user that the action has been rejected
+                    error("The transaction has been rejected");
                 } else {
-                    // TODO: Tell user an error occured
+                    error("An error occured while processing the transaction");
                 }
             }
         }
@@ -72,11 +73,11 @@ const Invest: FC<investProps> = ({
             );
         } catch (e: any) {
             if (e.reason === REJECTED_TRANSACTION) {
-                // TODO: Tell user that the action has been rejected
+                error("The transaction has been rejected");
                 setInvestVisible(false);
                 return;
             } else {
-                // TODO: Tell user an error occured
+                error("An error occured while processing the transaction");
                 setInvestVisible(false);
                 return;
             }
@@ -162,7 +163,7 @@ const Invest: FC<investProps> = ({
                             className="btn"
                             onClick={() => {
                                 setInvestVisible(false);
-                                // TODO: Tell user that the deposit has been aborted
+                                notify("Transaction has been aborted");
                             }}
                         >
                             X

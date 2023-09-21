@@ -25,6 +25,10 @@
 
         background-color: #e8e8e8ab;
 
+        @media (max-height: 930) {
+            height: 100vh;
+        }
+
         #loading-animation {
             height: 600px;
         }

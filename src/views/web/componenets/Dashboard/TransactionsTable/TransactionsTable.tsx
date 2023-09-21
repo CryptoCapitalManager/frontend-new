@@ -11,7 +11,7 @@ import { tradingPairDTO } from "../../../../../utils/dto";
 import { getTradingPairIcon } from "../../../../../utils/utils";
 
 const TransactionsTable: FC<transactionsTableProps> = ({
-    windowWidth,
+    windowDimensions,
     userTrades,
 }) => {
     const [data, setData] = useState<tradingPairDTO[]>([]);
@@ -131,13 +131,13 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                         <th style={{ width: "10%" }}>Position</th>
                         <th
                             style={{ width: "14%" }}
-                            hidden={windowWidth < 1195}
+                            hidden={windowDimensions.width < 1195}
                         >
                             Entry price
                         </th>
                         <th
                             style={{ width: "14%" }}
-                            hidden={windowWidth < 1195}
+                            hidden={windowDimensions.width < 1195}
                         >
                             Exit price
                         </th>
@@ -150,32 +150,32 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={windowWidth < 1195}></td>
-                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={windowWidth < 1195}></td>
-                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={windowWidth < 1195}></td>
-                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td hidden={windowWidth < 1195}></td>
-                            <td hidden={windowWidth < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
+                            <td hidden={windowDimensions.width < 1195}></td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -198,7 +198,11 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                                             </div>
                                         </td>
                                         <td>{tradingPair.positionType}</td>
-                                        <td hidden={windowWidth < 1195}>
+                                        <td
+                                            hidden={
+                                                windowDimensions.width < 1195
+                                            }
+                                        >
                                             <div className="link-container-web">
                                                 <img
                                                     src={arbitrum}
@@ -214,7 +218,11 @@ const TransactionsTable: FC<transactionsTableProps> = ({
                                                 </Link>
                                             </div>
                                         </td>
-                                        <td hidden={windowWidth < 1195}>
+                                        <td
+                                            hidden={
+                                                windowDimensions.width < 1195
+                                            }
+                                        >
                                             <div className="link-container-web">
                                                 <img src={arbitrum} alt="" />
                                                 <Link

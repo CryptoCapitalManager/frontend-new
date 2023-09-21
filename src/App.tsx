@@ -7,11 +7,17 @@ import Web from "./views/web/Web";
 import Mobile from "./views/mobile/Mobile";
 
 const App = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowDimensions, setWindowDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
 
     useEffect(() => {
         const handleResize = () => {
-            setWindowWidth(window.innerWidth);
+            setWindowDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
         };
 
         window.addEventListener("resize", handleResize);
@@ -23,7 +29,11 @@ const App = () => {
 
     return (
         <div className="App">
-            {isMobile ? <Mobile /> : <Web windowWidth={windowWidth} />}
+            {isMobile ? (
+                <Mobile />
+            ) : (
+                <Web windowDimensions={windowDimensions} />
+            )}
         </div>
     );
 };

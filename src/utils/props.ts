@@ -1,15 +1,20 @@
 import React from "react";
 import { tradingPairDTO } from "./dto";
-import { JsonRpcSigner, Provider } from "ethers";
+import { JsonRpcSigner } from "ethers";
 
 interface webProps {
-    windowWidth: number;
+    windowDimensions: windowDimensions;
+}
+
+interface windowDimensions {
+    width: number;
+    height: number;
 }
 
 interface landingProps {
     toCalc: boolean;
     setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
-    windowWidth: number;
+    windowDimensions: windowDimensions;
 }
 
 interface navbarProps {
@@ -50,7 +55,7 @@ interface tableProps {
 
 interface onboardingProps {
     signer: JsonRpcSigner | undefined;
-    windowWidth: number;
+    windowDimensions: windowDimensions;
     dataLoaded: boolean;
     displayAddress: string;
     setToCalc: React.Dispatch<React.SetStateAction<boolean>>;
@@ -72,7 +77,7 @@ interface depositProps {
 }
 
 interface dashboardProps {
-    windowWidth: number;
+    windowDimensions: windowDimensions;
     signer: JsonRpcSigner | undefined;
     address: string;
     displayAddress: string;
@@ -96,7 +101,7 @@ interface withdrawProps {
 }
 
 interface transactionsTableProps {
-    windowWidth: number;
+    windowDimensions: windowDimensions;
     userTrades: tradingPairDTO[];
 }
 

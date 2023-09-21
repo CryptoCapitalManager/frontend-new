@@ -11,7 +11,7 @@ import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
 
 import { landingProps } from "../../../../utils/props";
 
-const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowWidth }) => {
+const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowDimensions }) => {
     const how = useRef(null);
     const about = useRef(null);
     const [data, setData] = useState<tradingPairDTO[]>([]);
@@ -48,7 +48,7 @@ const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowWidth }) => {
         }
     }, [toCalc]);
 
-    return windowWidth < 1195 ? (
+    return windowDimensions.width < 1195 ? (
         <div className="landing-web-mini">
             <p>mini</p>
         </div>
