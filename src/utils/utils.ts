@@ -291,6 +291,25 @@ const capitalizeString = (word: string): string => {
     return `${word.charAt(0).toUpperCase() + word.slice(1)}`;
 };
 
+const parseUSDCBalance = (amount: string): string => {
+    const length = amount.length;
+
+    if (length <= 4) {
+        return "0";
+    } else if (length === 5) {
+        return `0.0${amount[0]}`;
+    } else if (length === 6) {
+        return `0.${amount.slice(0, length - 5)}`;
+    } else {
+        const decimalPoint = length - 6;
+
+        return `${amount.slice(0)}.${amount.slice(
+            decimalPoint,
+            decimalPoint + 2
+        )}`;
+    }
+};
+
 export {
     getTradingPairIcon,
     isSameYearAndMonth,
@@ -303,4 +322,5 @@ export {
     maxYpoint,
     filterUserData,
     capitalizeString,
+    parseUSDCBalance,
 };

@@ -14,6 +14,7 @@ import {
     USDC_APPROVAL_NEEDED,
 } from "../../../../../utils/const";
 import { error, notify } from "../../../../../utils/toasts";
+import { parseUSDCBalance } from "../../../../../utils/utils";
 
 const Invest: FC<investProps> = ({
     signer,
@@ -134,7 +135,9 @@ const Invest: FC<investProps> = ({
                         <div className="right">
                             <img src={usdc} alt="USDC banner" />
                             <div className="good-balance-text">
-                                <p id="balance">Balance: {balanceUSDC} </p>
+                                <p id="balance">
+                                    Balance: {parseUSDCBalance(balanceUSDC)}{" "}
+                                </p>
                                 <p id="max">Max</p>
                             </div>
                         </div>

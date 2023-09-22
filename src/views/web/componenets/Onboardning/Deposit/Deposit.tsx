@@ -15,6 +15,7 @@ import {
     USDC_APPROVAL_NEEDED,
 } from "../../../../../utils/const";
 import { error, notify } from "../../../../../utils/toasts";
+import { parseUSDCBalance } from "../../../../../utils/utils";
 
 const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
     const [depositAmount, setDepositAmount] = useState<number>(0);
@@ -32,12 +33,7 @@ const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
         try {
             await trading.deposit(parsedAmount);
 
-            // TODO: Tell user transaction has been processed succesfully
-            // TODO: Tell user that window will reload in 10 seconds after previous toast
-
-            setTimeout(() => {
-                window.location.reload();
-            }, 10000);
+            window.location.reload();
         } catch (e: any) {
             if (e.reason === USDC_APPROVAL_NEEDED) {
                 setGoToApproval(true);
@@ -143,12 +139,14 @@ const Deposit: FC<depositProps> = ({ signer, balanceUSDC }) => {
                     <img src={usdc} alt="USDC banner" />
                     {ethers.getBigInt(balanceUSDC) >= ethers.getBigInt(100) ? (
                         <div className="good-balance-text">
-                            <p id="balance">Balance: {balanceUSDC} </p>
+                            <p id="balance">
+                                Balance: {parseUSDCBalance(balanceUSDC)}
+                            </p>
                             <p id="max">Max</p>
                         </div>
                     ) : (
                         <p className="bad-balance-text">
-                            Balance: {balanceUSDC}
+                            Balance: {parseUSDCBalance(balanceUSDC)}
                         </p>
                     )}
                 </div>
