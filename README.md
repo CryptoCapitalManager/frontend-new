@@ -1,3 +1,6 @@
+Copy information from the example .env to a real .env
+`cp .env.example .env`
+
 To run the application in a test enviroment:
 `npm start`
 
