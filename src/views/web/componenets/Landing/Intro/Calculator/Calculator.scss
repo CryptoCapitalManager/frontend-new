@@ -2,7 +2,10 @@
     height: 100vh;
 
     padding-top: 30px;
-    margin-bottom: 200px;
+
+    @media (max-width: 1800px) {
+        margin-bottom: 120px;
+    }
 
     .container-web {
         display: flex;
@@ -58,6 +61,8 @@
             margin-top: 35px;
 
             .loading-animation-container {
+                z-index: 20;
+
                 position: absolute;
 
                 display: flex;
@@ -125,7 +130,7 @@
                     margin-top: 60px;
 
                     #title-web {
-                        color: #328bff;
+                        color: rgba(50, 139, 255, 1);
                         font-family: "Roboto";
                         font-size: 20px;
                         font-style: normal;
@@ -143,26 +148,45 @@
                         font-weight: 500;
                     }
 
-                    input {
+                    .period-web-slider {
+                        display: flex;
+                        align-items: center;
+
                         width: 100%;
+
+                        margin-bottom: 21px;
+
+                        .period-web-thumb {
+                            width: 16px;
+                            height: 16px;
+                            border-radius: 100%;
+
+                            outline: none;
+                            border: 3px solid rgba(50, 139, 255, 1);
+
+                            cursor: pointer;
+                            background-color: rgba(238, 238, 238, 1);
+
+                            &:hover {
+                                box-shadow: 0 0 0 3px rgba(50, 139, 255, 0.4);
+                            }
+                        }
+                    }
+
+                    .period-web-track {
                         margin: 0;
-                        height: 2px;
+                        height: 4px;
+                        background: rgba(50, 139, 255, 1);
+                    }
 
-                        &::-webkit-slider-thumb {
-                            cursor: pointer;
-                        }
-
-                        &::-moz-range-thumb {
-                            cursor: pointer;
-                        }
+                    .period-web-track.period-web-track-1 {
+                        background: white;
                     }
 
                     .limits-web {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-
-                        margin-top: 12px;
 
                         p {
                             color: #eee;

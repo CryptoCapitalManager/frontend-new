@@ -128,18 +128,39 @@
                         font-weight: 500;
                     }
 
-                    input {
+                    .period-mobile-slider {
+                        display: flex;
+                        align-items: center;
+
                         width: 100%;
+
+                        margin-bottom: 21px;
+
+                        .period-mobile-thumb {
+                            width: 16px;
+                            height: 16px;
+                            border-radius: 100%;
+
+                            outline: none;
+                            border: 3px solid rgba(50, 139, 255, 1);
+
+                            cursor: pointer;
+                            background-color: rgba(238, 238, 238, 1);
+
+                            &:hover {
+                                box-shadow: 0 0 0 3px rgba(50, 139, 255, 0.4);
+                            }
+                        }
+                    }
+
+                    .period-mobile-track {
                         margin: 0;
-                        height: 10px;
+                        height: 4px;
+                        background: rgba(50, 139, 255, 1);
+                    }
 
-                        &::-webkit-slider-thumb {
-                            cursor: pointer;
-                        }
-
-                        &::-moz-range-thumb {
-                            cursor: pointer;
-                        }
+                    .period-mobile-track.period-mobile-track-1 {
+                        background: white;
                     }
 
                     .limits-mobile {

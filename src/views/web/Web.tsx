@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { JsonRpcSigner } from "ethers";
 import { ToastContainer } from "react-toastify";
 
-import Landing from "./componenets/Landing/Landing";
+import MiniLanding from "./componenets/Landing/Landing";
 import Onboarding from "./componenets/Onboardning/Onboarding";
 import Dashboard from "./componenets/Dashboard/Dashboard";
 
@@ -42,7 +42,7 @@ const Web: FC<webProps> = ({ windowDimensions: windowDimensions }) => {
                 <Route
                     path="/"
                     element={
-                        <Landing
+                        <MiniLanding
                             toCalc={toCalc}
                             setToCalc={setToCalc}
                             windowDimensions={windowDimensions}

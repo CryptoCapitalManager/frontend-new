@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import ReactSlider from "react-slider";
 
 import "./Calculator.scss";
 
@@ -251,15 +252,16 @@ const Calculator: FC<calculatorProps> = ({ windowDimensions, data }) => {
                         <div className="period-web">
                             <p id="title-web">Period</p>
                             <p id="duration-web">{currentPeriodTxt.current}</p>
-                            <input
-                                type="range"
-                                id="period-web"
+                            <ReactSlider
+                                className="period-web-slider"
+                                trackClassName="period-web-track"
+                                thumbClassName="period-web-thumb"
                                 min={1}
                                 max={maxPeriodValue}
                                 step={1}
                                 value={periodValue}
                                 onChange={(e) => {
-                                    updatePeriodValue(Number(e.target.value));
+                                    updatePeriodValue(e);
                                 }}
                             />
                             <div className="limits-web">

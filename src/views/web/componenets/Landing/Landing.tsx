@@ -5,6 +5,8 @@ import Tag from "./Tag/Tag";
 import Intro from "./Intro/Intro";
 import Footer from "./Footer/Footer";
 
+import MiniLanding from "../../../mobile/components/Landing/Landing";
+
 import "./Landing.scss";
 
 import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
@@ -50,7 +52,7 @@ const Landing: FC<landingProps> = ({ toCalc, setToCalc, windowDimensions }) => {
 
     return windowDimensions.width < 1360 ? (
         <div className="landing-web-mini">
-            <p>mini</p>
+            <MiniLanding windowDimensions={windowDimensions} />
         </div>
     ) : (
         <div className="landing-web">

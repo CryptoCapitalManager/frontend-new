@@ -3,7 +3,7 @@ import { FC } from "react";
 
 import { mobileProps } from "../../utils/props";
 
-import Landing from "./components/Landing/Landing";
+import MiniLanding from "./components/Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
 
 const Mobile: FC<mobileProps> = ({ windowDimensions }) => {
@@ -12,7 +12,9 @@ const Mobile: FC<mobileProps> = ({ windowDimensions }) => {
             <Routes>
                 <Route
                     path="/"
-                    element={<Landing windowDimensions={windowDimensions} />}
+                    element={
+                        <MiniLanding windowDimensions={windowDimensions} />
+                    }
                 />
                 <Route path="/notice" element={<Dashboard />} />
                 <Route path="*" element={<Navigate to="/" replace />} />

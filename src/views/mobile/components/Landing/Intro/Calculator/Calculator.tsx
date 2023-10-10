@@ -5,6 +5,7 @@ import "./Calculator.scss";
 import { calculatorProps } from "../../../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../../../utils/utils";
 import { Link } from "react-router-dom";
+import ReactSlider from "react-slider";
 
 const Calculator: FC<calculatorProps> = ({ data }) => {
     const currentPeriodTxt = useRef("1 year");
@@ -227,15 +228,16 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                             <p id="duration-mobile">
                                 {currentPeriodTxt.current}
                             </p>
-                            <input
-                                type="range"
-                                id="period-mobile"
+                            <ReactSlider
+                                className="period-mobile-slider"
+                                trackClassName="period-mobile-track"
+                                thumbClassName="period-mobile-thumb"
                                 min={1}
                                 max={maxPeriodValue}
                                 step={1}
                                 value={periodValue}
                                 onChange={(e) => {
-                                    updatePeriodValue(Number(e.target.value));
+                                    updatePeriodValue(e);
                                 }}
                             />
                             <div className="limits-mobile">

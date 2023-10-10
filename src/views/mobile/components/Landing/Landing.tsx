@@ -7,10 +7,10 @@ import Footer from "./Footer/Footer";
 
 import { tradingPairDTO, tradingPairDataDTO } from "../../../../utils/dto";
 import mock from "../../../../res/mock.json";
-import Navbar from "../Dashboard/Navbar/Navbar";
 import { mobileLandingProps } from "../../../../utils/props";
+import Navbar from "./Navbar/Navbar";
 
-const Landing: FC<mobileLandingProps> = ({ windowDimensions }) => {
+const MiniLanding: FC<mobileLandingProps> = ({ windowDimensions }) => {
     const [data, setData] = useState<tradingPairDTO[]>([]);
 
     useEffect(() => {
@@ -37,4 +37,4 @@ const Landing: FC<mobileLandingProps> = ({ windowDimensions }) => {
     );
 };
 
-export default Landing;
+export default MiniLanding;

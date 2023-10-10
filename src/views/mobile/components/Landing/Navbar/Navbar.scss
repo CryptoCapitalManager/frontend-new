@@ -1,0 +1,33 @@
+.navbar-mobile {
+    #logo {
+        margin: 10vw 0px 0px 10vw;
+
+        height: 7.5vw;
+    }
+
+    .top-shadow {
+        position: absolute;
+
+        top: -58%;
+        right: -43%;
+
+        width: 100vw;
+        height: 100vw;
+
+        background: #c4f53c5d;
+
+        @media (min-width: 500px) {
+            top: -25%;
+            right: -25%;
+        }
+
+        @media (min-width: 570px) {
+            top: -50%;
+            right: -40%;
+
+            background: rgba(196, 245, 60, 0.358);
+        }
+
+        filter: blur(200px);
+    }
+}

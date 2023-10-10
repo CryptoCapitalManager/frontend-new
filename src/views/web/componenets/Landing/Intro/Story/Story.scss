@@ -8,15 +8,17 @@
     .container-web {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+
+        @media (min-width: 1800px) {
+            justify-content: space-evenly;
+        }
 
         width: calc(100% - 20vw);
 
         .text-web {
             display: flex;
             flex-direction: column;
-
-            margin-right: 100px;
 
             #title-web {
                 color: #eee;
@@ -28,6 +30,8 @@
             }
 
             #header-web {
+                width: 500px;
+
                 margin-top: 25px;
 
                 color: #fff;
@@ -38,6 +42,8 @@
             }
 
             #description-web {
+                width: 500px;
+
                 margin-top: 65px;
 
                 color: #fff;
