@@ -16,7 +16,7 @@ const Mobile: FC<mobileProps> = ({ windowDimensions }) => {
                         <MiniLanding windowDimensions={windowDimensions} />
                     }
                 />
-                <Route path="/notice" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>
