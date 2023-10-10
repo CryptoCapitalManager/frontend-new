@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/frontend-new/static/css/main.eaee73f0.css",
+    "main.css": "/frontend-new/static/css/main.90fc93fb.css",
     "main.js": "/frontend-new/static/js/main.4015daca.js",
     "static/media/bojan-founder.png": "/frontend-new/static/media/bojan-founder.bdd8e0220dd55b50519f.png",
     "static/media/our-experience.svg": "/frontend-new/static/media/our-experience.fff57980a4b30c86ff571f6c9a852d0c.svg",
@@ -39,11 +39,11 @@
     "static/media/checked-fact.svg": "/frontend-new/static/media/checked-fact.2c59c4f257ea89305d0df53ab33aff0b.svg",
     "static/media/checked.svg": "/frontend-new/static/media/checked.31533a3d62953bbc2b3758dd33300b0c.svg",
     "static/media/roi-placeholder.svg": "/frontend-new/static/media/roi-placeholder.f48c39fb22849c457310409d31bb99b1.svg",
-    "main.eaee73f0.css.map": "/frontend-new/static/css/main.eaee73f0.css.map",
+    "main.90fc93fb.css.map": "/frontend-new/static/css/main.90fc93fb.css.map",
     "main.4015daca.js.map": "/frontend-new/static/js/main.4015daca.js.map"
   },
   "entrypoints": [
-    "static/css/main.eaee73f0.css",
+    "static/css/main.90fc93fb.css",
     "static/js/main.4015daca.js"
   ]
 }
