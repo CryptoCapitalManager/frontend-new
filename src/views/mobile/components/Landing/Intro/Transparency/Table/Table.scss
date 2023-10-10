@@ -2,6 +2,18 @@
     width: calc(100% - 80px);
     margin-top: 70px;
 
+    .loading-animation-container {
+        position: absolute;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: hsla(220, 11%, 11%, 0.85);
+
+        border-radius: 10px;
+    }
+
     table {
         width: 100%;
 

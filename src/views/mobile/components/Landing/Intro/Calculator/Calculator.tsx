@@ -2,12 +2,14 @@ import { FC, useEffect, useRef, useState } from "react";
 
 import "./Calculator.scss";
 
+import loading from "../../../../../../res/svg/loading-animation.svg";
+
 import { calculatorProps } from "../../../../../../utils/props";
 import { isSameYearAndMonth } from "../../../../../../utils/utils";
 import { Link } from "react-router-dom";
 import ReactSlider from "react-slider";
 
-const Calculator: FC<calculatorProps> = ({ data }) => {
+const Calculator: FC<calculatorProps> = ({ windowDimensions, data }) => {
     const currentPeriodTxt = useRef("1 year");
     const maxPeriodTxt = useRef("2 years");
 
@@ -21,6 +23,19 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
     const [totalDeposit, setTotalDeposit] = useState<number>(2200);
 
     const [investmentValue, setInvestmentValue] = useState<number>(3300);
+
+    const elementRef = useRef<any>(null);
+    const [elementDimensions, setElementDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        setElementDimensions({
+            width: elementRef.current.offsetWidth,
+            height: elementRef.current.offsetHeight,
+        });
+    }, [windowDimensions]);
 
     // initial data load
     useEffect(() => {
@@ -201,7 +216,18 @@ const Calculator: FC<calculatorProps> = ({ data }) => {
                         Based on our trading success from the previous year
                     </p>
                 </div>
-                <div className="calculator-container-mobile">
+                <div className="calculator-container-mobile" ref={elementRef}>
+                    {data.length === 0 && (
+                        <div
+                            className="loading-animation-container"
+                            style={{
+                                width: elementDimensions.width,
+                                height: elementDimensions.height,
+                            }}
+                        >
+                            <img src={loading} id="loading-animation" />
+                        </div>
+                    )}
                     <div className="input-mobile">
                         <div className="amount-mobile">
                             <p id="title-mobile">Initial deposit</p>

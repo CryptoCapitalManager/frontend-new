@@ -55,6 +55,18 @@
 
             margin-top: 90px;
 
+            .loading-animation-container {
+                z-index: 20;
+
+                position: absolute;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: hsla(220, 11%, 11%, 0.85);
+            }
+
             .input-mobile {
                 width: 100%;
                 .amount-mobile {

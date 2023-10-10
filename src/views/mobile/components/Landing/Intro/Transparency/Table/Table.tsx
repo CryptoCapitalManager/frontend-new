@@ -1,19 +1,31 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 import "./Table.scss";
 
 import arrow from "../../../../../../../res/svg/arrow.svg";
-import arbitrum from "../../../../../../../res/svg/arbitrum.svg";
 import eth from "../../../../../../../res/svg/eth-usdc.svg";
+import loading from "../../../../../../../res/svg/loading-animation.svg";
 
 import { tableProps } from "../../../../../../../utils/props";
 import { tradingPairDTO } from "../../../../../../../utils/dto";
-import { Link } from "react-router-dom";
 
 const Table: FC<tableProps> = ({ data, windowDimensions }) => {
     const [current, setCurrent] = useState<number>(1);
     const [pages, setPages] = useState<number[]>([1, 2, 3, 4, 5]);
     const [visibleData, setVisibleData] = useState<tradingPairDTO[]>([]);
+
+    const tableRef = useRef<any>(null);
+    const [tableDimensions, setTableDimensions] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        setTableDimensions({
+            width: tableRef.current.offsetWidth,
+            height: tableRef.current.offsetHeight,
+        });
+    }, [windowDimensions]);
 
     useEffect(() => {
         if (data[0] === undefined) {
@@ -70,7 +82,18 @@ const Table: FC<tableProps> = ({ data, windowDimensions }) => {
     };
 
     return (
-        <div className="table-mobile">
+        <div className="table-mobile" ref={tableRef}>
+            {data.length === 0 && (
+                <div
+                    className="loading-animation-container"
+                    style={{
+                        width: tableDimensions.width,
+                        height: tableDimensions.height,
+                    }}
+                >
+                    <img src={loading} id="loading-animation" />
+                </div>
+            )}
             <table>
                 <thead>
                     <tr style={{ width: "100%" }}>
