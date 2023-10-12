@@ -8,25 +8,13 @@
     .top-shadow {
         position: absolute;
 
-        margin-top: -15%;
-        margin-right: -25%;
+        top: -50vw;
+        left: 50vw;
 
-        width: 100vw;
+        width: 100%;
         height: 100vw;
 
         background: #c4f53c5d;
-
-        @media (min-width: 500px) {
-            top: -25%;
-            right: -25%;
-        }
-
-        @media (min-width: 570px) {
-            top: -50%;
-            right: -40%;
-
-            background: rgba(196, 245, 60, 0.358);
-        }
 
         filter: blur(200px);
     }

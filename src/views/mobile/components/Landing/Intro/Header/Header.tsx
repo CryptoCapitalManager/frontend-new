@@ -19,7 +19,7 @@ const Header = () => {
                 </p>
             </div>
             <Link to={"/dashboard"} className="btn-mobile">
-                <div>Get Started</div>
+                Get Started
             </Link>
 
             <img

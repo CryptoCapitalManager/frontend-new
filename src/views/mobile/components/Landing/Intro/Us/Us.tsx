@@ -14,15 +14,9 @@ const Us = () => {
                         trading history
                     </p>
                     <p id="subtext-mobile">
-                        Results of our traders are
-                        <br />
-                        transparent on the blockchain.
-                        <br />
-                        You can see our whole history of
-                        <br />
-                        trading and you can be 100%
-                        <br />
-                        sure that the data is real.
+                        Results of our traders are transparent on the
+                        blockchain. You can see our whole history of trading and
+                        you can be 100% sure that the data is real.
                     </p>
                 </div>
                 <img src={expertise} alt="Trades history" />
@@ -36,11 +30,8 @@ const Us = () => {
                         DeFi protocol
                     </p>
                     <p id="subtext-mobile">
-                        Your crypto is always your crypto
-                        <br />
-                        and you can withdraw it at any
-                        <br />
-                        moment.
+                        Your crypto is always your crypto and you can withdraw
+                        it at any moment.
                     </p>
                 </div>
                 <img src={protocol} alt="Trades history" />

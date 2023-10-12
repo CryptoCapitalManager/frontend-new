@@ -162,7 +162,7 @@ const Dashboard: FC<dashboardProps> = ({
         if (dashboardRef.current) {
             setDashboardDimensions({
                 width: dashboardRef.current.offsetWidth,
-                height: dashboardRef.current.offsetHeight + 51,
+                height: dashboardRef.current.offsetHeight,
             });
         }
         if (graphRef.current) {
