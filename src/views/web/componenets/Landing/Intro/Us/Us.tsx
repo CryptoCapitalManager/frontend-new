@@ -7,7 +7,7 @@ import expertise from "../../../../../../res/svg/our-experience.svg";
 import protocol from "../../../../../../res/svg/our-protocol.svg";
 
 const Us = () => {
-    const [showProtocol, setShowProtocol] = useState<boolean>(false);
+    const [showExpertise, setShowExpertise] = useState<boolean>(true);
     const [expertiseTab, SetExpertiseTab] = useState<string>("selected");
     const [protocolTab, SetProtocolTab] = useState<string>("unselected");
 
@@ -19,7 +19,7 @@ const Us = () => {
                         className="tab-web"
                         id={expertiseTab}
                         onClick={() => {
-                            setShowProtocol(false);
+                            setShowExpertise(true);
                             SetExpertiseTab("selected");
                             SetProtocolTab("unselected");
                         }}
@@ -31,7 +31,7 @@ const Us = () => {
                         className="tab-web"
                         id={protocolTab}
                         onClick={() => {
-                            setShowProtocol(true);
+                            setShowExpertise(false);
                             SetExpertiseTab("unselected");
                             SetProtocolTab("selected");
                         }}
@@ -62,7 +62,7 @@ const Us = () => {
                     </Link>
                 </div>
             </div>
-            {!showProtocol ? (
+            {showExpertise ? (
                 <img
                     src={expertise}
                     alt="Our trading performance"

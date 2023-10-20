@@ -303,7 +303,7 @@ const parseUSDCBalance = (amount: string): string => {
     } else {
         const decimalPoint = length - 6;
 
-        return `${amount.slice(0)}.${amount.slice(
+        return `${amount.slice(0, decimalPoint)}.${amount.slice(
             decimalPoint,
             decimalPoint + 2
         )}`;

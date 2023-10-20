@@ -154,6 +154,8 @@ const Calculator: FC<calculatorProps> = ({ windowDimensions, data }) => {
                 ROIs.push(getROIofMonth(temp));
             }
 
+            console.log(ROIs);
+
             groupedROIs.current = ROIs;
         } catch {}
     };

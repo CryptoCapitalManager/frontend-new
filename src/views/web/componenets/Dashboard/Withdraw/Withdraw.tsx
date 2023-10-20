@@ -52,6 +52,8 @@ const Withdraw: FC<withdrawProps> = ({
                 // TODO: Tell user transaction has been sent (create adequate promise toast)
                 // TODO: Tell user that window will reload in 10 seconds after previous toast
             } catch (e: any) {
+                console.log(e);
+
                 if (e.reason === REJECTED_TRANSACTION) {
                     // TODO: Tell user that the action has been rejected
                 } else {

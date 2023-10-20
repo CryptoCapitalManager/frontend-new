@@ -175,7 +175,9 @@ const Invest: FC<investProps> = ({
                     <div className="notification-field">
                         <p>
                             To enable the deposit in our smart contract, you
-                            need to approve the spending of USDC.
+                            need to approve the spending of USDC. After you
+                            approve USDC spending your deposit transaction will
+                            be initiated.
                         </p>
                     </div>
                     <div

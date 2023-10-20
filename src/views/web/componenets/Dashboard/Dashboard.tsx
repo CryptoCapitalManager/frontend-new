@@ -116,7 +116,7 @@ const Dashboard: FC<dashboardProps> = ({
         width: 0,
         height: 0,
     });
-    const [filterPeriod, setFilterPeriod] = useState<number>(1);
+    const [filterPeriod, setFilterPeriod] = useState<number>(12);
     const [maxYPoint, setMaxYPoint] = useState<number>(0);
     const [graphData, setGraphData] = useState<balanceChangeDTO[]>([]);
 
